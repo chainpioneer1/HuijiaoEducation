@@ -1,0 +1,903 @@
+div {
+    background-size: 100% 100% !important;
+    position: relative;
+    font-size: 14px;
+}
+
+.course-container {
+    position: relative;
+    width: 80%;
+    display: inline-block;
+    font-size: 14px;
+    text-align: left;
+    height: 90%;
+}
+.site-course-selector {
+    position: absolute;
+    left: 5%;
+    background: white;
+    width: 90%;
+    height: 120%;
+    z-index: 1000;
+    display: none;
+}
+.preview-upload-area{
+	position: relative;
+    width: 260px;
+    height: 200px;
+    display: inline-block;
+	background-size: 95px 80px!important;
+	text-align: center;
+	vertical-align: top;
+	color: #888;
+}
+.edit-btns[data-type="upload-image"] {
+	position: absolute;
+	left: 30px;
+	top: 20px;
+    width: 200px;
+    height: 130px;
+	background-color: #DFF3F1;
+    border-radius: 5px;
+    background-image: url(../../images/huijiao/tab2/upload.png);
+    display: inline-block;
+	background-size: 95px 80px!important;
+	text-align: center;
+	vertical-align: top;
+	color: #888;
+}
+.header-part {
+    width: 100%;
+    display: inline-block;
+}
+.header {
+    width: 76%;
+    display: inline-block;
+}
+
+.header-item {
+    width: 100%;
+    padding: 15px 0 7px;
+}
+
+.header-item.item-title {
+    width: 30%;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+}
+
+.header-item .title-label {
+    width: 40px;
+}
+
+.header-item div {
+    display: inline-block;
+    margin: 0 2px;
+    width: 120px;
+}
+
+.header-item .notice-label {
+    width: 200px;
+}
+.header-item .item-select {
+    border: 1px solid #888;
+    background: white;
+    padding: 1px 15px 1px 5px;
+    border-radius: 3px;
+    position: relative;
+    width: 160px;
+}
+
+.header-item .course-select {
+    border-bottom: 1px solid #888;
+    background: transparent;
+    padding: 1px 15px 1px 5px;
+    position: relative;
+    width: 130px;
+}
+
+.header-item .item-select > div {
+    position: absolute;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: url(../../images/huijiao/tab2/btn-select.png);
+    background-size: 10px 7px!important;
+    background-position: 95% 4px!important;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.header-item .item-select > div:hover {
+    background: url(../../images/huijiao/tab2/btn-select-clicked.png);
+}
+
+input.item-select {
+    width: 150px;
+    height: 21px;
+    font-size: 12px;
+    line-height: 21px;
+}
+
+.list-container {
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    display: inline-block;
+    width: 100%;
+    height: 88%;
+    margin: 0;
+    text-align: center;
+}
+
+.coursetype-items, .content-items {
+    height: 94%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.list-title, .list-item {
+    overflow-x: hidden;
+    margin: 0;
+}
+
+.list-title {
+    background: #01cdaf;
+    margin: 2px 0;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	color: white;
+}
+
+.list-item {
+    cursor: pointer;
+}
+
+.coursetype-items .list-item {
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+.coursetype-items .list-item:hover {
+    background: #eee;
+}
+.coursetype-items .list-item[data-sel="1"] {
+    background: #01cdaf;
+}
+
+.content-titleinfo{
+    position:absolute;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 1px 3px;
+    display: none;
+    background: white;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    pointer-events: none;
+    font-size: 8px;
+}
+.content-items {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.content-items .list-item {
+    width: 24.5%;
+    height: 280px;
+    text-align: center;
+    display: inline-block;
+    padding: 3px 3px 0;
+    margin: 1px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+    background: transparent;
+    outline-color: transparent;
+}
+
+.content-items .list-item:hover,
+.content-items .list-item[data-sel="1"] {
+    outline: 1px solid #01cdaf;
+}
+
+.content-items .list-item .item-icon,
+.content-items .list-item .item-desc {
+    width: 100%;
+    height: 240px;
+    display: inline-block;
+    padding:0;
+    margin:0;
+}
+
+.edit-area .content-items .list-item {
+    width: 19.5%;
+	height: 220px;
+}
+
+.edit-area .content-items {
+    height: 445px;
+}
+
+.edit-area .content-items .list-item .item-icon {
+    width: 100%;
+    height: 150px;
+}
+
+.edit-area .list-title {
+    height: 44px;
+    text-align: right;
+}
+
+.edit-btns {
+    cursor: pointer;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+.list-title .edit-btns {
+    width: 7%;
+    height: 20px;
+    margin: 5px 5px 0;
+    display: inline-block;
+}
+
+.list-title .edit-btns[data-type="moveLeft"] {
+    background: url(../../images/huijiao/tab2/btn-move1.png);
+}
+
+.list-title .edit-btns[data-type="moveLeft"]:hover {
+    background: url(../../images/huijiao/tab2/btn-move1-clicked.png);
+}
+
+.list-title .edit-btns[data-type="moveRight"] {
+    background: url(../../images/huijiao/tab2/btn-move2.png);
+}
+
+.list-title .edit-btns[data-type="moveRight"]:hover {
+    background: url(../../images/huijiao/tab2/btn-move2-clicked.png);
+}
+
+.list-title .edit-btns[data-type="play"] {
+    background: url(../../images/huijiao/tab2/btn-play.png);
+}
+
+.list-title .edit-btns[data-type="play"]:hover {
+    background: url(../../images/huijiao/tab2/btn-play-clicked.png);
+}
+
+.list-title .edit-btns[data-type="delete"] {
+    background: url(../../images/huijiao/tab2/btn-delete.png);
+}
+
+.list-title .edit-btns[data-type="delete"]:hover {
+    background: url(../../images/huijiao/tab2/btn-delete-clicked.png);
+}
+
+.edit-btn {
+    width: 16%;
+    height: 30px;
+    margin: 5px 5px 0;
+    display: inline-block;
+	font-size: 20px;
+}
+
+.edit-btn {
+    background: transparent;
+}
+
+.edit-btn:hover {
+    background: #01cdaf;
+}
+
+.edit-btn[data-type="play"] {
+    background: url(../../images/huijiao/tab2/btn-play.png);
+}
+
+.edit-btn[data-type="play"]:hover {
+    background: url(../../images/huijiao/tab2/btn-play-clicked.png);
+}
+
+.list-title .edit-btns[data-type="upload"] {
+    border: 1px solid black;
+    height: 26px;
+    line-height: 24px;
+    border-radius: 3px;
+    background: white;
+    text-align: center;
+	margin: 5px 10px;
+	color: black;
+}
+
+.list-title .edit-btns[data-type="upload"]:hover {
+    color: white;
+    background: gray;
+}
+
+.list-title .edit-btns[data-type="platform"] {
+    border: 1px solid black;
+    height: 26px;
+    line-height: 24px;
+    border-radius: 3px;
+    background: white;
+    text-align: center;
+	maring: 5px 10px;
+	color: black;
+}
+
+.list-title .edit-btns[data-type="platform"]:hover {
+    color: white;
+    background: gray;
+}
+
+.footer-item .edit-btns[data-type="reject"] {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    color: white;
+    background: #1acdaf;
+}
+
+.footer-item .edit-btns[data-type="reject"]:hover {
+    background: gray;
+}
+
+.footer-item .edit-btns[data-type="accept"] {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    color: white;
+    background: #1acdaf;
+}
+
+.footer-item .edit-btns[data-type="accept"]:hover {
+    background: gray;
+}
+
+.content-items .list-item .item-desc {
+    width: 100%;
+    height: auto;
+    padding:3px 0 0;
+    margin:0;
+}
+
+.content-items .list-item .item-desc > div {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 1;
+    padding: 1px 0;
+    margin: 0;
+    text-align: center;
+    pointer-events: none;
+}
+
+/*.content-items .list-item .item-desc > div:hover {*/
+/*animation-name: text-transform;*/
+/*}*/
+
+/*@keyframes text-transform {*/
+/*from{width:100%;}*/
+/*to{width:auto;}*/
+/*}*/
+
+.footer-item {
+    width: 100%;
+    padding: 0 0 10px;
+    text-align: center;
+}
+
+.footer-item .edit-btns {
+    width: 7%;
+    height: 30px;
+    margin: 5px 20px 0;
+    display: inline-block;
+}
+
+.footer-item .edit-btns[data-type="cancel"] {
+    background: url(../../images/huijiao/tab2/btn-cancel.png);
+}
+
+.footer-item .edit-btns[data-type="cancel"]:hover {
+    background: url(../../images/huijiao/tab2/btn-cancel-clicked.png);
+}
+
+.footer-item .edit-btns[data-type="preview"] {
+    background: url(../../images/huijiao/tab2/btn-view.png);
+}
+
+.footer-item .edit-btns[data-type="preview"]:hover {
+    background: url(../../images/huijiao/tab2/btn-view-clicked.png);
+}
+
+.footer-item .edit-btns[data-type="save"] {
+    background: url(../../images/huijiao/tab2/btn-save.png);
+}
+
+.footer-item .edit-btns[data-type="save"]:hover {
+    background: url(../../images/huijiao/tab2/btn-save-clicked.png);
+}
+
+.subject-select{
+    position: absolute;
+    top: 85px;
+    left: 8%;
+    width: 160px;
+    background: white;
+    border: 1px solid #888;
+    text-align: left;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: none;
+}
+
+.subject-select[data-type="lesson"]{
+    position: absolute;
+    top: 82px;
+    left: 9.4%;
+    width: 160px;
+    background: white;
+    border: 1px solid #888;
+    text-align: left;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: none;
+}
+
+.term-select {
+    position: absolute;
+    top: 85px;
+    left: 38.3%;
+    width: 160px;
+    background: white;
+    border: 1px solid #888;
+    text-align: left;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: none;
+}
+
+.term-select[data-type="lesson"] {
+    position: absolute;
+    top: 127px;
+    left: 9.4%;
+    width: 160px;
+    background: white;
+    border: 1px solid #888;
+    text-align: left;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: none;
+}
+
+.coursetype-select {
+    position: absolute;
+    top: 85px;
+    left: 68.5%;
+    width: 300px;
+    background: white;
+    border: 1px solid #888;
+    text-align: left;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: none;
+}
+
+.select-title {
+    color: #01cdaf;
+    background: #f0f0f0;
+    border-bottom: 1px solid #888;
+}
+
+.select-item {
+    padding: 1px 0;
+    border-bottom: 1px solid #888;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    cursor:pointer;
+}
+
+.select-item:last-child {
+    border: none;
+}
+
+.select-item:hover {
+    background: #eee;
+}
+
+.select-item[data-sel="1"] {
+    background: #01cdaf;
+}
+
+/*.title_container {*/
+/*position: relative;*/
+/*top: 24.5%;*/
+/*left: 20%;*/
+/*width: 30%;*/
+/*height: 5%;*/
+/*text-align: center;*/
+/*}*/
+
+/*#title_input {*/
+/*position: relative;*/
+/*vertical-align: middle;*/
+/*margin-right: 1%;*/
+/*font-size: calc(1.8vw);*/
+/*font-weight: bold;*/
+/*width: 28%;*/
+/*color: black;*/
+/*text-align: right;*/
+/*border: none;*/
+/*border-radius: calc(.5vw);*/
+/*outline: none;*/
+/*background: transparent;*/
+/*display: inline-block;*/
+/*-webkit-transition: all .2s ease-in-out;*/
+/*-moz-transition: all .2s ease-in-out;*/
+/*-ms-transition: all .2s ease-in-out;*/
+/*-o-transition: all .2s ease-in-out;*/
+/*transition: all .2s ease-in-out;*/
+/*}*/
+
+/*.title_edit {*/
+/*position: relative;*/
+/*display: inline-block;*/
+/*width: calc(1.3vw);*/
+/*height: calc(1.3vw);*/
+/*cursor: pointer;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/title_edit.png);*/
+/*vertical-align: middle;*/
+/*}*/
+
+/*.title_edit:hover {*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/title_edit_clicked.png);*/
+/*}*/
+
+/*.preview-btn {*/
+/*position: absolute;*/
+/*top: 25.8%;*/
+/*left: 50.8%;*/
+/*width: 5.7%;*/
+/*height: 3.5%;*/
+/*cursor: pointer;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/preview.png);*/
+/*}*/
+
+/*.preview-btn:hover {*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/preview_clicked.png);*/
+/*}*/
+
+/*.lessonware_home_container {*/
+/*position: absolute;*/
+/*top: 29.5%;*/
+/*left: 17.5%;*/
+/*width: 38.7%;*/
+/*height: 57.5%;*/
+/*overflow-y: auto;*/
+/*}*/
+
+/*.home_list_item {*/
+/*position: relative;*/
+/*text-align: center;*/
+/*display: inline-block;*/
+/*width: 20%;*/
+/*margin: 3% 2.5%;*/
+/*!*margin-left: 2.5%;*!*/
+/*overflow-y: auto;*/
+/*transition: all .2s ease-in-out;*/
+/*}*/
+
+/*.delete_home_item_btn {*/
+/*display: none;*/
+/*position: absolute;*/
+/*top: 3px;*/
+/*right: 3px;*/
+/*width: calc(1.7vw);*/
+/*height: calc(3.1vh);*/
+/*cursor: pointer;*/
+/*background: url(../../../assets/images/multiply.png);*/
+/*}*/
+
+/*input {*/
+/*overflow: hidden;*/
+/*white-space: nowrap;*/
+/*text-overflow: ellipsis;*/
+/*}*/
+
+/*.home_list_item_label {*/
+/*position: relative;*/
+/*overflow: hidden;*/
+/*white-space: nowrap;*/
+/*text-overflow: ellipsis;*/
+/*font-size: calc(1.3vw);*/
+/*text-align: center;*/
+/*display: inline-block;*/
+/*width: 100%;*/
+/*height: 10%;*/
+/*font-weight: 500;*/
+/*color: black;*/
+/*cursor: pointer;*/
+/*transition: all .2s ease-in-out;*/
+/*pointer-events: none;*/
+/*}*/
+
+/*.home_list_item_label:hover {*/
+/*color: #223dfc*/
+/*}*/
+
+/*.home_list_item_icon {*/
+/*position: relative;*/
+/*display: inline-block;*/
+/*width: 50%;*/
+/*height: calc(6.5vh);*/
+/*!*margin-right: 5%;*!*/
+/*pointer-events: none;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/tubiao1.png);*/
+/*}*/
+
+/*.cancel_btn,.save_btn {*/
+/*position: absolute;*/
+/*left: 29.8%;*/
+/*top: 88.1%;*/
+/*width: 5.5%;*/
+/*height: 3.4%;*/
+/*cursor: pointer;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/cancel.png);*/
+/*}*/
+
+/*.cancel_btn:hover {*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/cancel_clicked.png);*/
+/*}*/
+
+/*.save_btn {*/
+/*left: 37.8%;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/save.png);*/
+/*}*/
+
+/*.save_btn:hover {*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/save_clicked.png);*/
+/*}*/
+
+/*.lessonware_home_course_container {*/
+/*position: absolute;*/
+/*width: 17.5%;*/
+/*height: 66.7%;*/
+/*top: 22.7%;*/
+/*left: 66.3%;*/
+/*}*/
+
+/*.source_btn,.local_btn {*/
+/*position: absolute;*/
+/*width: 50%;*/
+/*height: 10.5%;*/
+/*cursor: pointer;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/source_btn.png);*/
+/*}*/
+
+/*!*.source_btn:hover {*!*/
+/*!*background: url(../../../assets/images/resource/lessonware/lessonware2/source_btn_clicked.png);*!*/
+/*!*}*!*/
+
+/*.local_btn {*/
+/*left: 50%;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/local.png);*/
+/*}*/
+
+/*!*.local_btn:hover {*!*/
+/*!*background: url(../../../assets/images/resource/lessonware/lessonware2/local_clicked.png);*!*/
+/*!*}*!*/
+
+/*.course_source_container {*/
+/*position: absolute;*/
+/*top: 10.5%;*/
+/*width: 100%;*/
+/*height: 89.5%;*/
+/*}*/
+
+/*.course_list_container {*/
+/*position: absolute;*/
+/*top: 5.7%;*/
+/*width: 61.3%;*/
+/*height: 90%;*/
+/*overflow-x:hidden;*/
+/*overflow-y:auto;*/
+/*}*/
+
+/*.course_list_item {*/
+/*position: relative;*/
+/*text-align: center;*/
+/*display: inline-block;*/
+/*width: 100%;*/
+/*height: calc(3.2vh);*/
+/*margin-top: 3%;*/
+/*}*/
+
+/*.course_list_item_label {*/
+/*overflow: hidden;*/
+/*white-space: nowrap;*/
+/*text-overflow: ellipsis;*/
+/*position: absolute;*/
+/*font-size: calc(1.3vw);*/
+/*text-align: center;*/
+/*top: 0;*/
+/*left: 0;*/
+/*width: 80%;*/
+/*height: calc(4.3vh);*/
+/*line-height: calc(4.3vh);*/
+/*font-weight: 700;*/
+/*color: black;*/
+/*cursor: pointer;*/
+/*transition: all .1s ease-in-out;*/
+/*vertical-align: middle;*/
+/*}*/
+
+/*.course_list_item_label:hover {*/
+/*color: #01cdaf;*/
+/*}*/
+
+/*.course_list_item_play_btn {*/
+/*position: absolute;*/
+/*line-height: calc(4.3vh);*/
+/*top: 25%;*/
+/*left: 81%;*/
+/*width: calc(2.3vh);*/
+/*height: calc(2.3vh);*/
+/*margin-right: 5%;*/
+/*cursor: pointer;*/
+/*vertical-align: middle;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/play_btn.png);*/
+/*}*/
+/*.course_list_item_play_btn:hover {*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/play_btn_clicked.png);*/
+/*}*/
+
+/*.lesson_list_container {*/
+/*position: absolute;*/
+/*left: 61.3%;*/
+/*width: 38.7%;*/
+/*height: 100%;*/
+/*overflow-y: auto;*/
+/*}*/
+
+/*.lesson_list_item {*/
+/*position: relative;*/
+/*font-size: calc(1.3vw);*/
+/*text-align: center;*/
+/*display: block;*/
+/*white-space: nowrap;*/
+/*text-overflow: ellipsis;*/
+/*overflow: hidden;*/
+/*margin: 0;*/
+/*width: 100%;*/
+/*font-weight: 600;*/
+/*border-left: 1px solid #e9e9e9;*/
+/*border-bottom: 1px solid #e9e9e9;*/
+/*color: black;*/
+/*transition: all .2s ease-in-out;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/xiaodibai.png);*/
+/*padding: 0;*/
+/*height: calc(4.6vh);*/
+/*line-height: calc(4.6vh);*/
+/*cursor: pointer;*/
+/*}*/
+
+/*.lesson_list_item:hover {*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/xiaodibai_clicked.png);*/
+/*}*/
+
+/*.course_local_container {*/
+/*position: absolute;*/
+/*display: none;*/
+/*top: 12.5%;*/
+/*width: 100%;*/
+/*height: 87.5%;*/
+/*}*/
+
+/*.added_course_list_container {*/
+/*position: absolute;*/
+/*top: 4.5%;*/
+/*width: 62.3%;*/
+/*height: 90%;*/
+/*overflow-y: auto;*/
+/*}*/
+
+/*.upload_container {*/
+/*position: absolute;*/
+/*left: 62.3%;*/
+/*width: 37.7%;*/
+/*height: 100%;*/
+/*}*/
+
+/*.upload_btn {*/
+/*position: absolute;*/
+/*top: 50%;*/
+/*left: 50%;*/
+/*transform: translate(-50%, -50%);*/
+/*width: 40%;*/
+/*height: 9%;*/
+/*cursor: pointer;*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/shangchuan.png);*/
+/*}*/
+
+/*.upload_btn:hover {*/
+/*background: url(../../../assets/images/resource/lessonware/lessonware2/shangchuan.png);*/
+/*}*/
+
+/*.lessonware_toolset {*/
+/*position: absolute;*/
+/*top: 25.0%;*/
+/*left: 7.4%;*/
+/*width: 55.5%;*/
+/*height: 64.4%;*/
+/*border-radius: 1.5%;*/
+/*}*/
+
+#lw_delete_modal {
+    width: 200px;
+    height: 110px;
+    padding: 0;
+    background-size: 100% 100% !important;
+    background: url(../../../assets/images/huijiao/tab2/bg-modal.png);
+}
+
+#lw_delete_modal .msg-content {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    font-size: 12px;
+}
+
+#delete_lw_item_btn,
+#no_lw_item_btn {
+    position: absolute;
+    top: 63.2%;
+    left: 18%;
+    width: 24.7%;
+    height: 18.1%;
+    cursor: pointer;
+    background-size: 100% 100% !important;
+    background: url(../../../assets/images/huijiao/tab2/btn-yes.png) no-repeat;
+}
+
+#delete_lw_item_btn:hover {
+    background: url(../../../assets/images/huijiao/tab2/btn-yes-clicked.png) no-repeat;
+}
+
+#no_lw_item_btn {
+    left: 59%;
+    background: url(../../../assets/images/huijiao/tab2/btn-no.png) no-repeat;
+}
+
+#no_lw_item_btn:hover {
+    background: url(../../../assets/images/huijiao/tab2/btn-no-clicked.png) no-repeat;
+}

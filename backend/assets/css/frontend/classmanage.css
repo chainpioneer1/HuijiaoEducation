@@ -1,0 +1,283 @@
+.main-resource-toolbar{
+    text-align: center;
+}
+.tab-item1{
+    position: relative;
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none!important;
+    color: white!important;
+    padding: 0;
+    font-weight: 600;
+
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+    /*-webkit-transition: all .2s ease-in-out;*/
+    /*-moz-transition: all .2s ease-in-out;*/
+    /*-ms-transition: all .2s ease-in-out;*/
+    /*-o-transition: all .2s ease-in-out;*/
+    /*transition: all .2s ease-in-out;*/
+}
+
+.base-container {
+     width: 55%;
+     top: 85px;
+     text-align: left;
+ }
+
+.base-container *{
+    position: relative;
+}
+
+.list-title {
+    position: relative;
+    width: 100%;
+    font-size: 11px;
+    padding: 10px 0;
+}
+
+.list-title > div {
+    position: relative;
+    display: inline-block;
+    width: 49%;
+    padding: 5px 0;
+    margin: 0;
+    text-align: left;
+}
+
+.list-title > div > div {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    padding: 0 0 0 5px;
+    color: #888;
+}
+.list-container{
+    width: 100%;
+}
+.classmanager-btn{
+    display: inline-block;
+    position: relative;
+    float: right;
+    color: #fff;
+    padding: 5px 0;
+    width: 80px;
+    text-align: center;
+    background-color: #00cdaf;
+    border-radius: 5px;
+    font-size: 11px;
+    line-height: 12px;
+}
+.classmanager-btn:hover{
+    color: #fff;
+}
+.sclass-group{
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.sclass-group *{
+    position: relative;
+}
+.sclass-name-sec{
+    display: inline-block;
+    width: 13%;
+    vertical-align: middle;
+}
+.sclass-name-sec p{
+    font-size: 10px;
+}
+.sclass-teacher-sec{
+    display: inline-block;
+    width: 70%;
+    vertical-align: middle;
+}
+.sclass-action-sec{
+    display: inline-block;
+    width: 13%;
+    vertical-align: middle;
+    text-align: center;
+}
+.teacher-elem{
+    display: inline-block;
+    margin-right: 20px;
+    width: 70px;
+    text-align: center;
+    vertical-align: middle;
+}
+.teacher-elem:last-child{
+    margin: 0;
+
+}
+.teacher-elem img{
+    width: 30px;
+    display: inline-block;
+}
+.teacher-elem p{
+    font-size: 10px;
+    line-height: 10px;
+    margin: 5px 0 0;
+    height: 10px;
+}
+.classmanage-detail-btn, .classmanage-exit-btn{
+    display: inline-block;
+    color: #fff;
+    padding: 3px 10px;
+    text-align: center;
+    background-color: #00cdaf;
+    border-radius: 5px;
+    font-size: 10px;
+    line-height: 12px;
+}
+.classmanage-exit-btn{
+    background-color: #eebc35;
+}
+.classmanage-detail-btn:hover, .classmanage-exit-btn:hover{
+    color: #fff;
+}
+
+.add-class-modal-wrap {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 500%;
+    background-color: rgba(0, 0, 0, 0.47);
+    text-align: center;
+    z-index: 10000;
+    display: none;
+}
+
+.edit-info-modal {
+    width: 41%;
+    position: relative;
+    height: 41%;
+    display: inline-block;
+    margin-top: 11%;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+.edit-info-modal *{
+    position: relative;
+}
+.edit-modal-header {
+    height: 14%;
+    background-color: #00cdaf;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.edit-modal-header h5 {
+    color: #FFFFFF;
+    /*font-weight: bold;*/
+    font-size: 13px;
+    line-height: 22px;
+    margin: 0;
+    padding: 5px 0 5px 20px;
+    text-align: left;
+}
+
+.edit-modal-header span {
+    position: absolute;
+    right: 1%;
+    top: 14.5%;
+    width: 5%;
+    height: 80%;
+    cursor: pointer;
+    background: url(../../../assets/images/huijiao/guanbi.png) no-repeat;
+    background-size: 100% 100% !important;
+}
+
+.edit-modal-body h5{
+    margin: 30px 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.edit-modal-header span:hover {
+    background: url(../../../assets/images/huijiao/guanbi1.png) no-repeat;
+}
+
+.edit-modal-body{
+    font-size: 12px;
+}
+.edit-modal-body select{
+    padding: 3px 0;
+    width: 130px;
+}
+.edit-modal-body .info-confirm-btn{
+    background-color: #00cdaf;
+    padding: 5px 0;
+    text-align: center;
+    width: 100px;
+    display: inline-block;
+    margin: 30px 10px;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+
+
+
+
+.alert-modal-wrap {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 500%;
+    background-color: transparent;
+    text-align: center;
+    z-index: 20000;
+    display: none;
+}
+
+.alert-modal {
+    width: 23%;
+    position: relative;
+    height: 27%;
+    display: inline-block;
+    margin-top: 15%;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #969696;
+}
+.alert-modal *{
+    position: relative;
+}
+
+.alert-modal-body{
+    padding: 30px 0
+}
+.alert-modal-body p{
+    margin: 0 0 5px;
+    font-size: 12px;
+}
+
+.alert-modal-body .info-confirm-btn{
+    background-color: #00cdaf;
+    padding: 4px 0;
+    text-align: center;
+    width: 70px;
+    display: inline-block;
+    margin: 20px;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+}

@@ -1,0 +1,531 @@
+.base-container {
+    width: 55%;
+    top: 10px;
+    text-align: left;
+}
+
+.list-title {
+    position: relative;
+    width: 100%;
+    /*border-bottom: 1px solid #d0d0d0;*/
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.list-title > div {
+    position: relative;
+    display: inline-block;
+    width: 49%;
+    padding: 5px 0;
+    margin: 0;
+    text-align: left;
+}
+
+.list-title .item-label {
+    text-align: right;
+}
+
+.list-title .item-search-btn {
+    width: 90px;
+    height: 28px;
+    background: url(../../images/huijiao/helper/search-btn.png);
+    cursor: pointer;
+}
+
+.list-title .item-search-btn:hover {
+    background: url(../../images/huijiao/helper/search-btn-hover.png)
+}
+
+.list-title > div:last-child {
+    text-align: right;
+    font-size: 18px;
+}
+
+.list-title > div > div {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    padding: 0 0 0 30px;
+    color: #888;
+    float: left;
+}
+
+.src-search-form {
+    display: flex !important;
+    float: right !important;
+    width: 120px;
+}
+
+.src-search-form span {
+    width: 30px;
+    height: 28px;
+    display: inline-block;
+    /*background-color: #00cdaf;*/
+    position: relative;
+    margin-left: 0;
+    background: url(../../images/huijiao/search_icon_hover.png) no-repeat 100% 100%;
+    background-size: 33px 28px;
+    cursor: pointer;
+}
+
+.src-search-form span:hover {
+    background-image: url(../../images/huijiao/search_icon.png);
+}
+
+.list-container {
+    position: relative;
+    width: 100%;
+    padding: 15px 20px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.list-item {
+    position: relative;
+    background: white;
+    display: inline-block;
+    width: 188px;
+    height: 180px;
+    margin: 3px 6px;
+}
+
+.list-item * {
+    position: relative;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.list-item .item-main-info {
+    /*cursor: pointer;*/
+}
+
+.list-item .item-main-info > div, .list-item .item-infobar {
+    margin: 0;
+    width: 100%;
+    padding: 3px 5px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.list-item .item-preview-wrapper {
+    width: 100%;
+    height: 125px;
+    overflow: hidden;
+    position: relative;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.list-item .item-preview {
+    height: 120px;
+    /*cursor: pointer;*/
+    background: url(../../images/huijiao/education/icon-item.png);
+    background-position: center;
+    background-size: 100% 100% !important;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    border-radius: inherit;
+    opacity: 1;
+    /*transition: all .5s;*/
+    /*-webkit-transition: opacity .1s;*/
+    /*-moz-transition: opacity .1s;*/
+    /*-ms-transition: opacity .1s;*/
+    /*-o-transition: opacity .1s;*/
+    /*transition: opacity .1s;*/
+}
+
+.list-item > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-box-shadow: 1px 1px 3px #ccc;
+    -moz-box-shadow: 1px 1px 2px #ccc;
+    box-shadow: 1px 1px 3px #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    /*-webkit-transition: all .2s;*/
+    /*-moz-transition: all .2s;*/
+    /*-ms-transition: all .2s;*/
+    /*-o-transition: all .2s;*/
+    /*transition: all .2s;*/
+}
+
+.list-item:hover > div {
+    /*-webkit-transform: scale(1.05);*/
+    /*-moz-transform: scale(1.05);*/
+    /*-ms-transform: scale(1.05);*/
+    /*-o-transform: scale(1.05);*/
+    /*transform: scale(1.05);*/
+    background: white;
+}
+
+.item-preview-wrapper .item-preview:before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.item-preview-wrapper:hover .item-preview:before,
+.item-preview-wrapper:focus .item-preview:before {
+    display: block;
+}
+
+
+.item-infobar {
+    text-align: right;
+}
+
+.item-infobar > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.item-infobar .item-read-icon,
+.item-infobar .item-favor-icon {
+    cursor: pointer;
+    vertical-align: middle;
+    width: 12px;
+    height: 9px;
+    margin-left: 6px;
+    background: url(../../images/huijiao/education/btn-read.png);
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+.item-infobar .item-read-icon[data-sel="1"] {
+    background: url(../../images/huijiao/education/btn-read-clicked.png);
+}
+
+.item-infobar .item-favor-icon {
+    background: url(../../images/huijiao/education/btn-favor.png);
+}
+
+.item-infobar .item-favor-icon[data-sel="1"] {
+    background: url(../../images/huijiao/education/btn-favor-clicked.png);
+}
+
+.item-infobar .item-favor-value, .item-infobar .item-read-value {
+    padding: 0 3px;
+    margin: 0;
+    cursor: pointer;
+    color: black;
+}
+
+.item-infobar .item-favor-value:hover, .item-infobar .item-read-value:hover {
+    color: #0F9E5E;
+}
+
+.list-title-label {
+    width: 130px !important;
+}
+
+.filter-wrap-container {
+    width: auto !important;
+}
+
+.src-filter-wrap label {
+    margin: 0;
+    padding: 0;
+}
+
+.list-title-label {
+    padding-left: 5px !important;
+}
+
+.src-filter-wrap {
+    /*width: 28% !important;*/
+    z-index: 10;
+}
+
+.filter-wrap-container {
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.src-search-form input {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    background-color: #8f8d8e;
+    color: white;
+    font-size: 18px;
+}
+
+.src-search-form input::placeholder {
+    color: white;
+    font-size: 18px;
+}
+
+/*////////////////////////////////////////////////////////////*/
+.header-item {
+    width: 100%;
+    position: relative;
+}
+
+.header-item div {
+    display: inline-block;
+    margin: 0 2px;
+    position: relative;
+}
+
+.header-item .item-select > div {
+    width: 10px;
+    height: 7px;
+    background: url(../../images/huijiao/tab2/btn-select.png);
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    margin-top: 5px;
+    position: absolute;
+    right: 2px;
+}
+
+.header-item .item-select {
+    border: 1px solid #888;
+    background: white;
+    padding: 0;
+    /*border-radius: 3px;*/
+    cursor: pointer;
+    position: relative;
+    width: 90px;
+    text-align: left;
+}
+
+.header-item .item-select option {
+    font-size: 16px;
+    text-align: center;
+}
+
+.item-label {
+    margin: 0 !important;
+}
+
+.subject-select, .course-select {
+    position: absolute;
+    top: 20px;
+    left: auto !important;
+    right: 2px;
+    width: 75px;
+    background: white;
+    border: 1px solid #888;
+    text-align: center;
+    /*-webkit-border-radius: 3px;*/
+    /*-moz-border-radius: 3px;*/
+    /*border-radius: 3px;*/
+    padding: 0 !important;
+    display: none;
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.select-title {
+    color: #01cdaf;
+    background: #f0f0f0;
+    border-bottom: 1px solid #888;
+}
+
+.select-item {
+    /*padding: 1px 0;*/
+    border-bottom: 1px solid #888;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    position: relative;
+    padding: 2px 6px;
+    text-align: left;
+}
+
+.select-item:hover {
+    background: #01cdaf;
+}
+
+.subject-select.active {
+    display: block;
+}
+
+.select-item.active {
+    background: #01cdaf;
+}
+
+.syg-pagination {
+    position: relative;
+    margin-top: 27px;
+    text-align: center;
+}
+
+.syg-pagination a {
+    position: relative;
+    display: inline;
+}
+
+.syg-pagination > span {
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.syg-pagination span a {
+    color: #000;
+    text-decoration: none;
+}
+
+.syg-pagination span.curlink, .syg-pagination span.numlink,
+.syg-pagination span.nextlink, .syg-pagination span.prevlink,
+.syg-pagination span.navto-btn {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 4px;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.syg-pagination span.curlink {
+    background-color: #00ccaf;
+    color: #fff;
+}
+
+.syg-pagination span.curlink a {
+    color: #fff;
+}
+
+.syg-pagination span.nextlink, .syg-pagination span.prevlink,
+.syg-pagination span.navto-btn {
+    width: 40px;
+    font-size: 11px;
+    padding-top: 6px;
+}
+
+.syg-pagination span.nextlink.disabled, .syg-pagination span.prevlink.disabled {
+    background-color: #f0f0f0;
+}
+
+.syg-pagination span.navto, .syg-pagination span.totalinfo {
+    font-size: 11px;
+    padding-top: 6px;
+}
+
+.syg-pagination span.navto input {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 4px;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: -7px;
+}
+
+form {
+    position: relative;
+}
+
+.preview-modal {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 950px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.preview-modal .modal-bg {
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    width: 600px;
+    height: 420px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background: transparent;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.modal-bg .modal-header {
+    top: 0;
+    position: relative;
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    background: #00cdaf;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-header .close {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 15px;
+    height: 15px;
+    background: url(../../images/huijiao/helper/close.png);
+    background-size: 100% 100% !important;
+    opacity: 1;
+}
+
+.modal-header .close:hover {
+    background: url(../../images/huijiao/helper/close-hover.png);
+}
+
+.modal-bg .modal-body {
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    height: 340px;
+    text-align: center;
+    background: white;
+    padding: 0;
+    margin: 0;
+}
+
+.preview-player {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+
+.modal-bg .btn-add-content {
+    position: absolute;
+    top: 375px;
+    right: 0;
+    width: 95px;
+    height: 25px;
+    background: url(../../images/huijiao/helper/add.png);
+    background-size: 100% 100% !important;
+    cursor: pointer;
+}
+
+.modal-bg .btn-add-content:hover {
+    background: url(../../images/huijiao/helper/add-hover.png);
+}

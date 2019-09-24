@@ -1,0 +1,195 @@
+.main-resource-toolbar{
+    text-align: center;
+}
+.main-resource-toolbar .sub-title{
+    background-color: #e9e9e9;
+    border: none;
+    top: 82px;
+    height: 40px;
+}
+.main-resource-toolbar.sub-title *{
+    position: relative;
+}
+.tab-item1{
+    position: relative;
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none!important;
+    color: white!important;
+    padding: 0;
+    font-weight: 600;
+
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+    /*-webkit-transition: all .2s ease-in-out;*/
+    /*-moz-transition: all .2s ease-in-out;*/
+    /*-ms-transition: all .2s ease-in-out;*/
+    /*-o-transition: all .2s ease-in-out;*/
+    /*transition: all .2s ease-in-out;*/
+}
+
+.base-container {
+     width: 55%;
+     top: 85px;
+     text-align: left;
+ }
+
+.list-title {
+    position: relative;
+    width: 100%;
+    font-size: 11px;
+    padding: 10px 0;
+}
+
+.list-title > div {
+    position: relative;
+    display: inline-block;
+    width: 49%;
+    padding: 5px 0;
+    margin: 0;
+    text-align: left;
+}
+
+.list-title > div > div {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    padding: 0 0 0 5px;
+    color: #888;
+}
+.inner-container{
+    width: 100%;
+    margin: 0;
+}
+.inner-container *{
+    position: relative;
+}
+.list-container{
+    width: 100%;
+}
+.classmanager-btn{
+    display: inline-block;
+    position: relative;
+    float: right;
+    color: #fff;
+    padding: 5px 0;
+    width: 80px;
+    text-align: center;
+    background-color: #00cdaf;
+    border-radius: 5px;
+    font-size: 11px;
+    line-height: 12px;
+}
+.classmanager-btn:hover{
+    color: #fff;
+}
+.student-group{
+    position: relative;
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+.student-group *{
+    position: relative;
+}
+.student-group.header{
+    font-weight: bold;
+    padding: 7px 0;
+}
+.student-account-sec, .student-name-sec, .student-description-sec, .student-action-sec{
+    display: inline-block;
+    width: 22%;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10px;
+    color: #404040;
+}
+.student-name-sec{
+    width: 33%;
+}
+.student-description-sec{
+    width: 33%;
+}
+.student-description-sec input{
+    border: 1px solid #969696;
+    padding: 3px;
+    width: 120px;
+    display: inline-block;
+}
+.student-description-sec a{
+    border: 1px solid #969696;
+    padding: 3px 5px;
+    display: inline-block;
+    color: #969696 !important;
+    font-size: 10px;
+    border-radius: 3px;
+}
+.student-action-sec{
+    width: 8%;
+}
+
+.student-delete-btn{
+    display: inline-block;
+    color: #00cdaf;
+    text-align: center;
+    line-height: 12px;
+
+}
+.classmanage-detail-btn:hover, .classmanage-exit-btn:hover{
+    color: #fff;
+}
+
+.alert-modal-wrap {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 500%;
+    background-color: transparent;
+    text-align: center;
+    z-index: 20000;
+    display: none;
+}
+
+.alert-modal {
+    width: 23%;
+    position: relative;
+    height: 27%;
+    display: inline-block;
+    margin-top: 15%;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #969696;
+}
+.alert-modal *{
+    position: relative;
+}
+
+.alert-modal-body{
+    padding: 30px 0
+}
+.alert-modal-body p{
+    margin: 0 0 5px;
+    font-size: 12px;
+}
+
+.alert-modal-body .info-confirm-btn{
+    background-color: #00cdaf;
+    padding: 4px 0;
+    text-align: center;
+    width: 70px;
+    display: inline-block;
+    margin: 20px;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+}

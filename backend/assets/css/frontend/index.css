@@ -1,0 +1,217 @@
+
+.slider-bar {
+    position: relative;
+    top: 130px;
+    height: 440px;
+}
+
+.slider-bar * {
+    position: relative;
+}
+
+.owl-carousel .owl-stage {
+    height: 440px;
+}
+
+.owl-carousel.owl-drag .owl-item {
+    width: 100%;
+    height: 100%;
+}
+
+.slider-bar img {
+    width: 100%;
+    height: 100%;
+}
+
+.slider-bar .owl-nav {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    display: none;
+}
+
+.slider-bar .owl-dots {
+    position: absolute;
+    left: 46%;
+    top: 95%;
+    width: auto;
+    height: 12px;
+    margin: 0;
+    padding: 0 13px;
+    background: transparent;
+    z-index: 10000;
+    border-radius: 0;
+}
+
+.slider-bar .owl-dot {
+    border-radius: 0;
+    position: relative;
+    display: inline-block;
+    top: 0;
+    margin: 0 10px;
+    padding: 0;
+    width: 25px;
+    height: 12px;
+    line-height: 17px;
+    background: #56585c;
+    -webkit-transform: translateY(-120%);
+    -moz-transform: translateY(-120%);
+    -ms-transform: translateY(-120%);
+    -o-transform: translateY(-120%);
+    transform: translateY(-120%);
+}
+
+.slider-bar .owl-dot.active {
+    background: #e9cf46;
+}
+
+.contents {
+    position: relative;
+    top: 130px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.section {
+    position: relative;
+    display: inline-block;
+    width: 1400px;
+    height: auto;
+    padding: 50px 0 0;
+}
+
+.section-header-line {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 5px double #c3c3c3;
+    background: transparent;
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    width: 280px;
+    height: 55px;
+    line-height: 53px;
+    border: 1px solid #c3c3c3;
+    background: white;
+    font-size: 32px;
+    letter-spacing: 15px;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 20px;
+}
+a.section-title{
+    border: 1px solid #00cdaf;
+    color: #00cdaf;
+    width: 220px;
+    height: 45px;
+    line-height: 43px;
+    font-size: 18px;
+    letter-spacing: 0px;
+}
+.section-content {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+}
+
+.section-content div {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+}
+
+div.content-item {
+    position: relative;
+    display: inline-block;
+    width: 335px;
+    height: 370px;
+    margin: 10px 6px;
+    padding: 0;
+}
+div.content-item:hover {
+    -webkit-transform: scale(1.04);
+    -moz-transform: scale(1.04);
+    -ms-transform: scale(1.04);
+    -o-transform: scale(1.04);
+    transform: scale(1.04);
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+}
+
+.content-image {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    background-color: #eee;
+}
+
+.content-title {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    color: #888;
+}
+
+
+div.item-infobar {
+    text-align: right;
+}
+div.item-infobar > div {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    margin: 0 10px;
+}
+
+div.item-infobar .item-read-icon,
+div.item-infobar .item-favor-icon
+{
+    vertical-align: middle;
+    width: 20px;
+    height: 14px;
+    margin-left: 6px;
+    background: url(../../images/huijiao/education/btn-read.png);
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+div.item-infobar .item-favor-icon{
+    cursor: pointer;
+}
+
+div.item-infobar .item-read-icon[data-sel="1"]
+{
+    background: url(../../images/huijiao/education/btn-read-clicked.png);
+}
+
+div.item-infobar .item-favor-icon
+{
+    background: url(../../images/huijiao/education/btn-favor.png);
+}
+
+div.item-infobar .item-favor-icon[data-sel="1"]
+{
+    background: url(../../images/huijiao/education/btn-favor-clicked.png);
+}
+div.item-infobar .item-favor-value,.item-infobar .item-read-value{
+    padding: 0 3px;
+    margin:0;
+    font-size: 14px;
+}

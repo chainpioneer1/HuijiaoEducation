@@ -1,0 +1,547 @@
+.profile-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95%;
+    z-index: 100;
+    border: none !important;
+}
+
+.frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.prev_btn,
+.next_btn {
+    display: block !important;
+    position: absolute;
+    top: 0.5%;
+    left: 0.5%;
+    width: 3.9%;
+    height: 5.9%;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    background: url(../../../assets/images/previewPlayer/fanhuianniu.png);
+    z-index: 100000;
+}
+
+.prev_btn:hover {
+    background: url(../../../assets/images/previewPlayer/fanhuianniu1.png);
+}
+
+.profile-header {
+    position: absolute;
+    width: 100%;
+    height: 19%;
+    background-color: #00cdaf;
+    border-radius: 5px;
+}
+
+.profile-main-info {
+    position: absolute;
+    width: 100%;
+    top: 157px;
+    height: 90%;
+    background-color: white;
+    border-radius: 5px;
+    display: none;
+    padding: 0;
+    overflow: hidden;
+	font-size: 16px;
+}
+
+.profile-main-info.active {
+    display: block;
+}
+
+.profile-content-list,
+.profile-lesson-list {
+    position: absolute;
+    width: 100%;
+    top: 157px;
+    height: 94%;
+    background-color: white;
+    border-radius: 5px;
+    display: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+.profile-lesson-list.active {
+    display: grid;
+}
+
+.profile-content-list.active {
+    display: grid;
+}
+
+.profile-info-item {
+    display: inline-block;
+    position: absolute;
+    width: 400px;
+    vertical-align: middle;
+    height: 19px;
+}
+
+.profile-info-name {
+    display: inline-block;
+    width: 70px;
+    vertical-align: middle;
+    height: 19px;
+}
+
+.profile-info-content {
+    display: inline-block;
+    border: none;
+    position: relative;
+    left: 70px;
+    width: 300px;
+    vertical-align: middle;
+    height: 19px;
+}
+
+.profile-header > img {
+    position: absolute;
+    top: 11%;
+    left: 47%;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+}
+
+.profile-header-content {
+    position: absolute;
+    width: 70%;
+    left: 21%;
+    height: 50%;
+    top: 15%;
+}
+
+.profile-header-item {
+    width: 100%;
+    top: 8%;
+    font-size: 11px;
+    color: black;
+    position: relative;
+    margin-top: 1.2%;
+    height: 20px;
+}
+.profile-header-item:first-child {
+    margin-top: 0;
+}
+
+.profile-header-subject {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    vertical-align: middle;
+    height: 19px;
+}
+
+.profile-header-subject:last-child {
+    width: 100px;
+}
+
+.profile-header-subject img:first-child {
+    display: inline-block;
+    width: 17%;
+    vertical-align: bottom;
+}
+
+.profile-header-subject img:last-child {
+    display: inherit;
+    width: 66%;
+    vertical-align: bottom;
+}
+
+.profile-header-subject.edit-info {
+    cursor: pointer;
+}
+
+.profile-header-subject.edit-info div {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    line-height: 1.5;
+    font-weight: 500;
+    padding: 1px 5px 0;
+    margin: 1px 3px;
+    color: #000;
+    background: white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+.profile-header-subject.edit-info div:hover {
+    background: #f0f0f0;
+}
+
+.profile-info-edit-wrap {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.47);
+    text-align: center;
+    z-index: 10;
+    display: none;
+}
+
+.edit-info-modal {
+    width: 41%;
+    position: relative;
+    height: 22%;
+    display: inline-block;
+    margin-top: 9%;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.edit-modal-header {
+    height: 14%;
+    background-color: #00cdaf;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.edit-modal-header h5 {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 22px;
+}
+
+.edit-modal-header span {
+    position: absolute;
+    right: 1%;
+    top: 14.5%;
+    width: 5%;
+    height: 80%;
+    cursor: pointer;
+    background: url(../../../assets/images/huijiao/guanbi.png) no-repeat;
+    background-size: 100% 100% !important;
+}
+
+.edit-modal-header span:hover {
+    background: url(../../../assets/images/huijiao/guanbi1.png) no-repeat;
+}
+
+.info-subject {
+    position: relative;
+    width: 100%;
+    height: 14%;
+    padding: 0 10px;
+    margin: 3% 0;
+}
+
+.edit-modal-body {
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    padding: 3% 4%;
+    height: 82%;
+}
+
+.sep-line {
+    height: 1px;
+    width: 100%;
+    background-color: #c2c2c2;
+    position: relative;
+    border-radius: 1px;
+    margin: 1% 0;
+}
+
+.info-content {
+    position: relative;
+    width: 100%;
+    min-height: 32%;
+    padding: 0 10px;
+    margin: 3% 0;
+}
+
+.info-confirm-btn {
+    position: relative;
+    width: 100%;
+    height: 20%;
+    padding: 0 10px;
+    margin-top: 1%;
+    text-align: center;
+}
+
+.info-confirm-btn span {
+    left: 39%;
+    top: 14%;
+    width: 24%;
+    height: auto;
+    cursor: pointer;
+    background-color: #00cdaf;
+    background-size: 100% 100% !important;
+    border-radius: 5px;
+    line-height: 25px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    position: absolute;
+    padding: 0;
+}
+
+.info-confirm-btn span:hover {
+    background-color: #009b8f;
+}
+
+.info-subject .subject-item, .info-subject .content-item {
+    width: auto;
+    padding: 2px 12px;
+    color: black;
+    float: left;
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.info-subject .subject-item.active, .info-subject .content-item.active {
+    background-color: #00cdaf;
+    color: #FFFFFF;
+}
+
+.info-subject span {
+    float: left;
+}
+
+.subject-list {
+    position: relative;
+    font-size: 12px;
+    display: inline-block;
+    width: 87%;
+}
+
+.info-content span {
+    float: left;
+}
+
+.info-content .subject-item, .info-content .content-item {
+    width: auto;
+    padding: 1px 5px;
+    color: black;
+    position: relative;
+    font-size: 14px;
+    float: left;
+    cursor: pointer;
+}
+
+.info-content .subject-item.active, .info-content .content-item.active {
+    background-color: #00cdaf;
+    color: #FFFFFF;
+}
+
+.info-sel-btn {
+    position: absolute;
+    border: 1px solid gray;
+    top: 135px;
+    left: 39.8%;
+    width: 100px;
+    height: 36px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    line-height: 34px;
+}
+
+.info-sel-btn.active {
+    background-color: #3FD5C0;
+    z-index: 2;
+}
+
+.lesson-sel-btn {
+    position: absolute;
+    border: 1px solid gray;
+    top: 135px;
+    left: 52.6%;
+    width: 100px;
+    height: 36px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    line-height: 34px;
+}
+
+.lesson-sel-btn.active {
+    background-color: #3FD5C0;
+    z-index: 2;
+}
+
+.content-sel-btn {
+    position: absolute;
+    border: 1px solid gray;
+    top: 135px;
+    left: 46.2%;
+    width: 100px;
+    height: 36px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    line-height: 34px;
+}
+
+.content-sel-btn.active {
+    background-color: #3FD5C0;
+    z-index: 2;
+}
+
+.item-content {
+    width: 49%;
+    height: 140px;
+    display: inline-block;
+    position: relative;
+    padding: 6px;
+    background-color: white;
+    margin-top: 10px;
+    margin-right: 14px;
+    border-radius: 2px;
+}
+
+.item-content:hover{
+    transform: scale(1.05);
+}
+
+.item-content img {
+    width: 190px;
+    height: 130px;
+    position: relative;
+    display: inline-block;
+    float: left;
+    border-radius: 4px;
+    cursor:pointer;
+}
+
+.item-body {
+    float: left;
+    width: 70%;
+    height: 87%;
+    display: inline-block;
+    padding-left: 30px;
+    font-size: 16px;
+    line-height: 32px;
+    /*font-weight: bold;*/
+}
+
+.item-body h5 {
+    margin: 0 0 2px 0;
+    color: black;
+    text-align: right;
+    font-size: 22px;
+    line-height: 20px;
+    /*font-weight: bold;*/
+    cursor: pointer;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+    opacity: 0;
+}
+
+.item-content:hover .item-body h5{
+    opacity: 1;
+}
+.item-body h5:hover {
+    color: #00cdaf;
+}
+
+.item-body h5.active {
+    color: #00cdaf;
+}
+
+.item-title {
+    display: block;
+    position: relative;
+    cursor:pointer;
+	font-size: 24px;
+	color: black;
+}
+
+.item-subject {
+    position: relative;
+    font-size: 18px;
+	color: #888;
+}
+
+.item-date {
+    position: relative;
+	font-size: 18px;
+	color: #888;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    right: 110px;
+    width: 70px;
+    height: 34px;
+    top: 980px;
+    z-index: 10;
+    background-color: #d0d0d0;
+    padding: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+    line-height: 32px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+	display: none;
+	border: 1px solid #d0d0d0;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: white;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.item-content-page {
+	top: 20px;
+    width: 100%;
+	display: none;
+}
+
+.item-content-page.active {
+    padding: 0px 0 5px 10px;
+	display: block;
+}
+
+.info-content .subject-list {
+    display: none;
+}
+
+.info-content .subject-list.active {
+    display: inline-block;
+}
+
+.class-btn{
+    background-color: transparent;
+    width: 200px;
+    padding: 5px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 11px; margin-right: 10px;
+}

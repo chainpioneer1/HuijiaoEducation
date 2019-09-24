@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This is a Reload version 2.5.5 SCORM 1.2 Content Package document-->
+<!--Spawned from the Reload Content Package Generator - http://www.reload.ac.uk-->
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="primary_c01" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <duration>00:12:17</duration>
+  </metadata>
+  <organizations default="primary_c02">
+    <organization identifier="primary_c02" structure="hierarchical">
+      <title>青岛语文</title>
+      <item identifier="sco01" identifierref="res_sco01" isvisible="true">
+        <title>青岛语文</title>
+      </item>
+      <item identifier="sco02" identifierref="res_sco02" isvisible="true">
+        <title>青岛语文</title>
+      </item>
+      <item identifier="sco03" identifierref="res_sco03" isvisible="true">
+        <title>青岛语文</title>
+      </item>
+
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="res_sco01" type="webcontent" href="package/index.html" adlcp:scormtype="sco">
+      <file href="package/index.html" />
+    </resource>
+    <resource identifier="res_sco02" type="webcontent" href="package/index.html" adlcp:scormtype="sco">
+      <file href="package/index.html" />
+    </resource>
+    <resource identifier="res_sco03" type="webcontent" href="package/index.html" adlcp:scormtype="sco">
+      <file href="package/index.html" />
+    </resource>
+    <resource identifier="R_D1" adlcp:scormtype="asset" type="webcontent">
+      <file href="js/jquery.js" />
+      <file href="js/jquery.pngFix.pack.js" />
+      <file href="js/AUFunctions.js"/>
+      <file href="js/APIWrapper.js"/>
+    </resource>
+  </resources>
+</manifest>
+
+
+

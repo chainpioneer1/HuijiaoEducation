@@ -1,0 +1,109 @@
+html, body{ background: white;position:fixed;width: 100%;height:100%;}
+body{margin:0;padding: 0;width:100%;height:100%;overflow: hidden;position: fixed;transform-origin:top left;-ms-transform-origin:top left;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+    /*display: none;*/
+    -webkit-background-size: 100% 100%!important;
+    background-size: 100% 100%!important;
+}
+
+*{font-size: 12px;position: relative;font-family:"Microsoft YaHei UI";background-size: 100% 100%;}
+
+.wrap{position:fixed;z-index:1;top:0;left:0;width:100%;height:100%;transform-origin:top left;overflow: hidden;margin:0 auto;-ms-transform-origin:top left;}
+.content{position:absolute;width:100%;height: 100%;margin:0 ;overflow-y: auto;background-size: 100% 100%}
+.toolbar{position: fixed; width:100%;height: auto;background:white;text-align: center;padding: 10px 0;border-bottom:1px solid #e0e0e0;}
+.toolbar .btn-item{display: inline-block; width: auto;height: 20px; line-height: 20px;padding: 2px 10px;border:1px solid #73859f;vertical-align: middle;cursor:pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;margin: 5px;}
+.toolbar .btn-item[data-id="0"]>div{top:0px;}
+.btn-item:hover{background:#f0f0f0;}
+.edit-area{position:absolute;overflow-y:auto;top:57px;width:calc(100% - 20px);height:calc(100% - 80px);background:#f8f1e5;padding:10px;}
+.item-title{padding:2px 0;}
+.item-title > span{color: #fe767f;}
+.item-edit{background: white;border:1px solid #e0e0e0;margin-bottom: 10px;padding:10px;min-height: 20px;}
+.item-edit[data-type="question"]{min-height:80px;}
+
+.item-edit-row > div{display:inline-block;vertical-align: middle;margin:3px 3px;}
+.item-edit-row .row-title{background: #ab9675;color:white;width:30px; height:30px;
+    text-align: center;line-height: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;}
+.item-edit-row .row-content{border:1px solid #e0e0e0;min-height:25px;line-height: 25px;
+    height:auto;width:calc(100% - 120px);padding:5px;}
+.item-edit-row .row-action{cursor:pointer;padding:5px 10px;border:1px solid #e0e0e0;
+    color: #da6025;background:white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;}
+.item-edit-row .row-action:hover{background: #f0f0f0;}
+.item-edit-row .btn-item{cursor:pointer;padding:5px 10px;border:1px solid #e0e0e0;
+    color: #da6025;background:white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;}
+.item-edit-row .btn-item:hover{background: #f0f0f0;}
+
+.item-edit[data-type="answer"]{height:auto;}
+.item-edit[data-type="answer"] > div{display: inline-block;padding:0 5px;margin:0 10px;}
+/**  ********* uploading status display********* **/
+.uploading_backdrop{display: none;background-color: #000;opacity: 0.85;width: 100%;height: 100%;z-index: 12000;position: absolute;}
+.progressing_area {display: none;background-color: #000;opacity: 0.85;width: 100%;height: 100%;z-index: 12000;position: absolute;}
+.progressing_area{background: transparent;opacity: 1;}
+#wait_ajax_loader {top: 41%;left: 50%;z-index: 15000;position: absolute;}
+#progress_label{top: 43%;left: 38%;font-size:18px;color: #fff;z-index: 16000;position: absolute;}
+#progress_percent {top: 43%;left: 60%;font-size: 18px;color: #fff;z-index: 17000;position: absolute;}
+
+.transition{
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+item-edit[data-type="question"] > div{display:inline-block;width:auto;}
+[contenteditable] img{
+    vertical-align: middle;
+}
+[contenteditable] audio{
+    vertical-align: middle;
+}
+[contenteditable] video{
+    vertical-align: middle;
+}
+[placeholder]:empty::before {
+    content: attr(placeholder);
+    color: #555;
+}
+[placeholder]:empty:focus::before {
+    content: "";
+}
+
+div sup{
+    font-size: 10px;
+    vertical-align: super!important;
+}
+sup > span > sup{
+    font-size: 8px;
+}
+sup > span > sup sup{
+    font-size: 6px;
+}
+
+div sub{
+    font-size: 10px;
+    vertical-align: sub!important;
+}
+sub > span > sub{
+    font-size: 8px;
+}
+sub > span > sub sub{
+    font-size: 6px;
+}
+
+/*video{position: relative;display: inline-block;}*/
+/*audio{}*/

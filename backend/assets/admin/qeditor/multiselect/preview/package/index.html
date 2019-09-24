@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <script type="text/javascript">
+        //        document.domain = "ztjy.edu.sh.cn";
+        var baseURL = 'http://qdzyxm.hulalaedu.com/';
+		baseURL = 'http://www.hjle.qdedu.net/';
+    </script>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>题目浏览器</title>
+    <!--<link rel="stylesheet" href="./css/vplayer.css">-->
+    <link rel="stylesheet" href="./css/style_1.css" media="screen">
+</head>
+<body>
+<div class="wrap">
+    <div class="content" id="content">
+        <div class="section" data-type="timer">答题时间: 0分0秒</div>
+        <div class="question-area">
+            <div class="section" data-type="title"></div>
+            <div class="section" data-type="content"></div>
+            <div class="section" data-type="answer"></div>
+        </div>
+        <div class="section" data-type="submit">提交</div>
+    </div>
+    <canvas id="saveCanvas" style="display: none;"></canvas>
+    <form id="fileUploader" hidden style="display: none;">
+        <input type="file" id="fileContainer" name="fileUploader"
+               accept=".png,.bmp,.gif,.jpg,.mp4,.mp3"
+               style="opacity:0;width:1px;height:1px;">
+    </form>
+</div>
+<div class="scripts" hidden style="display:none">
+    <script type="text/javascript" src="./js/plugin/jquery-1.9.1.min.js"></script>
+    <!--<script type="text/javascript" src="./js/plugin/Base64.js"></script>-->
+    <!--<script type="text/javascript" src="./js/plugin/Blob.js"></script>-->
+    <!--<script type="text/javascript" src="./js/plugin/my-menu.js"></script>-->
+    <!--<script type="text/javascript" src="./js/plugin/vplayer.js"></script>-->
+    <script type="text/javascript" src="./js/domlib.js"></script>
+    <script type="text/javascript" src="./js/game.js"></script>
+    <script type="text/javascript" src="./js/lib.js"></script>
+</div>
+</body>
+</html>

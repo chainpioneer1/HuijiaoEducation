@@ -1,0 +1,307 @@
+/*div{*/
+/*background-size: 100% 100%!important;*/
+/*overflow:hidden;*/
+/*white-space: nowrap;*/
+/*text-overflow:ellipsis;*/
+/*}*/
+body {
+    background: #ccc;
+}
+
+.base-container {
+    width: 90%;
+    height: auto;
+}
+
+.preview_list_container {
+    position: absolute;
+    width: 16.2%;
+    height: 86%;
+    top: 6.7%;
+    left: 100%;
+    overflow-y: auto;
+    z-index: 20000;
+    background-color: white;
+    border-radius: 5px;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+    border: 1px solid #f0f0f0;
+}
+
+.frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.title {
+    position: absolute;
+    width: 100%;
+    height: 6.9%;
+    top: 0%;
+    left: 0%;
+    padding-top: .4%;
+    background-color: transparent;
+    color: #454545;
+    font-size: 36px;
+    z-index: 10000;
+    text-align: left;
+	color: white;
+	padding-left: 35px;
+    background: black;
+}
+
+a.title-subcontent {
+    position: absolute;
+    padding-top: 10px;
+    cursor: pointer;
+    color: #01c0a2;
+    text-align: right;
+    right: 20px;
+    top: 0px;
+    z-index: 10000;
+    font-size: 28px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a.title-subcontent:hover,
+a.title-subcontent:focus{
+    text-decoration: none;
+    color: white;
+}
+
+.preview_list_item {
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+    color: #454545;
+    font-size: 20px;
+    padding: 20px 5%;
+    cursor: pointer;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+    background-size: 100% 100% !important;
+    /*background:url(../../../assets/images/resource/preview/item_frame.png);*/
+    background-color: #eee;
+    margin: 10px 0;
+    /*border-bottom: 0.1px solid #999;*/
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.preview_list_item:hover {
+    background-color: #ccc;
+}
+
+.preview_list_item.active {
+    background-color: #555;
+    color: white;
+}
+
+iframe {
+    position: absolute;
+    top: 6.9%;
+    left: 4px;
+    width: 1720px;
+    height: 86%;
+    z-index: 100;
+    border: none !important;
+    -webkit-box-shadow: 0px 0px 5px #555;
+    -moz-box-shadow: 0px 0px 5px #555;
+    box-shadow: 0px 0px 5px #555;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+
+}
+
+.prev_btn,
+.next_btn {
+    display: block !important;
+    position: absolute;
+    top: 0.5%;
+    left: 0.5%;
+    width: 3.9%;
+    height: 5.9%;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    background: url(../../../assets/images/previewPlayer/fanhuianniu.png);
+    z-index: 100000;
+}
+
+.prev_btn:hover {
+    background: url(../../../assets/images/previewPlayer/fanhuianniu1.png);
+}
+
+.next_btn {
+    top: 81.7%;
+    /*background:url(../../../assets/images/resource/preview/below_arrow.png);*/
+}
+
+.next_btn:hover {
+    /*background:url(../../../assets/images/resource/preview/below_arrow_clicked.png);*/
+}
+
+.pdf_container {
+    position: absolute;
+    top: 35px;
+    left: 4px;
+    width: 722px;
+    height: 86%;
+    z-index: 1000;
+    display: none;
+    -webkit-box-shadow: 0px 0px 5px #555;
+    -moz-box-shadow: 0px 0px 5px #555;
+    box-shadow: 0px 0px 5px #555;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -ms-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+
+.bottom_buttons_section {
+    position: absolute;
+    top: 92.8%;
+    left: 0;
+    width: 100%;
+    height: 7.5%;
+    z-index: 100;
+    background-color: black;
+    text-align: right;
+}
+
+.buttons-container {
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    width: 25%;
+    height: 80%;
+    padding-top: 27px;
+    padding-right: 80px;
+}
+
+.buttons-container .button-elem {
+    position: relative;
+    margin-right: 5px;
+	margin-left: 15px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+	vertical-align: middle;
+}
+
+.buttons-container .button-elem img {
+    width: 100%;
+    height: 100%;
+}
+
+.buttons-container span {
+    font-size: 20px;
+    color: white;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    width: auto;
+    padding: 0 2px;
+}
+
+.preview_list_container_tap {
+    display: block !important;
+    position: absolute;
+    top: 42%;
+    left: 96.8%;
+    width: 3%;
+    height: 14%;
+    cursor: pointer;
+    transition: all .2s;
+    background: #666;
+    z-index: 200000;
+    font-size: 22px;
+    text-align: center;
+    padding: 30px 4px;
+	line-height: 1.8;
+    color: white;
+}
+
+.preview_list_container_tap.showed {
+    /*background: url(../../../assets/images/previewPlayer/suojin1.png);*/
+}
+
+.share_container {
+    display: none;
+    position: absolute;
+    top: 82.7%;
+    left: 80%;
+    width: 13.9%;
+    height: 11.9%;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    background: url(../../../assets/images/previewPlayer/danhuangkuang.png);
+    z-index: 300000;
+}
+
+.share_container .button-elem {
+    position: relative;
+    margin-left: 13.5%;
+    margin-top: 10%;
+    display: inline-block;
+    width: 27.5%;
+    height: 48%;
+}
+
+.share_container .button-elem img {
+    width: 100%;
+    height: 100%;
+}
+
+#wx-sharing-qr-wrap {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-top: 130px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#qr-code {
+    position: relative;
+    display: inline-block;
+    width: 260px;
+    height: 260px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: white;
+}
+
+#qr-code img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.wx-sharing-close-btn {
+    position: absolute;
+    top: 120px;
+    color: white;
+    left: 775px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+

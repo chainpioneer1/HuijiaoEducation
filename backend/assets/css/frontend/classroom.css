@@ -1,0 +1,49 @@
+.classroom_list_container {
+    position: absolute;
+    position: absolute;
+    width: 67%;
+    height: 50%;
+    top: 24%;
+    left: 16%;
+    overflow-y: auto;
+}
+
+.list_item {
+    position: relative;
+    display: inline-block;
+    width: 15.7%;
+    height: calc(8.8vh);
+    line-height: calc(8.8vh);
+    background-size: 100% 100% !important;
+    margin: 1.6% 4.6%;
+    vertical-align: middle;
+    transition: all .2s ease-in-out;
+    cursor:pointer;
+}
+
+.list_item[item_type="self"]{
+    color: white;
+    text-align: center;
+    font-size:calc(1.8vw);
+    font-weight: 500;
+    background:url(../../images/classroom/blank.png);
+}
+
+.list_item[item_type="self"]:hover{
+    background:url(../../images/classroom/blank_clicked.png);
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100vw);
+    height: calc(100vh);
+
+    -webkit-transition: opacity .2s;
+    -moz-transition: opacity time;
+    -ms-transition: opacity time;
+    -o-transition: opacity time;
+    transition: opacity time;
+}
+

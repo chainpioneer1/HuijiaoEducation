@@ -1,0 +1,107 @@
+html, body{ background: white;position:fixed;width: 100%;height:100%;}
+body{margin:0;padding: 0;width:100%;height:100%;overflow: hidden;position: fixed;transform-origin:top left;-ms-transform-origin:top left;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+    /*display: none;*/
+    -webkit-background-size: 100% 100%!important;
+    background-size: 100% 100%!important;
+}
+
+*{font-size: 14px;position: relative;font-family:"Microsoft YaHei UI";background-size: 100% 100%;box-sizing: border-box;}
+
+.wrap{position:fixed;z-index:1;top:0;left:0;width:100%;height:100%;transform-origin:top left;overflow: hidden;margin:0 auto;-ms-transform-origin:top left;}
+.content{position:absolute;width:100%;height: 100%;margin:0 ;overflow-y: auto;background-size: 100% 100%;text-align: center;}
+.question-area{background:white;position: relative;width:90%;display: inline-block;min-height: 300px; height: auto;margin:0 4%;
+    -webkit-box-shadow: 0px 0px 5px dimgrey;
+    -moz-box-shadow: 0px 0px 5px dimgrey;
+    box-shadow: 0px 0px 5px dimgrey;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;}
+.section{font-size:14px;width: 100%;height:auto;text-align: center;position: relative; padding: 10px 0;}
+.question-area .section{padding:10px 20px;}
+.section[data-type="timer"]{font-size:16px;}
+.section[data-type="title"]{border-bottom:2px solid #e0e0e0;padding:10px 0;}
+.section[data-type="content"]{text-align: left;}
+.section[data-type="answer"]{padding: 3px 20px;}
+.section[data-type="submit"]{padding: 5px 40px;margin:10px;width:auto;height:auto;
+    border:1px solid #aaa;font-size: 16px;display: inline-block;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;}
+.section *{text-align: left;position: relative;display: inline-block;margin:10px;vertical-align: middle;}
+.section .answer-item{width:100%;font-size: 18px;margin: 3px 0px 3px 20px;}
+.section .answer-item div{cursor:pointer;}
+.section span{display:inline;padding:0;margin:0;}
+.section input{display: inline-block;width:auto;min-width: 50px;border:none;border-bottom: 2px solid #dcdcdc;outline:none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;}
+.section .item-title{background: #a28c6d;display:inline-block;width:30px;height:30px;line-height: 30px;text-align: center;padding:0;margin:0;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;}
+/**  ********* uploading status display********* **/
+.uploading_backdrop{display: none;background-color: #000;opacity: 0.85;width: 100%;height: 100%;z-index: 12000;position: absolute;}
+.progressing_area {display: none;background-color: #000;opacity: 0.85;width: 100%;height: 100%;z-index: 12000;position: absolute;}
+.progressing_area{background: transparent;opacity: 1;}
+#wait_ajax_loader {top: 41%;left: 50%;z-index: 15000;position: absolute;}
+#progress_label{top: 43%;left: 38%;font-size:18px;color: #fff;z-index: 16000;position: absolute;}
+#progress_percent {top: 43%;left: 60%;font-size: 18px;color: #fff;z-index: 17000;position: absolute;}
+
+.transition{
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+[contenteditable] img{
+    vertical-align: middle;
+}
+[contenteditable] audio{
+    vertical-align: middle;
+}
+[contenteditable] video{
+    vertical-align: middle;
+}
+[placeholder]:empty::before {
+    content: attr(placeholder);
+    color: #555;
+}
+[placeholder]:empty:focus::before {
+    content: "";
+}
+div sup{
+    font-size: 12px;
+    vertical-align: super!important;
+    padding: 0!important;
+    margin: 0!important;
+}
+sup > span > sup{
+    font-size: 10px;
+}
+sup > span > sup sup{
+    font-size: 8px;
+}
+
+div sub{
+    font-size: 12px;
+    vertical-align: sub!important;
+    padding: 0!important;
+    margin: 0!important;
+}
+sub > span > sub{
+    font-size: 10px;
+}
+sub > span > sub sub{
+    font-size: 8px;
+}
+/*video{position: relative;display: inline-block;}*/
+/*audio{}*/

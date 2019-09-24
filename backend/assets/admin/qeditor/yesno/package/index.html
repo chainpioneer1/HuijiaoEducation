@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <script type="text/javascript">
+        //        document.domain = "ztjy.edu.sh.cn";
+        var baseURL = 'http://qdzyxm.hulalaedu.com/';
+		baseURL = 'http://www.hjle.qdedu.net/';
+    </script>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>题目编辑器</title>
+    <!--<link rel="stylesheet" href="./css/vplayer.css">-->
+    <link rel="stylesheet" href="./css/style_1.css" media="screen">
+</head>
+<body>
+<div class="wrap">
+    <div class="content" id="content">
+        <div class="edit-area">
+            <div class="area-item">
+                <div class="item-title">题干<span>*</span></div>
+                <div class="item-edit" contenteditable="true"
+                     data-type="question"
+                     placeholder="请编辑题干内容(可添加图片，视频，音频)"></div>
+            </div>
+            <!--<div class="area-item">-->
+                <!--<div class="item-title">选项<span>*</span></div>-->
+                <!--<div class="item-edit" data-type="option">-->
+                    <!--<div class="option-area"></div>-->
+                    <!--<div class="item-edit-row">-->
+                        <!--<div class="btn-item" data-id="3">+选项</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="area-item">
+                <div class="item-title">答案<span>*</span></div>
+                <div class="item-edit" data-type="answer"></div>
+            </div>
+            <div class="area-item">
+                <div class="item-title">解析</div>
+                <div class="item-edit" contenteditable="true" data-type="description"
+                     placeholder="请编辑解析内容(可添加图片，视频，音频)"></div>
+            </div>
+        </div>
+        <div class="toolbar">
+            <div class="btn-item" data-id="0">
+                <div>X<sup>2</sup></div>
+            </div>
+            <div class="btn-item" data-id="1">
+                <div>X<sub>2</sub></div>
+            </div>
+            <div class="btn-item" data-id="2">
+                <div>插入多媒体</div>
+            </div>
+        </div>
+    </div>
+    <canvas id="saveCanvas" style="display: none;"></canvas>
+    <form id="fileUploader" hidden style="display: none;">
+        <input type="file" id="fileContainer" name="fileUploader"
+               accept=".png,.bmp,.gif,.jpg,.mp4,.mp3"
+               style="opacity:0;width:1px;height:1px;">
+    </form>
+</div>
+<div class="scripts" hidden style="display:none">
+    <script type="text/javascript" src="./js/plugin/jquery-1.9.1.min.js"></script>
+    <!--<script type="text/javascript" src="./js/plugin/Base64.js"></script>-->
+    <!--<script type="text/javascript" src="./js/plugin/Blob.js"></script>-->
+    <!--<script type="text/javascript" src="./js/plugin/my-menu.js"></script>-->
+    <!--<script type="text/javascript" src="./js/plugin/vplayer.js"></script>-->
+    <script type="text/javascript" src="./js/domlib.js"></script>
+    <script type="text/javascript" src="./js/game.js"></script>
+    <script type="text/javascript" src="./js/lib.js"></script>
+</div>
+</body>
+</html>
