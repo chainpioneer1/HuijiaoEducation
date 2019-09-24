@@ -11,7 +11,7 @@
  Target Server Version : 50639
  File Encoding         : 65001
 
- Date: 01/09/2019 09:05:54
+ Date: 25/09/2019 01:19:21
 */
 
 SET NAMES utf8mb4;
@@ -41,8 +41,8 @@ CREATE TABLE `admins`  (
 -- ----------------------------
 -- Records of admins
 -- ----------------------------
-INSERT INTO `admins` VALUES (1, 'admin', '8ddd9f255d7de5ff85f81eac6f8238de9d415e43cf133fb193d348262d0e6d6ce9ea17d6aed89a204124b90887e2241f2bf06f5327c1197f7b52fd4be8763b00', '最高管理员', '{\"menu_00\":\"1\",\"menu_01\":\"1\",\"menu_02\":\"1\",\"menu_03\":\"1\",\"menu_10\":\"1\",\"menu_11\":\"1\",\"menu_20\":\"1\",\"menu_30\":\"1\",\"menu_40\":\"1\",\"menu_50\":\"1\",\"menu_51\":\"1\",\"menu_52\":\"1\",\"menu_53\":\"1\"}', '2018-04-29 13:23:27', '2019-02-28 11:07:11', 1, '2018-08-18 02:25:52', '2019-08-30 17:17:39', 336, 'zypttaijiaoshi', '4224804d-d874-430d-821b-21176e0f734b');
-INSERT INTO `admins` VALUES (7, 'manager', 'd641f4863642b84935f29f61be3eeb692ff337370a7e871776da0a8598ad692866bd66d4be57183fd910366e6794bc4aa0cf22939b7e363823eee3d2c245d056', 'manager', '{\"menu_00\":\"1\",\"menu_01\":\"1\",\"menu_02\":\"1\",\"menu_03\":\"1\",\"menu_10\":\"1\",\"menu_11\":\"1\",\"menu_20\":\"0\",\"menu_30\":\"0\",\"menu_40\":\"0\",\"menu_50\":\"1\",\"menu_51\":\"1\",\"menu_52\":\"1\",\"menu_53\":\"1\"}', '2018-04-29 13:28:57', '2019-02-28 11:07:35', 1, '2018-08-10 23:20:20', '2018-08-18 10:35:34', 6, '3150563', NULL);
+INSERT INTO `admins` VALUES (1, 'admin', '8ddd9f255d7de5ff85f81eac6f8238de9d415e43cf133fb193d348262d0e6d6ce9ea17d6aed89a204124b90887e2241f2bf06f5327c1197f7b52fd4be8763b00', '最高管理员', '{\"menu_00\":\"1\",\"menu_01\":\"1\",\"menu_02\":\"1\",\"menu_03\":\"1\",\"menu_10\":\"1\",\"menu_11\":\"1\",\"menu_20\":\"1\",\"menu_30\":\"1\",\"menu_40\":\"1\",\"menu_50\":\"1\",\"menu_51\":\"1\",\"menu_52\":\"1\",\"menu_53\":\"1\"}', '2018-04-29 13:23:27', '2019-02-28 11:07:11', 1, '2018-08-18 02:25:52', '2019-09-23 17:07:07', 353, 'zypttaijiaoshi', '4224804d-d874-430d-821b-21176e0f734b');
+INSERT INTO `admins` VALUES (7, 'manager', 'd641f4863642b84935f29f61be3eeb692ff337370a7e871776da0a8598ad692866bd66d4be57183fd910366e6794bc4aa0cf22939b7e363823eee3d2c245d056', 'manager', '{\"menu_00\":\"1\",\"menu_01\":\"1\",\"menu_02\":\"1\",\"menu_03\":\"1\",\"menu_10\":\"1\",\"menu_11\":\"1\",\"menu_20\":\"0\",\"menu_30\":\"0\",\"menu_40\":\"0\",\"menu_50\":\"1\",\"menu_51\":\"1\",\"menu_52\":\"1\",\"menu_53\":\"1\"}', '2018-04-29 13:28:57', '2019-02-28 11:07:35', 1, '2018-08-10 23:20:20', '2018-08-18 10:35:34', 6, '5789494', NULL);
 INSERT INTO `admins` VALUES (8, 'hulala', 'f8350d92b4fcd210afdb391fc8fd56e2f09130f07c24a5670914ec2ee2a346a2485794b65f414a55712d6a4d9bf3cb4dced4ff78c90eccc3a74f4d84d6068d93', 'hulala', '{\"menu_00\":\"1\",\"menu_01\":\"1\",\"menu_02\":\"1\",\"menu_03\":\"1\",\"menu_10\":\"1\",\"menu_11\":\"1\",\"menu_20\":\"1\",\"menu_30\":\"0\",\"menu_40\":\"0\",\"menu_50\":\"0\",\"menu_51\":\"0\",\"menu_52\":\"0\",\"menu_53\":\"0\"}', '2018-05-09 15:05:23', '2019-02-25 01:06:35', 1, '2018-08-12 13:20:20', NULL, 3, NULL, NULL);
 INSERT INTO `admins` VALUES (12, 'user', '921f25795ea569463f04e422c4b162b06f7885b80fd18d3e8d7936efa42975806ad7e9d73e7c5ca2c002e3d97f1ae099e2597087a8261b36cc38a4b5e5c9f27d', '123123', '{\"menu_00\":\"1\",\"menu_01\":\"1\",\"menu_02\":\"1\",\"menu_03\":\"1\",\"menu_10\":\"1\",\"menu_11\":\"1\",\"menu_20\":\"1\",\"menu_30\":\"1\",\"menu_40\":\"1\",\"menu_50\":\"1\",\"menu_51\":\"1\",\"menu_52\":\"1\",\"menu_53\":\"1\"}', '2019-02-25 00:56:04', '2019-02-25 01:06:40', 0, NULL, NULL, 0, NULL, NULL);
 INSERT INTO `admins` VALUES (14, 'course_admin1', '7b1ddcff6d1b1e4844bcf2eca448ac49b99f91fbb5903dfe49009ac004ed9a8b416534639aef020063deb4f270d62b41958f87eb977584faa77b43bfabee382a', '课程小管1', '{\"menu_00\":\"1\",\"menu_01\":\"1\",\"menu_02\":\"1\",\"menu_03\":\"1\",\"menu_10\":\"1\",\"menu_11\":\"1\",\"menu_20\":\"0\",\"menu_30\":\"0\",\"menu_40\":\"0\",\"menu_50\":\"0\",\"menu_51\":\"0\",\"menu_52\":\"0\",\"menu_53\":\"0\"}', '2019-03-12 10:15:36', '2019-03-13 16:58:19', 0, '2019-03-13 16:57:45', '2019-05-06 13:13:14', 19, NULL, NULL);
@@ -564,7 +564,7 @@ INSERT INTO `tbl_huijiao_contents` VALUES (517, 'rj0304041102001', ' 浮力', ''
 INSERT INTO `tbl_huijiao_contents` VALUES (518, 'bb0201030303001', '重难点词语', '', 1, 1, 1, 0, 86, 22, 1, NULL, NULL, 'uploads/contents/518019031920212805788nr', 0, '2019-03-19 17:11:31', '2019-03-19 20:21:28');
 INSERT INTO `tbl_huijiao_contents` VALUES (519, 'rj0304041202001', '阿基米德原理', '', 1, 0, 0, 0, 130, 19, 0, NULL, NULL, 'uploads/contents/0019031917114008299nr.pptx', 0, '2019-03-19 17:11:40', '2019-03-20 11:15:16');
 INSERT INTO `tbl_huijiao_contents` VALUES (520, 'rj0304041302001', '物体的浮沉条件及应用', '', 1, 0, 0, 0, 131, 19, 0, NULL, NULL, 'uploads/contents/0019031917122706104nr.pptx', 0, '2019-03-19 17:12:27', '2019-03-20 11:15:23');
-INSERT INTO `tbl_huijiao_contents` VALUES (521, 'bb0201030202001', '变', '', 1, 1, 1, 0, 85, 12, 1, NULL, NULL, 'uploads/contents/0019031917153609636nr', 0, '2019-03-19 17:15:36', '2019-03-19 17:15:36');
+INSERT INTO `tbl_huijiao_contents` VALUES (521, 'bb0201030202001', '变', '', 0, 1, 1, 0, 85, 12, 1, NULL, NULL, 'uploads/contents/0019031917153609636nr', 0, '2019-03-19 17:15:36', '2019-03-19 17:15:36');
 INSERT INTO `tbl_huijiao_contents` VALUES (522, 'bb0201030202002', '极', '', 1, 1, 1, 0, 85, 12, 1, NULL, NULL, 'uploads/contents/522019032117104509129nr', 0, '2019-03-19 17:16:17', '2019-03-21 17:10:45');
 INSERT INTO `tbl_huijiao_contents` VALUES (523, 'bb0201030303002', '近反义词', '', 1, 1, 1, 0, 86, 22, 1, NULL, NULL, 'uploads/contents/523019031920215902768nr', 0, '2019-03-19 17:16:20', '2019-03-19 20:21:59');
 INSERT INTO `tbl_huijiao_contents` VALUES (524, 'bb0201030303003', '词语搭配', '', 1, 1, 1, 0, 86, 22, 1, NULL, NULL, 'uploads/contents/524019031920214608433nr', 0, '2019-03-19 17:16:50', '2019-03-19 20:21:46');
@@ -1200,10 +1200,10 @@ INSERT INTO `tbl_huijiao_contents` VALUES (1189, NULL, '008', '', 1, 1, 1, 385, 
 INSERT INTO `tbl_huijiao_contents` VALUES (1190, NULL, '008', '', 1, 1, 1, 385, 1, 3, 3, 'assets/images/huijiao/tab2/icon3.png', NULL, 'uploads/contents/qd0038500001019072216103102118nr.jpg', 0, '2019-07-22 16:10:31', '2019-07-22 16:10:31');
 INSERT INTO `tbl_huijiao_contents` VALUES (1191, NULL, 'images', '', 1, 1, 1, 385, 1, 3, 3, 'assets/images/huijiao/tab2/icon3.png', NULL, 'uploads/contents/qd0038500001019072216105406705nr.jpg', 0, '2019-07-22 16:10:54', '2019-07-22 16:10:54');
 INSERT INTO `tbl_huijiao_contents` VALUES (1192, NULL, '008', '', 1, 1, 1, 385, 1, 3, 3, 'assets/images/huijiao/tab2/icon3.png', NULL, 'uploads/contents/qd0038500001019072216112007269nr.jpg', 0, '2019-07-22 16:11:20', '2019-07-22 16:11:20');
-INSERT INTO `tbl_huijiao_contents` VALUES (1193, '654654654', '654654654', '', 0, 1, 1, 0, 85, 11, 0, 'uploads/content_icons/0019072721505405176fm.png', 'uploads/content_icons/0019072721505405176fm_m.png', NULL, 0, '2019-07-27 21:50:54', '2019-07-27 21:50:54');
+INSERT INTO `tbl_huijiao_contents` VALUES (1193, '654654654', '654654654', '', 0, 1, 1, 0, 0, 11, 0, 'uploads/content_icons/0019072721505405176fm.png', 'uploads/content_icons/0019072721505405176fm_m.png', NULL, 0, '2019-07-27 21:50:54', '2019-09-05 23:51:18');
 INSERT INTO `tbl_huijiao_contents` VALUES (1194, NULL, 'guibtn-sheet0', '', 1, 1, 1, 385, 1, 3, 3, 'assets/images/huijiao/tab2/icon3.png', NULL, 'uploads/contents/qd0038500001019073116231603953nr.png', 0, '2019-07-31 16:23:16', '2019-07-31 16:23:16');
 INSERT INTO `tbl_huijiao_contents` VALUES (1195, NULL, 'xiaoniao1', '', 1, 1, 1, 385, 0, 3, 3, 'assets/images/huijiao/tab2/icon3.png', NULL, 'uploads/contents/qd0038500000019081916073007535nr.png', 0, '2019-08-19 16:07:30', '2019-08-19 16:07:30');
-INSERT INTO `tbl_huijiao_contents` VALUES (1196, '345345345', 'werwer', '', 1, 0, 0, 0, 85, 11, 0, 'uploads/content_icons/0019082018243202113fm.png', 'uploads/content_icons/0019082018243202113fm_m.png', 'uploads/content_packages/1196019082018335207738nr.png', 0, '2019-08-20 18:24:32', '2019-08-30 17:18:01');
+INSERT INTO `tbl_huijiao_contents` VALUES (1196, '345345345', 'werwer', '', 1, 0, 0, 0, 85, 11, 2, 'uploads/content_icons/0019082018243202113fm.png', 'uploads/content_icons/0019082018243202113fm_m.png', 'uploads/content_packages/1196019090523303904641nr.mp3', 0, '2019-08-20 18:24:32', '2019-09-05 23:30:39');
 
 -- ----------------------------
 -- Table structure for tbl_huijiao_course_type
@@ -1644,8 +1644,8 @@ CREATE TABLE `tbl_huijiao_recommend`  (
 -- Records of tbl_huijiao_recommend
 -- ----------------------------
 INSERT INTO `tbl_huijiao_recommend` VALUES (52, 0, '1', '4', NULL, 90, 1, NULL, 'uploads/contents/qd0019031811311903461_icon.png', '2019-03-18 11:31:19', '2019-03-18 11:31:19');
-INSERT INTO `tbl_huijiao_recommend` VALUES (53, 0, '2', '222', 0, 198, 1, NULL, 'assets/images/huijiao/tab2/icon0.png', '2019-03-18 13:15:31', '2019-07-02 22:21:29');
-INSERT INTO `tbl_huijiao_recommend` VALUES (54, 0, 'zy7', '22', 0, 125, 1, NULL, 'uploads/contents/qd54019080120383709033_rcm.png', '2019-03-19 13:11:21', '2019-08-01 20:38:37');
+INSERT INTO `tbl_huijiao_recommend` VALUES (53, 0, '2', '222', 0, 198, 0, NULL, 'assets/images/huijiao/tab2/icon0.png', '2019-03-18 13:15:31', '2019-07-02 22:21:29');
+INSERT INTO `tbl_huijiao_recommend` VALUES (54, 0, 'zy7', '22', 0, 125, 0, NULL, 'uploads/contents/qd54019080120383709033_rcm.png', '2019-03-19 13:11:21', '2019-08-01 20:38:37');
 INSERT INTO `tbl_huijiao_recommend` VALUES (56, 0, '4', '的', NULL, 98, 1, NULL, 'assets/images/huijiao/tab2/icon0.png', '2019-03-19 18:15:34', '2019-03-19 18:15:34');
 INSERT INTO `tbl_huijiao_recommend` VALUES (57, 1, '1', '2', NULL, 70, 1, NULL, '', '2019-07-01 22:49:46', '2019-07-01 22:49:48');
 INSERT INTO `tbl_huijiao_recommend` VALUES (58, 1, '2', '3', 0, 58, 0, NULL, 'uploads/contents/qd58019080120390004420_rcm.png', '2019-07-01 22:49:50', '2019-08-01 20:39:00');
@@ -1672,10 +1672,10 @@ CREATE TABLE `tbl_huijiao_subject`  (
 -- ----------------------------
 -- Records of tbl_huijiao_subject
 -- ----------------------------
-INSERT INTO `tbl_huijiao_subject` VALUES (1, 'bb0201', 0, '小学语文', 'tubiaoyuwen', 1, '2019-02-15 09:50:29', '2019-03-18 13:39:20', NULL);
-INSERT INTO `tbl_huijiao_subject` VALUES (2, 'qd0202', 0, '小学数学', 'tubiaoshuxue', 1, '2019-02-15 09:50:29', '2019-03-18 14:33:02', NULL);
-INSERT INTO `tbl_huijiao_subject` VALUES (3, 'qd0203', 2, '初中数学', 'tubiaoshuxue', 1, '2019-02-15 09:50:29', '2019-03-18 15:18:06', NULL);
-INSERT INTO `tbl_huijiao_subject` VALUES (4, 'rj0304', 2, '初中物理', 'tubiaoyuwen', 1, '2019-02-15 09:50:29', '2019-03-20 09:55:52', NULL);
+INSERT INTO `tbl_huijiao_subject` VALUES (1, 'bb0201', 0, '小学语文', 'tyuwen1', 1, '2019-02-15 09:50:29', '2019-03-18 13:39:20', NULL);
+INSERT INTO `tbl_huijiao_subject` VALUES (2, 'qd0202', 0, '小学数学', 'txiaoxueshuxue1', 1, '2019-02-15 09:50:29', '2019-03-18 14:33:02', NULL);
+INSERT INTO `tbl_huijiao_subject` VALUES (3, 'qd0203', 2, '初中数学', 'tchuzhongshuxue1', 1, '2019-02-15 09:50:29', '2019-03-18 15:18:06', NULL);
+INSERT INTO `tbl_huijiao_subject` VALUES (4, 'rj0304', 2, '初中物理', 'tchuzhongwuli1', 1, '2019-02-15 09:50:29', '2019-03-20 09:55:52', NULL);
 
 -- ----------------------------
 -- Table structure for tbl_huijiao_terms
@@ -1836,7 +1836,7 @@ CREATE TABLE `tbl_usage`  (
   `create_time` datetime(0) NULL DEFAULT NULL,
   `update_time` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 633 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 636 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of tbl_usage
@@ -1889,7 +1889,7 @@ INSERT INTO `tbl_usage` VALUES (580, 0, NULL, 54, NULL, NULL, 0, 0, 10, 0, 0, '2
 INSERT INTO `tbl_usage` VALUES (581, 0, NULL, 56, NULL, NULL, 0, 0, 10, 0, 0, '2019-05-09 00:57:47', '2019-05-09 00:57:51');
 INSERT INTO `tbl_usage` VALUES (582, 0, 1184, NULL, NULL, NULL, 0, 0, 10, 0, 0, '2019-05-09 17:00:00', '2019-05-09 17:00:52');
 INSERT INTO `tbl_usage` VALUES (583, 370, 1184, NULL, NULL, NULL, 0, 0, 15, 0, 1, '2019-05-09 17:03:16', '2019-05-09 17:08:01');
-INSERT INTO `tbl_usage` VALUES (584, 385, 364, NULL, NULL, NULL, 0, 0, 5, 0, 0, '2019-05-21 20:09:02', '2019-05-21 20:09:02');
+INSERT INTO `tbl_usage` VALUES (584, 385, 364, NULL, NULL, NULL, 0, 0, 10, 0, 0, '2019-05-21 20:09:02', '2019-09-05 23:26:17');
 INSERT INTO `tbl_usage` VALUES (585, 385, 1166, NULL, NULL, NULL, 1, 1, 22, 0, 0, '2019-05-22 18:57:51', '2019-07-24 23:09:52');
 INSERT INTO `tbl_usage` VALUES (586, 385, 90, NULL, NULL, NULL, 0, 1, 30, 0, 0, '2019-05-22 18:57:59', '2019-07-27 11:39:59');
 INSERT INTO `tbl_usage` VALUES (587, 385, 235, NULL, NULL, NULL, 1, 1, 272, 0, 0, '2019-05-22 19:57:05', '2019-08-30 18:34:28');
@@ -1900,7 +1900,7 @@ INSERT INTO `tbl_usage` VALUES (591, 0, NULL, 174, NULL, NULL, 0, 0, 30, 0, 0, '
 INSERT INTO `tbl_usage` VALUES (592, 0, 236, NULL, NULL, NULL, 0, 0, 10, 0, 0, '2019-06-22 11:17:36', '2019-06-22 11:17:46');
 INSERT INTO `tbl_usage` VALUES (593, 385, 53, NULL, NULL, NULL, 0, 0, 5, 0, 0, '2019-07-09 08:12:14', '2019-07-09 08:12:14');
 INSERT INTO `tbl_usage` VALUES (594, 385, 198, NULL, NULL, NULL, 0, 0, 22, 0, 0, '2019-07-09 08:13:49', '2019-08-22 20:09:05');
-INSERT INTO `tbl_usage` VALUES (595, 385, NULL, 146, NULL, NULL, 1, 0, 65, 0, 0, '2019-07-09 08:16:57', '2019-08-17 17:33:15');
+INSERT INTO `tbl_usage` VALUES (595, 385, NULL, 146, NULL, NULL, 1, 0, 95, 0, 0, '2019-07-09 08:16:57', '2019-09-05 23:24:46');
 INSERT INTO `tbl_usage` VALUES (596, 385, NULL, 72, NULL, NULL, 0, 0, 55, 0, 0, '2019-07-09 08:21:21', '2019-08-01 16:45:15');
 INSERT INTO `tbl_usage` VALUES (597, 385, NULL, 70, NULL, NULL, 1, 1, 29, 0, 0, '2019-07-09 08:22:59', '2019-07-26 08:34:06');
 INSERT INTO `tbl_usage` VALUES (598, 385, NULL, 145, NULL, NULL, 1, 1, 16, 0, 0, '2019-07-09 08:43:09', '2019-07-24 23:09:13');
@@ -1908,7 +1908,7 @@ INSERT INTO `tbl_usage` VALUES (599, 385, 994, NULL, NULL, NULL, 0, 1, 0, 0, 0, 
 INSERT INTO `tbl_usage` VALUES (600, 385, 241, NULL, NULL, NULL, 1, 1, 10, 0, 0, '2019-07-16 01:04:13', '2019-08-01 00:01:54');
 INSERT INTO `tbl_usage` VALUES (601, 385, 242, NULL, NULL, NULL, 1, 1, 5, 0, 0, '2019-07-16 01:04:14', '2019-07-24 23:10:32');
 INSERT INTO `tbl_usage` VALUES (602, 385, 252, NULL, NULL, NULL, 0, 1, 5, 0, 0, '2019-07-16 01:04:16', '2019-07-27 11:41:50');
-INSERT INTO `tbl_usage` VALUES (603, 385, NULL, 147, NULL, NULL, 0, 1, 10, 0, 0, '2019-07-16 01:04:33', '2019-08-01 19:56:06');
+INSERT INTO `tbl_usage` VALUES (603, 385, NULL, 147, NULL, NULL, 0, 0, 20, 0, 0, '2019-07-16 01:04:33', '2019-09-05 23:08:37');
 INSERT INTO `tbl_usage` VALUES (604, 385, NULL, 144, NULL, NULL, 0, 0, 36, 0, 0, '2019-07-16 01:20:29', '2019-07-26 08:43:20');
 INSERT INTO `tbl_usage` VALUES (605, 385, 263, NULL, NULL, NULL, 0, 1, 0, 0, 0, '2019-07-16 01:38:12', '2019-07-16 01:38:12');
 INSERT INTO `tbl_usage` VALUES (606, 385, 125, NULL, NULL, NULL, 0, 0, 24, 0, 0, '2019-07-18 11:03:13', '2019-08-27 22:54:14');
@@ -1934,10 +1934,13 @@ INSERT INTO `tbl_usage` VALUES (625, 385, 245, NULL, NULL, NULL, 1, 0, 10, 0, 0,
 INSERT INTO `tbl_usage` VALUES (626, 385, 1193, NULL, NULL, NULL, 0, 0, 10, 0, 0, '2019-07-27 23:13:56', '2019-07-27 23:23:36');
 INSERT INTO `tbl_usage` VALUES (627, 385, NULL, 180, NULL, NULL, 0, 0, 10, 0, 0, '2019-07-31 16:24:25', '2019-08-01 20:00:56');
 INSERT INTO `tbl_usage` VALUES (628, 385, 1191, NULL, NULL, NULL, 0, 0, 5, 0, 0, '2019-08-08 01:07:08', '2019-08-08 01:07:08');
-INSERT INTO `tbl_usage` VALUES (629, 385, 1196, NULL, NULL, NULL, 0, 0, 40, 0, 0, '2019-08-20 18:24:51', '2019-08-30 17:15:59');
+INSERT INTO `tbl_usage` VALUES (629, 385, 1196, NULL, NULL, NULL, 0, 0, 85, 0, 0, '2019-08-20 18:24:51', '2019-09-05 23:40:14');
 INSERT INTO `tbl_usage` VALUES (630, 0, 125, NULL, NULL, NULL, 0, 0, 10, 0, 0, '2019-08-27 22:54:23', '2019-08-28 20:17:11');
 INSERT INTO `tbl_usage` VALUES (631, 0, 198, NULL, NULL, NULL, 0, 0, 10, 0, 0, '2019-08-27 22:54:36', '2019-08-28 09:11:35');
 INSERT INTO `tbl_usage` VALUES (632, 385, 268, NULL, NULL, NULL, 0, 0, 20, 0, 0, '2019-08-30 16:58:01', '2019-08-30 17:02:03');
+INSERT INTO `tbl_usage` VALUES (633, 385, NULL, 182, NULL, NULL, 0, 0, 90, 0, 0, '2019-09-04 17:41:56', '2019-09-04 17:56:33');
+INSERT INTO `tbl_usage` VALUES (634, 0, 98, NULL, NULL, NULL, 0, 0, 30, 0, 0, '2019-09-05 23:05:34', '2019-09-14 01:49:13');
+INSERT INTO `tbl_usage` VALUES (635, 385, 366, NULL, NULL, NULL, 0, 0, 5, 0, 0, '2019-09-05 23:26:12', '2019-09-05 23:26:12');
 
 -- ----------------------------
 -- Table structure for tbl_user
@@ -1971,7 +1974,7 @@ CREATE TABLE `tbl_user`  (
 -- ----------------------------
 INSERT INTO `tbl_user` VALUES (369, 'zypttaijiaoshi', '1553260663260', 'zypttaijiaoshi', NULL, 0, '演示部门', NULL, NULL, 8, 1, '平台教师', '{\"uid\":10003,\"nick_name\":\"\\u5e73\\u53f0\\u6559\\u5e08\",\"organId\":\"3443d23a89ad4670b286abb1d8e22a61\",\"user_type\":0,\"status\":\"1\",\"avatar\":\"http:\\/\\/www.qdedu.net\\/e5static\\/avatar\\/default.png\",\"organName\":\"\\u6f14\\u793a\\u90e8\\u95e8\"}', '{\"abc\":{\"id\":\"textarea11\",\"content\":\"asdfaf\"}}', '23.83.246.233', 231, '2019-03-12 18:54:52', '2019-03-22 21:17:59', '2019-03-22 11:18:54');
 INSERT INTO `tbl_user` VALUES (374, 'huangjianyong', '1553246933773', 'huangjianyong', NULL, 1, '青岛市教育装备与信息技术中心', NULL, NULL, 3, 1, '黄建勇', '{\"uid\":9811,\"nick_name\":\"\\u9ec4\\u5efa\\u52c7\",\"organId\":\"efe97bae279f49a6b27dca3dc76a7567\",\"user_type\":8,\"status\":\"1\",\"avatar\":\"http:\\/\\/www.qdedu.net\\/e5static\\/avatar\\/default.png\",\"organName\":\"\\u9752\\u5c9b\\u5e02\\u6559\\u80b2\\u88c5\\u5907\\u4e0e\\u4fe1\\u606f\\u6280\\u672f\\u4e2d\\u5fc3\"}', NULL, '183.194.49.78', 20, '2019-03-20 16:19:36', '2019-03-22 17:29:05', '2019-03-21 11:25:03');
-INSERT INTO `tbl_user` VALUES (385, '8295050', '1553063041122', '8295050', NULL, 1, '青岛市教育装备与信息技术中心技术', '1-1', NULL, 3, 1, '平台教师', '', NULL, '106.15.191.19', 103, '2019-05-21 19:57:39', '2019-08-31 08:58:55', '2019-08-30 18:23:10');
+INSERT INTO `tbl_user` VALUES (385, '8295050', '1553063041122', '8295050', NULL, 1, '青岛市教育装备与信息技术中心技术', '1-1', NULL, 3, 1, '平台教师', '', NULL, '42.52.143.102', 131, '2019-05-21 19:57:39', '2019-09-23 11:14:01', '2019-09-23 11:14:19');
 INSERT INTO `tbl_user` VALUES (386, '230103200209101916', '1553211880188', '230103200209101916', NULL, 1, NULL, '1-1', NULL, 0, 1, '230103200209101916', '', NULL, '60.23.104.138', 2, '2019-08-18 21:01:20', '2019-08-18 21:23:24', '2019-08-18 21:23:27');
 
 -- ----------------------------
