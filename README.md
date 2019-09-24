@@ -31,16 +31,12 @@ iOS Package : Huijiao.ipa
 
 ## Site Overview
 
-![](UserGuide1.mp4)
+![](overview.png)
 
-![](UserGuide3.mp4)
-
-![](UserGuide4.mp4)
-
-## Contact Information
-
-
->Live Site: http://www.hjle.qdedu.net
+> Live Site : http://www.hjle.qdedu.net
 >
->Email : gong.fei@outlook.com
-
+> Site Overview : http://www.hjle.qdedu.net/assets/UserGuide0.mp4
+>
+> Full Usage Guide : http://www.hjle.qdedu.net/assets/UserGuide.pdf
+>
+> Contact Developer Email : gong.fei@outlook.com
