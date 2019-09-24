@@ -8,7 +8,7 @@ window.addEventListener('load',function(){
     } else {
         var img_src =  $(subjectElem[0]).find('img').attr('src');
         var img_src1 =  $(subjectElem[0]).attr('data-img-src');
-        img_src = img_src.replace(img_src1 + '1', img_src1)
+        img_src = img_src.replace(img_src1 + '', img_src1)
         $(subjectElem[0]).addClass('active');
         $(subjectElem[0]).find('img').attr('src', img_src);
 
@@ -19,14 +19,14 @@ window.addEventListener('load',function(){
     $('.subject-elem').click(function(){
         var img_src = $('.subject-elem.active').find('img').attr('src');
         var img_src1 = $('.subject-elem.active').attr('data-img-src');
-        img_src = img_src.replace(img_src1, img_src1 + '1')
+        img_src = img_src.replace(img_src1, img_src1 + '')
         $('.subject-elem.active').find('img').attr('src', img_src);
         $('.subject-elem').removeClass('active');
 
         var id = $(this).attr('data-subject-id');
         img_src = $(this).find('img').attr('src');
         img_src1 = $(this).attr('data-img-src');
-        img_src = img_src.replace(img_src1 + '1', img_src1)
+        img_src = img_src.replace(img_src1 + '', img_src1)
 
         $('.subject-tab-section').removeClass('active');
         $(this).addClass("active");

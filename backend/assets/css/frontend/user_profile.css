@@ -80,6 +80,7 @@
 
 .profile-content-list.active {
     display: grid;
+    overflow-y: auto;
 }
 
 .profile-info-item {

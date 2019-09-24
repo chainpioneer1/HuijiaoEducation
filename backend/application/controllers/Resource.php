@@ -592,17 +592,21 @@ class Resource extends CI_Controller
 
         $subjects = $this->subject_m->get_where(['status' => 1]);
         $subject = null;
+        $term_id = null;
+        $coursetype_id = null;
+        $curQuery = '';
         if ($_SERVER['REQUEST_URI'] == '/resource' || $_SERVER['REQUEST_URI'] == '/resource/learning') {
-            $subject_id = $subjects[0]->id;//$this->session->userdata('learning_subject_id');
-            $term_id = null;//$this->session->userdata('learning_term_id');
-            $coursetype_id = null;//$this->session->userdata('learning_coursetype_id');
-            $curQuery = '';//$this->session->userdata('learning_curQuery');
-        } else {
-            $subject_id = $this->session->userdata('learning_subject_id');
-            $term_id = $this->session->userdata('learning_term_id');
-            $coursetype_id = $this->session->userdata('learning_coursetype_id');
-            $curQuery = $this->session->userdata('learning_curQuery');
+
+            $this->session->set_userdata('learning_subject_id', $subjects[0]->id);
+            $this->session->set_userdata('learning_term_id', null);
+            $this->session->set_userdata('learning_coursetype_id', null);
+            $this->session->set_userdata('learning_curQuery', '');
+
         }
+        $subject_id = $this->session->userdata('learning_subject_id');
+        $term_id = $this->session->userdata('learning_term_id');
+        $coursetype_id = $this->session->userdata('learning_coursetype_id');
+        $curQuery = $this->session->userdata('learning_curQuery');
 
         $filter = array();
         if ($subject_id) $filter['tbl_huijiao_subject.id'] = $subject_id;
@@ -610,14 +614,14 @@ class Resource extends CI_Controller
         if ($coursetype_id) $filter['tbl_huijiao_contents.content_type_no'] = $coursetype_id;
         $filter['tbl_huijiao_contents.status'] = 1;
 
-        $this->data['perPage'] = $perPage = PAGESIZE;
+        $this->data['perPage'] = $perPage = 30;
         $this->data['cntPage'] = $cntPage = $this->contents_m->get_count($filter, $curQuery, 'teacher');
-
         $ret = $this->paginationCompress('resource/learning/', $cntPage, $perPage);
 
         $this->data['curPage'] = $curPage = $ret['pageId'];
         $contents = $this->contents_m->getItemsByPage($filter, $ret['pageId'], $ret['cntPerPage'], $curQuery, 'teacher');
 
+//        var_dump($contents);
         $this->data["contents"] = $this->get_contents_html($contents);
         $subject = null;
         $term = null;
@@ -1279,7 +1283,7 @@ class Resource extends CI_Controller
 
         if ($_POST) {
             $user_id = $_POST['user_id'];
-            if(!$user_id) $user_id = '0';
+            if (!$user_id) $user_id = '0';
             $lesson_id = $_POST['lesson_id'];
             log_message('info', '-- lesson_read $user_id : ' . $user_id);
             log_message('info', '-- lesson_read $lesson_id : ' . $lesson_id);
@@ -1419,7 +1423,7 @@ class Resource extends CI_Controller
 
         if ($_POST) {
             $user_id = $_POST['user_id'];
-            if(!$user_id) $user_id = '0';
+            if (!$user_id) $user_id = '0';
             $content_id = $_POST['content_id'];
             log_message('info', '-- content_read $user_id : ' . $user_id);
             log_message('info', '-- content_read $content_id : ' . $content_id);
@@ -1532,7 +1536,7 @@ class Resource extends CI_Controller
             if ($coursetype_id) $filter['tbl_huijiao_contents.content_type_no'] = $coursetype_id;
             $filter['tbl_huijiao_contents.status'] = 1;
 
-            $this->data['perPage'] = $perPage = PAGESIZE;
+            $this->data['perPage'] = $perPage = 30;
             $this->data['cntPage'] = $cntPage = $this->contents_m->get_count($filter, $curQuery, 'teacher');
 
             $ret = $this->paginationCompress('resource/learning/', $cntPage, $perPage);

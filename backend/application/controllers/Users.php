@@ -802,7 +802,7 @@ class Users extends CI_Controller
     public function get_favorite_lessons_html($favorite_lessons)
     {
         $output = '';
-		$perPage = 10;
+		$perPage = 1000;
         $i = 0;
         foreach ($favorite_lessons as $favorite_lesson) {
             if ($i % $perPage == 0) {
@@ -843,7 +843,7 @@ class Users extends CI_Controller
     public function get_favorite_contents_html($favorite_contents)
     {
         $output = '';
-		$perPage = 10;
+		$perPage = 1000;
         $i = 0;
         foreach ($favorite_contents as $favorite_content) {
             if ($i % $perPage == 0) {
@@ -863,15 +863,15 @@ class Users extends CI_Controller
                 . $title . '</div>';
 
             $output .= '<div class="item-subject">';
-            $output .= '<span>科目：</span>';
-            $output .= '<span>' . $favorite_content['subject']->title . '</span>';
-            $output .= '<span style="padding-left: 15px;">册次：</span>';
-            $output .= '<span>' . $favorite_content['term']->title . '</span>';
-            $output .= '<span style="padding-left: 15px;">资源类型：</span>';
-            $output .= '<span>' . $favorite_content['content_type']->title . '</span>';
+//            $output .= '<span>科目：</span>';
+            $output .= '<span>' . $favorite_content['subject']->title . '</span> &nbsp;';
+//            $output .= '<span style="padding-left: 15px;">册次：</span>';
+            $output .= '<span>' . $favorite_content['term']->title . '</span>  &nbsp;';
+//            $output .= '<span style="padding-left: 15px;">资源类型：</span>';
+            $output .= '<span>' . $favorite_content['content_type']->title . '</span> ';
             $output .= '</div>';
 
-            $output .= '<div class="item-date">收藏时间：' . $favorite_content['usage']->update_time;
+            $output .= '<div class="item-date">收藏时间：' . substr($favorite_content['usage']->update_time,0,16);
             $output .= '</div>';
 
             $output .= '</div>';

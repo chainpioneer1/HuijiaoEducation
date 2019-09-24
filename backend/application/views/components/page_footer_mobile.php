@@ -30,16 +30,26 @@
 
         $('.page-loading-status').hide();
     });
-    $(document).ready(function(){
+    $(document).ready(function () {
         $(".owl-carousel").owlCarousel({
-            autoplay:true,
-            loop:true,
-            autoplayTimeout:3000,
-            slideSpeed:10,
-            autoplayHoverPause:false,
-            responsiveClass:true,
-            items:1}
-        );
+            // autoplay: true,
+            // loop: true,
+            // autoplayTimeout: 3000,
+            // slideSpeed: 10,
+            // autoplayHoverPause: false,
+            // responsiveClass: true,
+            // autoHeight: false,
+            // items: 1
+            items: 1,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            loop: true,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            mouseDrag: true,
+            touchDrag: true,
+            smartSpeed: 1200
+        });
         $('.header-logo').width($('.header-logo').height());
         $('#input-search').focus(function () {
             $('.footer').hide();

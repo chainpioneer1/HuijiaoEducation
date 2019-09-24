@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 define("PAGESIZE", 16);
 
-class Student extends CI_Controller
+class MailTo extends CI_Controller
 {
     function __construct()
     {
@@ -27,6 +27,9 @@ class Student extends CI_Controller
         $this->load->model("questions_m");
         $this->load->model("recommend_m");
         $this->load->library('form_validation');
+
+        $this->load->library('form_validation');
+        $this->load->model('recommend');
 
         $this->load->model('users_m');
         $this->users_m->update_usage_time();
@@ -86,8 +89,8 @@ class Student extends CI_Controller
             } else {
                 $subjects = $this->subject_m->get_where(['status' => 1, 'type' => 2]);
             }
-            $subjects = $this->subject_m->get_where(['status' => 1]);
         }
+
         for ($i = 0; $i < count($subjects); $i++) {
             $subject = $subjects[$i];
             $coursetypes = $this->coursetype_m->get_where_join(['tbl_huijiao_subject.id' => $subject->id]);
@@ -108,7 +111,6 @@ class Student extends CI_Controller
             ));
         }
 
-        var_dump($subjectsArr);
         $this->data["subjectsArr"] = $subjectsArr;
         $this->data["subview"] = "student/index";
         $this->load->view('_layout_main_mobile', $this->data);
@@ -228,7 +230,6 @@ class Student extends CI_Controller
             } else {
                 $subjects = $this->subject_m->get_where(['status' => 1, 'type' => 2]);
             }
-            $subjects = $this->subject_m->get_where(['status' => 1]);
         }
 
         for ($i = 0; $i < count($subjects); $i++) {

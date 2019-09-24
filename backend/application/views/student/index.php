@@ -18,12 +18,24 @@ if ($this->session->userdata("loggedin") != FALSE) {
     <div class="header" id="stickyHeader">
         <h1>首页</h1>
     </div>
-    <div class="banner owl-carousel">
+    <div class="slider-bar owl-carousel">
         <?php foreach ($banners as $ban_img): ?>
             <div><img src="<?= base_url() . 'uploads/' . $ban_img->icon_path; ?>" alt="NO Image"></div>
         <?php endforeach; ?>
     </div>
     <div class="main-content">
+        <div class="subject-wrap">
+            <?php foreach ($subjectsArr as $elem): ?>
+                <?php
+                $subject = $elem['subject'];
+                ?>
+                <a class="subject-elem" data-subject-id="<?= $subject->id ?>"
+                   data-img-src="<?= $subject->image_icon ?>">
+                    <img src="<?= base_url('assets/images/mobile/') . '/' . $subject->image_icon . '.png'; ?>">
+                    <p><?= $subject->title; ?></p>
+                </a>
+            <?php endforeach; ?>
+        </div>
 
         <div class="profile-favorite " style="background-color: #fff; margin-bottom: 10px;padding-bottom: 5px;">
             <h3 style="border: none">精彩推荐</h3>
@@ -42,33 +54,20 @@ if ($this->session->userdata("loggedin") != FALSE) {
                     ?>
                     <div class="item-content">
                         <img class="feature-img" src="<?= base_url() . $recommand['recommand']->image_icon ?>"
-                             onclick="location.href=\'<?= base_url('student/contentplayer') . '/' . $recommand['content']->id ?>\'">
+                             onclick="location.href='<?= base_url('student/contentplayer') . '/' . $recommand['content']->id ?>'">
                         <div class="item-body">
                             <div class="item-subject">
-                                <span onclick="location.href='<?= base_url('student/contentplayer') . '/' . $recommand['content']->id ?>'"><?= $recommand['recommand']->subject ?></span>
+                                <span onclick="location.href='<?= base_url('student/contentplayer') . '/' . $recommand['content']->id ?>'">
+                                    <?= $title ?></span>
                             </div>
-
                             <div class="item-title">
-                                <span onclick="location.href='<?= base_url('student/contentplayer') . '/' . $recommand['content']->id ?>'"><?= $title ?></span>
-
+                                <span onclick="location.href='<?= base_url('student/contentplayer') . '/' . $recommand['content']->id ?>'">
+                                    <?= $recommand['recommand']->subject.'&nbsp;&nbsp;&nbsp;'.$recommand['recommand']->term ?></span>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-        </div>
-
-        <div class="subject-wrap">
-            <?php foreach ($subjectsArr as $elem): ?>
-                <?php
-                $subject = $elem['subject'];
-                ?>
-                <a class="subject-elem" data-subject-id="<?= $subject->id ?>"
-                   data-img-src="<?= $subject->image_icon ?>">
-                    <img src="<?= base_url('assets/images/mobile/') . '/' . $subject->image_icon . '1.png'; ?>">
-                    <p><?= $subject->title; ?></p>
-                </a>
-            <?php endforeach; ?>
         </div>
 
         <div class="subject-tab-section-wrap">

@@ -53,6 +53,9 @@ $ctrlRoot = 'admin/usage';
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="portlet light bordered">
+                    <div class="portlet-body">
                     <div class="table-toolbar" data-id="1">
                         <!------Tool bar parts (add button and search function------>
                         <div class="row">
@@ -137,32 +140,29 @@ $ctrlRoot = 'admin/usage';
                         </div>
                         <!------Tool bar parts (add button and search function------>
                     </div>
+                    </div>
+                </div>
+                <div class="portlet light bordered">
                     <div class="portlet-body">
                         <div class="main-frame body" data-id="4">
                             <div class="frame-title" data-type="bar"></div>
                             <div class="canvas-container" data-type="bar">
                                 <div class="canvas-item">
                                     <div class="chart-title">浏览</div>
-                                    <div class="chart">
-                                        <canvas id="chart-total_read"></canvas>
-                                    </div>
+                                    <div class="chart"></div>
                                 </div>
                             </div>
                             <div class="frame-title" data-type="line"></div>
                             <div class="canvas-container" data-type="line">
                                 <div class="canvas-item">
                                     <div class="chart-title">浏览</div>
-                                    <div class="chart">
-                                        <canvas id="chart-total_read"></canvas>
-                                    </div>
+                                    <div class="chart"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="main-frame body" data-id="5">
                             <div class="frame-title">资源使用柱状图</div>
-                            <div class="canvas-container">
-                                <canvas id="chart-area-contents"></canvas>
-                            </div>
+                            <div class="canvas-container"></div>
                         </div>
                         <div class="main-frame" data-id="1">
                             <div class="frame-title">资源使用柱状图</div>
@@ -399,12 +399,12 @@ $ctrlRoot = 'admin/usage';
                                         {
                                             data: chartContent,
                                             backgroundColor: colorInfo[0],
-                                            label: '课件'
+                                            label: '资源'
                                         },
                                         {
                                             data: chartLesson,
                                             backgroundColor: colorInfo[1],
-                                            label: '资源'
+                                            label: '课件'
                                         }
                                     ],
                                     labels: termLabels
@@ -486,21 +486,29 @@ $ctrlRoot = 'admin/usage';
                 var sItem = subjectList[i];
                 var contentTypeData = contentTypeContentDetail.filter(function (a) {
                     return a.subject_id == sItem.id;
-                })
+                });
                 var contentTypeLabels = [];
+                var contentTypeIds = [];
                 for (var c = 0; c < contentTypeData.length; c++) {
                     var cTypeItem = contentTypeList.filter(function (a) {
                         return a.id == contentTypeData[c].contenttype_id;
                     });
                     contentTypeLabels.push(cTypeItem[0].title);
+                    contentTypeIds.push(cTypeItem[0].id);
                 }
+                contentTypeLabels = removeDuplicated(contentTypeLabels);
                 var datasets = [];
                 for (var c = 0; c < keys.length; c++) {
                     var key = keys[c];
                     var label = chartTitles[c];
                     var chartData = [];
-                    for (var k = 0; k < contentTypeData.length; k++) {
-                        chartData.push(contentTypeData[k][key]);
+                    for (var k = 0; k < contentTypeLabels.length; k++) {
+                        var contents = 0;
+                        for (var d = 0; d < contentTypeData.length; d++) {
+                            if (contentTypeData[d]['contenttype_id'] == contentTypeIds[k])
+                                contents += parseInt(contentTypeData[d][key]);
+                        }
+                        chartData.push(contents);
                     }
                     datasets.push({
                         data: chartData,

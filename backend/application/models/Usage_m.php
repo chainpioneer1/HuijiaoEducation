@@ -309,7 +309,7 @@ class Usage_m extends MY_Model
                     ->join('tbl_huijiao_subject', 'tbl_huijiao_terms.subject_id = tbl_huijiao_subject.id', 'left')
                     ->where('tbl_huijiao_subject.title is not null')
                     ->order_by('tbl_huijiao_subject.subject_no asc')
-                    ->group_by('tbl_huijiao_contents.content_type_no');
+                    ->group_by('tbl_huijiao_contents.id');
                 break;
             case '':
                 return null;

@@ -170,9 +170,10 @@ video::-internal-media-controls-overlay-cast-button {
 .header h1 {
     font-size: calc(5vw);
     color: #3c3c3c;
-    text-align: center;
+    text-align: left;
     font-weight: bold;
-    margin: 0
+    margin: 0;
+    padding: 0 30px;
 }
 
 .header .title {
@@ -319,8 +320,77 @@ video::-internal-media-controls-overlay-cast-button {
     height: 200px;
 }
 
+.slider-bar {
+    position: relative;
+    height: 140px;
+    width: 100%;
+    background: white;
+}
+
+.slider-bar * {
+    position: relative;
+}
+
+.owl-carousel .owl-stage {
+    height: 140px;
+}
+
+.owl-carousel.owl-drag .owl-item {
+    width: 100%;
+    height: 100%;
+}
+
+.slider-bar img {
+    width: 100%;
+    height: 100%;
+}
+
+.slider-bar .owl-nav {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    display: none;
+}
+
+.slider-bar .owl-dots {
+    position: absolute;
+    left: 75%;
+    top: 90%;
+    width: auto;
+    height: 12px;
+    margin: 0;
+    padding: 0 5px;
+    background: transparent;
+    z-index: 10000;
+    border-radius: 0;
+}
+
+.slider-bar .owl-dot {
+    border-radius: 0;
+    position: relative;
+    display: inline-block;
+    top: 0;
+    margin: 0 3px;
+    padding: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    line-height: 17px;
+    background: #56585c;
+    -webkit-transform: translateY(-120%);
+    -moz-transform: translateY(-120%);
+    -ms-transform: translateY(-120%);
+    -o-transform: translateY(-120%);
+    transform: translateY(-120%);
+}
+
+.slider-bar .owl-dot.active {
+    background: #e9cf46;
+}
 .owl-stage-outer {
-    border-radius: 10px
+    border-radius: 0px;
+    left: 5%;
+    width: 90%;
 }
 
 .banner img {
@@ -633,15 +703,15 @@ video::-internal-media-controls-overlay-cast-button {
 .subject-wrap {
     text-align: center;
     background-color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     padding-bottom: 5px;
 }
 
 .subject-elem {
     display: inline-block;
-    width: 15%;
+    width: 20%;
     height: 100%;
-    margin-right: 5.5%;
+    margin-right: 2.5%;
     text-decoration: none !important;
 }
 
@@ -652,21 +722,21 @@ video::-internal-media-controls-overlay-cast-button {
 .subject-elem img {
     width: 45%;
     height: 45%;
-    margin: 30px 0 10px
+    margin: 20px 0 10px
 }
 
 .subject-elem p {
-    font-size: calc(3.5vw);
+    font-size: calc(3.9vw);
     margin: 0 0 5px;
     color: #787878
 }
 
 .subject-elem.active {
-    border-bottom: 2px solid #00cdaf
+    /*border-bottom: 2px solid #00cdaf*/
 }
 
 .subject-elem.active p {
-    color: #00cdaf
+    /*color: #00cdaf*/
 }
 
 .subject-tab-section-wrap {
@@ -1567,10 +1637,10 @@ span.btn {
 }
 
 .profile-favorite h3 {
-    font-size: calc(5vw);
+    font-size: calc(4vw);
     font-weight: bold;
     color: #404040;
-    padding: 20px calc(3vw) 8px;
+    padding: 20px calc(5vw) 8px;
     border-bottom: 1px solid #ccc;
     margin: 0;
 }
@@ -1591,11 +1661,11 @@ span.btn {
 
 .profile-favorite .item-content-page .item-content .feature-img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .profile-favorite .item-content-page .item-content .item-subject {
-    font-size: calc(4.3vw);
+    font-size: calc(3.8vw);
     color: #404040;
     margin: 10px 0 2px;
     font-weight: bold;
@@ -1612,8 +1682,7 @@ span.btn {
 
 .profile-favorite .item-content-page .item-content .item-title {
     font-size: calc(3vw);
-    color: #404040;
-    font-weight: bold;
+    color: #aaa;
 }
 
 .profile-favorite .item-content-page .item-content .item-title .item-infobar {

@@ -377,7 +377,7 @@ div.fileinput-new[item_name='nameview5']{
 
 div.main-frame{
     display: none;
-    margin-bottom: 20px;
+    margin: 0 0;
 }
 div.main-frame .frame-title{
     font-size: 18px;
@@ -432,6 +432,10 @@ div.main-frame[data-id="4"] .total-info{
     width: 45%;
     display: inline-block;
     margin-top: 20px;
+}
+
+.table-toolbar{
+    margin:0;
 }
 
 input[type="date"]::-webkit-clear-button

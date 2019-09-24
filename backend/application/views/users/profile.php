@@ -35,10 +35,10 @@
                     <?php } ?>
                 </div>
             </div>
-            <div class="prev-btn" onclick="onPrevBtn()">
+            <div class="prev-btn" onclick="onPrevBtn()" style="display: none;">
                 上一页
             </div>
-            <div class="next-btn" onclick="onNextBtn()">
+            <div class="next-btn" onclick="onNextBtn()" style="display: none;">
                 下一页
             </div>
             <div class="profile-main-info active" id="profile-main-info">
@@ -198,8 +198,8 @@
 
     function onSelContentSrc(self) {
 		sessionStorage.setItem('profile-subpage', 0);
-        $('.prev-btn').show();
-        $('.next-btn').show();
+        // $('.prev-btn').show();
+        // $('.next-btn').show();
         $('.info-sel-btn').removeClass('active');
         $('.lesson-sel-btn').removeClass('active');
         $('.profile-main-info').removeClass('active');
@@ -212,8 +212,8 @@
 
     function onSelLessonSrc(self) {
 		sessionStorage.setItem('profile-subpage', 1);
-        $('.prev-btn').show();
-        $('.next-btn').show();
+        // $('.prev-btn').show();
+        // $('.next-btn').show();
         $('.info-sel-btn').removeClass('active');
         $('.content-sel-btn').removeClass('active');
         $('.profile-main-info').removeClass('active');

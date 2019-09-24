@@ -87,14 +87,18 @@ class Usage extends Admin_Controller
             $_POST['search_subject'] != '' && $filter['tbl_huijiao_terms.subject_id'] = $_POST['search_subject'];
             $_POST['search_term'] != '' && $filter['tbl_huijiao_terms.id'] = $_POST['search_term'];
             $_POST['search_course_type'] != '' && $filter['tbl_huijiao_contents.course_type_id'] = $_POST['search_course_type'];
-            if($_POST['search_date1'] != ''){
-                $this->data['search_date1'] = $_POST['search_date1'];
-                $filterStr .= ' date(tbl_usage.update_time) >= date(\'' . $_POST['search_date1'].'\')';
+            if (isset($_POST['search_date1'])) {
+                if ($_POST['search_date1'] != '') {
+                    $this->data['search_date1'] = $_POST['search_date1'];
+                    $filterStr .= ' date(tbl_usage.update_time) >= date(\'' . $_POST['search_date1'] . '\')';
+                }
             }
-            if ($_POST['search_date2'] != '') {
-                if ($filterStr != '') $filterStr .= ' and ';
-                $this->data['search_date2'] = $_POST['search_date2'];
-                $filterStr .= ' date(tbl_usage.update_time) <= date(\'' . $_POST['search_date2'].'\')';
+            if (isset($_POST['search_date2'])) {
+                if ($_POST['search_date2'] != '') {
+                    if ($filterStr != '') $filterStr .= ' and ';
+                    $this->data['search_date2'] = $_POST['search_date2'];
+                    $filterStr .= ' date(tbl_usage.update_time) <= date(\'' . $_POST['search_date2'] . '\')';
+                }
             }
             $this->session->set_userdata('filter', $filter);
         }
