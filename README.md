@@ -23,20 +23,24 @@ Main Service Folder for PHP : backend
 Main Service Folder for Tomcat : backend/singleLoginTest
 
 MySQL Dump File : qdzyxm_db.sql
+
+Android Package : Huijiao.apk
+
+iOS Package : Huijiao.ipa
 ```
 
 ## Site Overview
 
-![](/backend/assets/UserGuide0.mp4)
+![](UserGuide1.mp4)
 
-![](/backend/assets/UserGuide3.mp4)
+![](UserGuide3.mp4)
 
-![](/backend/assets/UserGuide4.mp4)
+![](UserGuide4.mp4)
 
 ## Contact Information
 
-```sh
-Live Site: ![]http://www.hjle.qdedu.net
 
-Email : gong.fei@outlook.com
-```
+>Live Site: http://www.hjle.qdedu.net
+>
+>Email : gong.fei@outlook.com
+
