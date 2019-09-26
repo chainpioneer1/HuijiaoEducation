@@ -4,7 +4,7 @@
 >
 > Have convenient interface and smooth design, redundant resources for education.
 >
-> Supports self learning for Students on 4 subjects - Language, Low Maths, High Maths, Physics.
+> Supports self learning for Students on 4 subjects - Language, Basic Maths, High Maths, Physics.
 >
 > Supports Android and iOS Mobile learning.
 
