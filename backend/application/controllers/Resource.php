@@ -49,6 +49,8 @@ class Resource extends CI_Controller
         $this->data['pageType'] = 0;
 
         if ($id == 0) {
+            redirect(base_url('home/index'));
+            return;
             $this->data['parentView'] = 'back';
             $this->data["lessonItem"] = array();
             $this->data["courseList"] = array();
@@ -125,7 +127,8 @@ class Resource extends CI_Controller
         $this->data['parentView'] = 'back';
         $contentItems = $this->contents_m->get_where(array('id' => $id, 'status' => 1));
         if ($contentItems == null) {
-
+            redirect(base_url('home/index'));
+            return;
         }
         $this->data["contentItem"] = $contentItems[0];
 
@@ -178,6 +181,10 @@ class Resource extends CI_Controller
             $this->signin_m->loggedin() == TRUE || redirect(base_url('home/index'));
         $this->data['parentView'] = 'back';
         $contentItems = $this->contents_m->get_where(array('id' => $id, 'status' => 1));
+        if ($contentItems == null) {
+            redirect(base_url('home/index'));
+            return;
+        }
         $this->data["contentItem"] = $contentItems[0];
 
         // get usage
@@ -385,15 +392,19 @@ class Resource extends CI_Controller
     public function lessonware_home($id = 0, $title = '')
     {
         $this->signin_m->loggedin() == TRUE || redirect(base_url('home/index'));
+        $user_id = $this->session->userdata('loginuserID');
         $this->data['lesson'] = array();
         $this->data['lessonContents'] = array();
         if ($id != 0) {
-            $this->data['lesson'] = $this->lessons_m->get_single(array('id' => $id));
+            $this->data['lesson'] = $this->lessons_m->get_single(array('id' => $id, 'user_id' => $user_id));
             if ($this->data['lesson'] != null)
                 $this->data['lessonContents'] = $this->contents_m->getContentsFromLessonId($this->data['lesson']->lesson_info);
+            else {
+                redirect(base_url('resource/lessonware'));
+                return;
+            }
         }
 //        $this->courses_m->clearUnusedCourses();
-        $userID = $this->session->userdata('loginuserID');
         $this->data['parentView'] = 'resource/lessonware';
         $this->data['subjects'] = $this->subject_m->get_where(array('status' => 1));
         $this->data['terms'] = $this->terms_m->get_where(array('status' => 1));
@@ -480,10 +491,17 @@ class Resource extends CI_Controller
         if ($_POST) {
             $id = $_POST['id'] . '';
             $lessonItem = array();
-            $lessonItem['title'] = $_POST['title'];
+            $lessonItem['title'] = '';
+            if (isset($_POST['title']))
+                $lessonItem['title'] = str_replace('script>','div>', $this->db->escape_str($_POST['title']));
+            if ($lessonItem['title'] == '') {
+                $ret['data'] = '请输入课件名称';
+                echo json_encode($ret);
+                return;
+            }
             $lessonItem['term_id'] = $_POST['term_id'];
             $lessonItem['lesson_info'] = $_POST['lesson_info'];
-            $lessonItem['user_id'] = $_POST['user_id'];
+            $lessonItem['user_id'] = $this->session->userdata('loginuserID');
             $lessonItem['status'] = 1;
             $lessonItem['update_time'] = date('Y-m-d H:i:s');
             $ncw_type = $_POST['icon_format'];
@@ -1189,7 +1207,8 @@ class Resource extends CI_Controller
 
         if ($_POST) {
             $usage_id = $_POST['usage_id'];
-            $user_id = $_POST['user_id'];
+            $user_id = $this->session->userdata('loginuserID');
+            if (!$user_id) $user_id = '0';
             $lesson_id = $_POST['lesson_id'];
             $favorite = $_POST['favorite'];
             log_message('info', '-- lesson_favorite $usage_id : ' . $usage_id);
@@ -1235,7 +1254,8 @@ class Resource extends CI_Controller
 
         if ($_POST) {
             $usage_id = $_POST['usage_id'];
-            $user_id = $_POST['user_id'];
+            $user_id = $this->session->userdata('loginuserID');
+            if (!$user_id) $user_id = '0';
             $lesson_id = $_POST['lesson_id'];
             $like = $_POST['like'];
             log_message('info', '-- lesson_like $usage_id : ' . $usage_id);
@@ -1282,7 +1302,7 @@ class Resource extends CI_Controller
         );
 
         if ($_POST) {
-            $user_id = $_POST['user_id'];
+            $user_id = $this->session->userdata('loginuserID');
             if (!$user_id) $user_id = '0';
             $lesson_id = $_POST['lesson_id'];
             log_message('info', '-- lesson_read $user_id : ' . $user_id);
@@ -1327,7 +1347,8 @@ class Resource extends CI_Controller
 
         if ($_POST) {
             $usage_id = $_POST['usage_id'];
-            $user_id = $_POST['user_id'];
+            $user_id = $this->session->userdata('loginuserID');
+            if (!$user_id) $user_id = '0';
             $content_id = $_POST['content_id'];
             $favorite = $_POST['favorite'];
             log_message('info', '-- content_favorite $usage_id : ' . $usage_id);
@@ -1375,7 +1396,8 @@ class Resource extends CI_Controller
 
         if ($_POST) {
             $usage_id = $_POST['usage_id'];
-            $user_id = $_POST['user_id'];
+            $user_id = $this->session->userdata('loginuserID');
+            if (!$user_id) $user_id = '0';
             $content_id = $_POST['content_id'];
             $like = $_POST['like'];
             log_message('info', '-- content_like $usage_id : ' . $usage_id);
@@ -1422,7 +1444,7 @@ class Resource extends CI_Controller
         );
 
         if ($_POST) {
-            $user_id = $_POST['user_id'];
+            $user_id = $this->session->userdata('loginuserID');
             if (!$user_id) $user_id = '0';
             $content_id = $_POST['content_id'];
             log_message('info', '-- content_read $user_id : ' . $user_id);
@@ -1466,7 +1488,8 @@ class Resource extends CI_Controller
         );
 
         if ($_POST) {
-            $user_id = $_POST['user_id'];
+            $user_id = $this->session->userdata('loginuserID');
+            if (!$user_id) $user_id = '0';
             $content_id = $_POST['content_id'];
 
             $usage = $this->usage_m->get_where(['content_id' => $content_id, 'user_id' => $user_id]);

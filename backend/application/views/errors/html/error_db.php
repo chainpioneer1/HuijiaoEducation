@@ -56,9 +56,12 @@ p {
 </style>
 </head>
 <body>
+	<a href="/"><img src="/assets/images/403.jpg" style="width: 100%;"></a>
+	<!--
 	<div id="container">
 		<h1><?php echo $heading; ?></h1>
 		<?php echo $message; ?>
 	</div>
+	-->
 </body>
 </html>

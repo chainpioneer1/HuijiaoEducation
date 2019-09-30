@@ -53,7 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'testing');
 
 /*
  *---------------------------------------------------------------
@@ -225,12 +225,9 @@ switch (ENVIRONMENT)
  */
 	// The name of THIS file
 	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
-
-
-	// The PHP file extension
-	// this global constant is deprecated.
-	define('EXT', '.php'); //paipai
 	
+	define('EXT','.php');
+
 	// Path to the system directory
 	define('BASEPATH', $system_path);
 

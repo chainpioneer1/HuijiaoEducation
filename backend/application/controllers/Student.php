@@ -108,7 +108,6 @@ class Student extends CI_Controller
             ));
         }
 
-        var_dump($subjectsArr);
         $this->data["subjectsArr"] = $subjectsArr;
         $this->data["subview"] = "student/index";
         $this->load->view('_layout_main_mobile', $this->data);
@@ -256,10 +255,12 @@ class Student extends CI_Controller
         $this->load->view('_layout_main_mobile', $this->data);
     }
 
-
     public function coursetype($id = 0)
     {
-        $this->signin_m->loggedin() == TRUE || redirect(base_url('student/login'));
+//        $this->signin_m->loggedin() == TRUE || redirect(base_url('student/login'));
+
+        $user_id = 0;
+        $user_class = '1-1';
 
         $coursetype = $this->coursetype_m->get_single(['id' => $id]);
         $contents = $this->contents_m->get_where(['course_type_id' => $id, 'status' => 1]);
@@ -269,7 +270,7 @@ class Student extends CI_Controller
             $content = $contents[$i];
             $usages = $this->usage_m->get_where(['is_like' => 1, 'content_id' => $content->id]);
 
-            $usage_like = $this->usage_m->get_where(['user_id' => $this->session->userdata('loginuserID'), 'content_id' => $content->id]);
+            $usage_like = $this->usage_m->get_where(['user_id' => $user_id, 'content_id' => $content->id]);
             $usage_id = '';
             if ($usage_like != null) {
                 $usage_id = $usage_like[0]->id;
@@ -283,7 +284,7 @@ class Student extends CI_Controller
             foreach ($usages_read as $usage) {
                 $read_count += $usage->read_count;
             }
-            $usages_read_mine = $this->usage_m->get_where(['user_id' => $this->session->userdata('loginuserID'), 'content_id' => $content->id]);
+            $usages_read_mine = $this->usage_m->get_where(['user_id' => $user_id, 'content_id' => $content->id]);
 
             array_push($contentsArr, array(
                 'content' => $content,

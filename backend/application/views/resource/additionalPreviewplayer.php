@@ -27,10 +27,9 @@
     var pretitle = "<?= $title?>";
     var title = '';
     var content_id = "<?= $content_id ?>";
-    var user_id = "<?= $this->session->userdata('loginuserID') ?>" * 1;
     var pageType = '<?= $pageType?>';
 
-    if (!user_id) {
+    if (!("<?= $this->session->userdata('loginuserID') ?>" * 1)) {
         $('.bottom_buttons_section .buttons-container').html('');
         $('.prev_btn').remove();
     }

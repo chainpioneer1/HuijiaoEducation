@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 body {
 	background-color: #fff;
-	margin: 40px;
+	margin: 0px;
 	font: 13px/20px normal Helvetica, Arial, sans-serif;
 	color: #4F5155;
 }
@@ -55,10 +55,12 @@ p {
 }
 </style>
 </head>
-<body>
+<body>	
+	<a href="/"><img src="/assets/images/500.jpg" style="width: 100%;"></a>
+	<!--
 	<div id="container">
 		<h1><?php echo $heading; ?></h1>
 		<?php echo $message; ?>
-	</div>
+	</div>-->
 </body>
 </html>

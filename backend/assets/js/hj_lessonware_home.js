@@ -563,7 +563,6 @@ function controlConfig() {
                     title: $('input.item-select').val(),
                     term_id: termId,
                     lesson_info: JSON.stringify(lessonInfoList),
-                    user_id: loginUserId,
                 };
                 if (_lessonItem.length != 0) uploadData.id = _lessonItem.id;
 
@@ -576,7 +575,6 @@ function controlConfig() {
                 fdata.append("title", uploadData.title);
                 fdata.append("term_id", uploadData.term_id);
                 fdata.append("lesson_info", uploadData.lesson_info);
-                fdata.append("user_id", uploadData.user_id);
                 fdata.append("icon_format", icon_format);
                 $.ajax({
                     url: baseURL + "resource/updateLessonInfo",

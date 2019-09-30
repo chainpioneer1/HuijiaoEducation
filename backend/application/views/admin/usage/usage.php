@@ -28,23 +28,39 @@ $ctrlRoot = 'admin/usage';
                     <div class="usage-tab-item" data-id="2">科目比例统计</div>
                     <div class="usage-tab-item" data-id="3">年级比例统计</div>
                 </div>
-                <div class="portlet light bordered">
+                <div class="portlet light bordered" data-id="4">
                     <div class="portlet-body">
                         <div class="main-frame" data-id="4">
                             <div class="row">
                                 <div class="total-info">
+                                    <div style="float: right;">
+                                        <img src="<?= base_url('assets/images/backend/u154.svg') ?>"
+                                             style="height: 40px;margin-right: 15px;"/>
+                                    </div>
                                     <div>浏 览 量</div>
                                     <div class="total_read"></div>
                                 </div>
                                 <div class="total-info">
+                                    <div style="float: right;">
+                                        <img src="<?= base_url('assets/images/backend/u158.svg') ?>"
+                                             style="height: 40px;margin-right: 15px;"/>
+                                    </div>
                                     <div>收 藏 量</div>
                                     <div class="total_favorite"></div>
                                 </div>
                                 <div class="total-info">
+                                    <div style="float: right;">
+                                        <img src="<?= base_url('assets/images/backend/u160.svg') ?>"
+                                             style="height: 40px;margin-right: 15px;"/>
+                                    </div>
                                     <div>下 载 量</div>
                                     <div class="total_download"></div>
                                 </div>
                                 <div class="total-info">
+                                    <div style="float: right;">
+                                        <img src="<?= base_url('assets/images/backend/u156.svg') ?>"
+                                             style="height: 40px;margin-right: 15px;"/>
+                                    </div>
                                     <div>
                                         点 赞 量
                                     </div>
@@ -56,90 +72,90 @@ $ctrlRoot = 'admin/usage';
                 </div>
                 <div class="portlet light bordered">
                     <div class="portlet-body">
-                    <div class="table-toolbar" data-id="1">
-                        <!------Tool bar parts (add button and search function------>
-                        <div class="row">
-                            <form class="form-horizontal col-md-10" action="<?= base_url($ctrlRoot . '/usage') ?>"
-                                  id="searchForm" role="form" method="post" enctype="multipart/form-data"
-                                  accept-charset="utf-8">
-                                <div class="row" data-id="1">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="col-md-5 control-label">所属科目:</label>
-                                            <div class="col-md-7">
-                                                <select type="text" class="form-control"
-                                                        name="search_subject"></select>
+                        <div class="table-toolbar" data-id="1">
+                            <!------Tool bar parts (add button and search function------>
+                            <div class="row">
+                                <form class="form-horizontal col-md-10" action="<?= base_url($ctrlRoot . '/usage') ?>"
+                                      id="searchForm" role="form" method="post" enctype="multipart/form-data"
+                                      accept-charset="utf-8">
+                                    <div class="row" data-id="1">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">所属科目:</label>
+                                                <div class="col-md-7">
+                                                    <select type="text" class="form-control"
+                                                            name="search_subject"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">所属册次:</label>
+                                                <div class="col-md-7">
+                                                    <select type="text" class="form-control"
+                                                            name="search_term"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-md-5 control-label">所属课程:</label>
+                                                <div class="col-md-7">
+                                                    <select type="text" class="form-control"
+                                                            name="search_course_type"></select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="col-md-5 control-label">所属册次:</label>
-                                            <div class="col-md-7">
-                                                <select type="text" class="form-control"
-                                                        name="search_term"></select>
+                                    <div class="row" data-id="4" style="display: none;">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">时间:</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" onfocus="(this.type='date')"
+                                                           onblur="this.type='text'" class="form-control"
+                                                           name="search_date1">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" onfocus="(this.type='date')"
+                                                           onblur="this.type='text'" class="form-control"
+                                                           name="search_date2">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="col-md-5 control-label">所属课程:</label>
-                                            <div class="col-md-7">
-                                                <select type="text" class="form-control"
-                                                        name="search_course_type"></select>
+                                    <div class="row" data-id="5" style="display: none;">
+                                        <div class="col-md-4">
+                                            <div style="font-size: 20px;padding-left: 30px;">按资源类型统计</div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">时间:</label>
+                                                <div class="col-md-4">
+                                                    <input type="text" onfocus="(this.type='date')"
+                                                           onblur="this.type='text'" class="form-control"
+                                                           name="search_date1">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" onfocus="(this.type='date')"
+                                                           onblur="this.type='text'" class="form-control"
+                                                           name="search_date2">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row" data-id="4" style="display: none;">
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label">时间:</label>
-                                            <div class="col-md-4">
-                                                <input type="text" onfocus="(this.type='date')"
-                                                       onblur="this.type='text'" class="form-control"
-                                                       name="search_date1">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input type="text" onfocus="(this.type='date')"
-                                                       onblur="this.type='text'" class="form-control"
-                                                       name="search_date2">
-                                            </div>
-                                        </div>
+                                </form>
+                                <div class="col-md-2">
+                                    <div class="btn-group right-floated" style="margin-right: 30px;">
+                                        <button class=" btn btn-default" onclick="searchItems(this)">
+                                            <i class="fa fa-search"></i>&nbsp查询
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="row" data-id="5" style="display: none;">
-                                    <div class="col-md-4">
-                                        <div style="font-size: 20px;padding-left: 30px;">按资源类型统计</div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label">时间:</label>
-                                            <div class="col-md-4">
-                                                <input type="text" onfocus="(this.type='date')"
-                                                       onblur="this.type='text'" class="form-control"
-                                                       name="search_date1">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input type="text" onfocus="(this.type='date')"
-                                                       onblur="this.type='text'" class="form-control"
-                                                       name="search_date2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="col-md-2">
-                                <div class="btn-group right-floated" style="margin-right: 30px;">
-                                    <button class=" btn btn-default" onclick="searchItems(this)">
-                                        <i class="fa fa-search"></i>&nbsp查询
-                                    </button>
                                 </div>
                             </div>
+                            <!------Tool bar parts (add button and search function------>
                         </div>
-                        <!------Tool bar parts (add button and search function------>
-                    </div>
                     </div>
                 </div>
                 <div class="portlet light bordered">
@@ -260,6 +276,7 @@ $ctrlRoot = 'admin/usage';
                 $('#searchForm .row[data-id="' + menu_id + '"]').show();
                 $('#searchForm .row[data-id] input').attr('disabled', 'disabled');
                 $('#searchForm .row[data-id="' + menu_id + '"] input').removeAttr('disabled');
+                $('.portlet[data-id="4"').hide();
                 switch (menu_id) {
                     case '1':
                         drawContentsInfo();
@@ -271,6 +288,7 @@ $ctrlRoot = 'admin/usage';
                         drawTermsInfo();
                         break;
                     case '4':
+                        $('.portlet[data-id="4"').show();
                         $('.main-frame[data-id="' + menu_id + '"] .total_read').html(
                             contentsInfo[0].total_read * 1 + lessonsInfo[0].total_read * 1);
                         $('.main-frame[data-id="' + menu_id + '"] .total_favorite').html(
@@ -298,7 +316,7 @@ $ctrlRoot = 'admin/usage';
             var max = 0, maxkey = 0;
             var colorInfo = [];
             for (var i = 0; i < 10; i++) colorInfo.push('#' + generateRandomStr());
-            var content_html = '<div>按科目统计</div>';
+            var content_html = '<div style="text-align: left; width: 40%;">按科目统计</div>';
             for (var s = 0; s < subjectList.length; s++) {
                 var sItem = subjectList[s];
                 var termData = [];
@@ -310,7 +328,7 @@ $ctrlRoot = 'admin/usage';
                 termData = removeDuplicated(termData);
             }
             $('.main-frame.body[data-id="' + tabID + '"] .frame-title[data-type="bar"]').html(content_html);
-            var content_html = '<div>转化率</div>';
+            var content_html = '<div style="text-align: left; width: 40%;">转化率</div>';
             for (var s = 0; s < subjectList.length; s++) {
                 var sItem = subjectList[s];
                 var termData = [];

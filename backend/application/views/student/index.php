@@ -128,11 +128,11 @@ if ($this->session->userdata("loggedin") != FALSE) {
         <div style="position: relative; width: 100%; height: 100%">
             <a href="<?= base_url('student'); ?>" class="footer-btn active" id="footer-xuexi">
                 <img src="<?= base_url('assets/images/mobile/santubiao1.png') ?>">
-                <span>学习</span>
+                <span>首页</span>
             </a>
-            <a href="<?= base_url('student/work'); ?>" class="footer-btn" id="footer-zuoye">
+            <a href="<?= base_url('student/coursetype'); ?>" class="footer-btn" id="footer-zuoye">
                 <img src="<?= base_url('assets/images/mobile/santubiao4.png'); ?>">
-                <span>作业</span>
+                <span>学习</span>
             </a>
             <a href="<?= base_url('student/profile'); ?>" class="footer-btn" id="footer-my">
                 <img src="<?= base_url('assets/images/mobile/santubiao6.png'); ?>">

@@ -15,6 +15,7 @@ class Admins_m extends MY_Model
 
     function get_admin()
     {
+
         $query = $this->db->get($this->_table_name);
         return $query->result();
     }

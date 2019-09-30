@@ -61,8 +61,7 @@
     var title = localStorage.getItem("__id");
     var lesson_id = "<?= $lesson_id ?>";
     var usage_id = "<?= $usage->usage_id ?>";
-    var user_id = "<?= $this->session->userdata('loginuserID') ?>" * 1;
-    if (user_id == 0) {
+    if (!("<?= $this->session->userdata('loginuserID') ?>" * 1)) {
         $('.bottom_buttons_section .buttons-container').html('');
     }
     var pageType = '<?= $pageType?>';
@@ -91,7 +90,6 @@
             url: baseURL + "resource/lesson_read",
             dataType: "json",
             data: {
-                user_id: user_id,
                 lesson_id: lesson_id
             },
             success: function (res) {
@@ -121,7 +119,6 @@
             dataType: "json",
             data: {
                 usage_id: usage_id,
-                user_id: user_id,
                 lesson_id: lesson_id,
                 favorite: favorite,
             },
@@ -163,7 +160,6 @@
             dataType: "json",
             data: {
                 usage_id: usage_id,
-                user_id: user_id,
                 lesson_id: lesson_id,
                 like: like,
             },

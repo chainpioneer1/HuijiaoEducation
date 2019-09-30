@@ -58,9 +58,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </style>
 </head>
 <body>
+	<a href="/"><img src="/assets/images/500.jpg" style="width: 100%;"></a>
+	<!--
 <div id="container">
     <h1><?=$this->lang->line('AccessDenied') ?></h1>
     <p><?=$this->lang->line('DontHavePermission') ?></p>
 </div>
+-->
 </body>
 </html>

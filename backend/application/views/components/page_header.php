@@ -60,7 +60,7 @@ $CONF = [
         loginUserId: "<?= '' . $this->session->userdata('loginuserID')?>",
         loginUserSchoolId: "<?= '' . $this->session->userdata('user_school_id')?>"
     };
-    localStorage.setItem('session_info_id',CONF.loginUserId);
+    localStorage.setItem('session_info_id',"<?= '' . $this->session->userdata('loginuserID')?>");
     function sendCommand2APP(cmmd, param) {
 //            alert(cmmd);
         try {

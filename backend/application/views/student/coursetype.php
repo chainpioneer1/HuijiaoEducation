@@ -19,7 +19,7 @@ if ($this->session->userdata("loggedin") != FALSE) {
         <a href="<?= base_url('student') ?>" class="back-btn">
             <img src="<?= $imgDir . 'back.png' ?>">
         </a>
-        <h1><?= $coursetype->title ?></h1>
+        <h1><?= ($coursetype == null) ? '': $coursetype->title ?></h1>
     </div>
 
     <div class="main-content">
@@ -53,13 +53,13 @@ if ($this->session->userdata("loggedin") != FALSE) {
     </div>
     <div class="footer">
         <div style="position: relative; width: 100%; height: 100%">
-            <a href="<?= base_url('student'); ?>" class="footer-btn active" id="footer-xuexi">
-                <img src="<?= base_url('assets/images/mobile/santubiao1.png') ?>">
-                <span>学习</span>
+            <a href="<?= base_url('student'); ?>" class="footer-btn" id="footer-xuexi">
+                <img src="<?= base_url('assets/images/mobile/santubiao2.png') ?>">
+                <span>首页</span>
             </a>
-            <a href="<?= base_url('student/work'); ?>" class="footer-btn" id="footer-zuoye">
-                <img src="<?= base_url('assets/images/mobile/santubiao4.png'); ?>">
-                <span>作业</span>
+            <a href="<?= base_url('student/coursetype'); ?>" class="footer-btn active" id="footer-zuoye">
+                <img src="<?= base_url('assets/images/mobile/santubiao3.png'); ?>">
+                <span>学习</span>
             </a>
             <a href="<?= base_url('student/profile'); ?>" class="footer-btn" id="footer-my">
                 <img src="<?= base_url('assets/images/mobile/santubiao6.png'); ?>">

@@ -80,11 +80,10 @@
     var title = sessionStorage.getItem("__id");
     var content_id = "<?= $content_id ?>";
     var usage_id = "<?= $usage->usage_id ?>";
-    var user_id = "<?= $this->session->userdata('loginuserID') ?>" * 1;
     var pageType = '<?= $pageType?>';
 
     $('.prev_btn').remove();
-    if (!user_id) {
+    if (!("<?= $this->session->userdata('loginuserID') ?>" * 1)) {
         $('.bottom_buttons_section .buttons-container').html('');
     }
 
@@ -107,7 +106,6 @@
             url: baseURL + "resource/content_read",
             dataType: "json",
             data: {
-                user_id: user_id,
                 content_id: content_id
             },
             success: function (res) {
@@ -134,7 +132,6 @@
             url: baseURL + "resource/content_download",
             dataType: "json",
             data: {
-                user_id: user_id,
                 content_id: content_id
             },
             success: function (res) {
@@ -165,7 +162,6 @@
             dataType: "json",
             data: {
                 usage_id: usage_id,
-                user_id: user_id,
                 content_id: content_id,
                 favorite: favorite
             },
@@ -208,7 +204,6 @@
             dataType: "json",
             data: {
                 usage_id: usage_id,
-                user_id: user_id,
                 content_id: content_id,
                 like: like,
             },
