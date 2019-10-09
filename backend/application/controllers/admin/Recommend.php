@@ -122,6 +122,62 @@ class Recommend extends Admin_Controller
         }
     }
 
+    public function mobile($type)
+    {
+        $this->data["subscript"] = "admin/settings/script";
+        $this->data["subcss"] = "admin/settings/css";
+
+        if (!$type) $type = 2;
+        $titleArr = ['资源精选管理', '小学语文', '小学数学', '初中数学', '初中物理'];
+        $this->data['title'] = $titleArr[$type - 2];
+        $this->data['recommendType'] = '11'.($type+2);
+
+
+        $this->data['subjectList'] = $this->subject_m->getItems();
+        $this->data['termList'] = $this->terms_m->getItems();
+        $this->data['courseTypeList'] = $this->coursetype_m->getItems();
+
+        $filter = array();
+        if ($this->uri->segment(SEGMENT) == '') $this->session->unset_userdata('filter');
+        $search_keyword = '';
+        if ($_POST) {
+            $this->session->unset_userdata('filter');
+            $this->session->unset_userdata('keyword');
+            $_POST['search_no'] != '' && $filter['tbl_huijiao_recommend.recommend_no'] = $_POST['search_no'];
+            if ($_POST['search_title'] != '') {
+                $search_keyword = "(tbl_huijiao_subject.title like '%" . $_POST["search_title"] . "%' ";
+                $search_keyword .= "or tbl_huijiao_terms.title like '%" . $_POST["search_title"] . "%' ";
+                $search_keyword .= "or tbl_huijiao_content_type.title like '%" . $_POST["search_title"] . "%' ";
+                $search_keyword .= "or tbl_huijiao_contents.title like '%" . $_POST["search_title"] . "%' ";
+                $search_keyword .= "or tbl_huijiao_course_type.title like '%" . $_POST["search_title"] . "%' )";
+                $this->session->set_userdata('keyword', $_POST["search_title"]);
+            }
+//            $_POST['search_title'] != '' && $filter['tbl_huijiao_contents.title'] = $_POST['search_title'];
+//            $_POST['search_subject'] != '' && $filter['tbl_huijiao_terms.subject_id'] = $_POST['search_subject'];
+//            $_POST['search_term'] != '' && $filter['tbl_huijiao_terms.id'] = $_POST['search_term'];
+            $this->session->set_userdata('filter', $filter);
+        }
+        $this->session->userdata('filter') != '' && $filter = $this->session->userdata('filter');
+        if (!isset($filter['tbl_huijiao_recommend.recommend_no']) && $search_keyword == '')
+            $this->session->unset_userdata('filter');
+        $filter['tbl_huijiao_recommend.type'] = $type;
+        $this->data['perPage'] = $perPage = 20;
+        $this->data['cntPage'] = $cntPage = $this->mainModel->get_count($filter, $search_keyword);
+        $ret = $this->paginationCompress('admin/recommend/mobile/'.$type, $cntPage, $perPage, 5);
+        $this->data['curPage'] = $curPage = $ret['pageId'];
+        $this->data["list"] = $this->mainModel->getItemsByPage($filter, $ret['pageId'], $ret['cntPerPage'], $search_keyword);
+
+        $this->data["tbl_content"] = $this->output_content($this->data['list']);
+
+        $this->data["subview"] = "admin/contents/recommend_mobile";
+
+        if (!$this->checkRole()) {
+            $this->load->view('admin/_layout_error', $this->data);
+        } else {
+            $this->load->view('admin/_layout_main', $this->data);
+        }
+    }
+
     public function output_content($items)
     {
         $admin_id = $this->session->userdata("admin_loginuserID");
@@ -301,8 +357,7 @@ class Recommend extends Admin_Controller
             }
             //At first insert new coureware information to the database table
             $old = $this->mainModel->get_single(array('id' => $id));
-
-            if ($old !=null) {
+            if ($old != null) {
                 $param['update_time'] = date("Y-m-d H:i:s");
                 if ($icon_path != '') $param['image_icon'] = $icon_path;
 

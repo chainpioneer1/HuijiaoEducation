@@ -9,24 +9,26 @@ $mainModel = 'tbl_huijiao_contents';
     var imageDir = baseURL + "assets/images/resource/";
 </script>
 <div class="base-container" style="height: auto; margin-bottom:20px; ">
-    <form action="<?= base_url('helper/index') ?>" class="filter-wrap-container"
+    <form action="<?= base_url('helper/selectContent') ?>" class="filter-wrap-container"
           id="searchForm" role="form" method="post" enctype="multipart/form-data"
           accept-charset="utf-8">
         <div class="list-title">
             <div class="filter-wrap-container">
                 <div class="src-filter-wrap">
                     <div class="header-item">
+                        <div class="item-label">科目：</div>
+                        <select type="text" class="item-select"
+                                name="search_subject">
+                        </select>
+                    </div>
+                </div>
+                <div class="src-filter-wrap">
+                    <div class="header-item">
                         <div class="item-label">册次：</div>
                         <select type="text" class="item-select"
                                 name="search_term">
                         </select>
-                        <!--                    <div class="item-select" id="term-select" data-id="">全部-->
-                        <!--                        <div></div>-->
-                        <!--                    </div>-->
                     </div>
-                    <!--                <div class="subject-select" id="term-select-dropdown" >-->
-                    <!--               --><? ////= $subjects ?>
-                    <!--                </div>-->
                 </div>
                 <div class="src-filter-wrap">
                     <div class="header-item">
@@ -154,22 +156,32 @@ $mainModel = 'tbl_huijiao_contents';
 
         function searchConfig() {
             var content_html = '<option value="">全部</option>';
+            $('select[name="search_term"]').html(content_html);
             $('select[name="search_course_type"]').html(content_html);
             $('select[name="search_content_type"]').html(content_html);
 
-            var subjectId = subjectList.filter(function (a) {
-                return (a.title.indexOf('语文') > -1);
-            });
-            subjectId = subjectId[0].id;
-            console.log(subjectId);
+
             content_html = '<option value="">全部</option>';
-            for (var i = 0; i < termList.length; i++) {
-                var item = termList[i];
+            for (var i = 0; i < subjectList.length; i++) {
+                var item = subjectList[i];
                 if (item.status == '0') continue;
-                if (item.subject_id != subjectId) continue;
                 content_html += '<option value="' + item.id + '">' + item.title + '</option>';
             }
-            $('select[name="search_term"]').html(content_html);
+            $('select[name="search_subject"]').html(content_html);
+
+
+            $('select[name="search_subject"').off('change');
+            $('select[name="search_subject"').on('change', function (e) {
+                var subjectId = $(this).val();
+                content_html = '<option value="">全部</option>';
+                for (var i = 0; i < termList.length; i++) {
+                    var item = termList[i];
+                    if (item.status == '0') continue;
+                    if (item.subject_id != subjectId) continue;
+                    content_html += '<option value="' + item.id + '">' + item.title + '</option>';
+                }
+                $('select[name="search_term"]').html(content_html);
+            });
 
             $('select[name="search_course_type"]').off('change');
             $('select[name="search_course_type"]').on('change', function (e) {
@@ -216,7 +228,8 @@ $mainModel = 'tbl_huijiao_contents';
 
             if (filterInfo['tbl_huijiao_terms.subject_id']) {
                 $('select[name="search_subject"]').val(filterInfo['tbl_huijiao_terms.subject_id']);
-                // $('select[name="search_subject"]').trigger('change');
+                isFirstLoading = true;
+                $('select[name="search_subject"]').trigger('change');
             }
 
             if (filterInfo['tbl_huijiao_terms.id']) {

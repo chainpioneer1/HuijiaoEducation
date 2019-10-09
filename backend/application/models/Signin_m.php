@@ -49,9 +49,9 @@ class Signin_m extends MY_Model
             $user_type = $this->input->post('user_type');
             $user_pass = $this->input->post('password');//$this->hash($this->input->post('password'));
 			// teacher
-            //$username = '8295050';
-            //$user_pass = '1553063041122';
-            //$user_type = '1';
+//            $username = '8295050';
+//            $user_pass = '1553063041122';
+//            $user_type = '1';
 
 			// student
             //$username = '230103200209101915';
@@ -106,6 +106,7 @@ class Signin_m extends MY_Model
 
         $this->users_m->update_user($arr, $user_id);
         $this->users_m->update_user_login_num($user_id);
+        $this->setLoginAction('login');
 
         return TRUE;
     }
@@ -116,6 +117,31 @@ class Signin_m extends MY_Model
         return $ret;
     }
 
+    public function setLoginAction($type = 'login'){
+        $this->db->from('tbl_user_action');
+        $this->db->where('action_date', date('Y-m-d'));
+        $query = $this->db->get();
+        $result = $query->result();
+        if($result== null){
+            $this->db->insert('tbl_user_action', array(
+                'action_date'=>date('Y-m-d'),
+                'register_count'=>1,
+                'login_count'=>1
+            ));
+        }else {
+            $this->db->where('id',$result[0]->id);
+            $arr = array();
+            switch($type){
+                case 'login':
+                    $arr['login_count'] = $result[0]->login_count+1;
+                    break;
+                case'register':
+                    $arr['register_count'] = $result[0]->register_count+1;
+                    break;
+            }
+            $this->db->update('tbl_user_action', $arr);
+        }
+    }
     public function curl_login($account, $passwd)
     {
         $ret = (object)array(

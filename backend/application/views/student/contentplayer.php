@@ -15,17 +15,23 @@ if ($this->session->userdata("loggedin") != FALSE) {
     body {
         background-color: #f5f5f5 !important;
     }
+    #wx-sharing-qr-wrap {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+    }
 </style>
 <div class="main-content-area-wrapper">
     <div style="width: 100%;min-height: calc(100vh);overflow: hidden; background-color: #000;">
-        <div class="header" id="stickyHeader" style="position: absolute; left: 0; top: 0; background-color: rgba(0,0,0,0.5)">
+        <div class="header" id="stickyHeader" style="display: none;position: absolute; left: 0; top: 0; background-color: rgba(0,0,0,0.5)">
             <a onclick="goPreviousPage(-1)" class="back-btn" style="padding: 0; margin-top: calc(3vh); margin-left: calc(3vh)">
                 <img src="<?= $imgDir . 'back.png' ?>" style="height: calc(3vw)">
             </a>
             <h1 style="color: #fff; text-align: left; padding-left: calc(6vw); font-size: calc(2.7vw); font-weight: normal; line-height: calc(4.4vw)"><?= $title ?></h1>
         </div>
 
-        <div class="buttons-container">
+        <div class="buttons-container" style="display: none;">
             <a class="button-elem" id="favorite_btn" data-favorite="<?= $usage->is_favorite ?>">
                 <?php if ($usage->is_favorite == '0') { ?>
                     <img src="<?= base_url('assets/images/mobile/shiping1.png') ?>">

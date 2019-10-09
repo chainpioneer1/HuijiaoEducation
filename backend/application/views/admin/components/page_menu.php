@@ -97,37 +97,37 @@
                 </a>
             </li>
             <li class="nav-item submenu" data-id="3">
-                <a href="<?= base_url('admin/banner') ?>" class="nav-link" menu_id="113">
+                <a href="<?= base_url('admin/banner/mobile') ?>" class="nav-link" menu_id="113">
                     <i class="icon-picture"></i>
                     <span class="title">Banner管理</span>
                 </a>
             </li>
             <li class="nav-item submenu" data-id="3">
-                <a href="<?= base_url('admin/recommend') ?>" class="nav-link" menu_id="114">
+                <a href="<?= base_url('admin/recommend/mobile/2') ?>" class="nav-link" menu_id="114">
                     <i class="icon-picture"></i>
                     <span class="title">资源精选管理</span>
                 </a>
             </li>
             <li class="nav-item submenu" data-id="3">
-                <a href="<?= base_url('admin/recommend/lessons') ?>" class="nav-link" menu_id="115">
+                <a href="<?= base_url('admin/recommend/mobile/3') ?>" class="nav-link" menu_id="115">
                     <i class="icon-picture"></i>
                     <span class="title">小学语文</span>
                 </a>
             </li>
             <li class="nav-item submenu" data-id="3">
-                <a href="<?= base_url('admin/recommend/lessons') ?>" class="nav-link" menu_id="116">
+                <a href="<?= base_url('admin/recommend/mobile/4') ?>" class="nav-link" menu_id="116">
                     <i class="icon-picture"></i>
                     <span class="title">小学数学</span>
                 </a>
             </li>
             <li class="nav-item submenu" data-id="3">
-                <a href="<?= base_url('admin/recommend/lessons') ?>" class="nav-link" menu_id="117">
+                <a href="<?= base_url('admin/recommend/mobile/5') ?>" class="nav-link" menu_id="117">
                     <i class="icon-picture"></i>
                     <span class="title">初中数学</span>
                 </a>
             </li>
             <li class="nav-item submenu" data-id="3">
-                <a href="<?= base_url('admin/recommend/lessons') ?>" class="nav-link" menu_id="118">
+                <a href="<?= base_url('admin/recommend/mobile/6') ?>" class="nav-link" menu_id="118">
                     <i class="icon-picture"></i>
                     <span class="title">初中物理</span>
                 </a>

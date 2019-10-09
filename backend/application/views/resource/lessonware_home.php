@@ -10,12 +10,14 @@
 </style>
 <div class="base-container" style="top:160px;text-align: center;height: 650px;">
     <div class="course-container site-course-selector" style="border: 1px solid #888;">
-        <div class="list-container" style="width: 100%; border: none;height: 86%;">
+        <div class="list-container" style="width: 100%; border: none;height: 94%;">
             <div class="list-title">平台资源选择</div>
             <div class="edit-btns" data-type="reject" style="position:absolute;color:white;font-size:28px;right: 20px;top:2px;">
                 <i class="fa fa-close"></i>
             </div>
-            <div>
+            <iframe src="<?= base_url('helper/selectContent'); ?>" width="1280" height="720"
+                    style="width: 70%;height:100%;border:none;outline:none;"></iframe>
+            <!--<div>
                 <div class="header-item item-title">
                     <div class="title-label">科目</div>
                     <div class="item-select subject" data-type="contents">
@@ -38,7 +40,8 @@
                     </div>
                 </div>
             </div>
-            <div class="content-items" data-type="contents" style="background:#eee;"></div>
+            <div class="content-items" data-type="contents" style="background:#eee;"></div>-->
+
 <!--            <div class="content-titleinfo" data-type="contents"></div>-->
         </div>
         <div class="subject-select" data-type="contents">
@@ -50,10 +53,10 @@
         <div class="coursetype-select" data-type="contents" style="width: 300px;">
             <div class="select-list" style="height:320px;overflow-y: auto;"></div>
         </div>
-        <div class="footer-item">
-            <div class="edit-btns" data-type="reject">取 消</div>
-            <div class="edit-btns" data-type="accept">确 定</div>
-        </div>
+<!--        <div class="footer-item">-->
+<!--            <div class="edit-btns" data-type="reject">取 消</div>-->
+<!--            <div class="edit-btns" data-type="accept">确 定</div>-->
+<!--        </div>-->
     </div>
 
     <div class="course-container">

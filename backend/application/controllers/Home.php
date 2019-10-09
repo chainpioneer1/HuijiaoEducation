@@ -39,7 +39,7 @@ class Home extends CI_Controller
 
         $this->data['showHelp'] = 1;
 
-        $this->data['banners'] = $this->banner_m->get_where(array('status' => 1));
+        $this->data['banners'] = $this->banner_m->get_where(array('status' => 1, 'type'=>0));
         $this->data['recommend_contents'] = $this->recommend_m->getItemsByPage(array('tbl_huijiao_recommend.type' => 0, 'tbl_huijiao_recommend.status' => 1), 0, 20);
         $this->data['recommend_lessons'] = $this->recommend_m->getItemsByPage(array('tbl_huijiao_recommend.type' => 1, 'tbl_huijiao_recommend.status' => 1), 0, 20);
 

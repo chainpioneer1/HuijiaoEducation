@@ -16,7 +16,12 @@ class Recommend_m extends MY_Model
     {
         $this->db->select($this->_table_name . '.*');
         $query = null;
-        if ($arr['tbl_huijiao_recommend.type'] == 0) { // recommended contents
+        if ($arr['tbl_huijiao_recommend.type'] == 0 ||
+            $arr['tbl_huijiao_recommend.type'] == 2 ||
+            $arr['tbl_huijiao_recommend.type'] == 3 ||
+            $arr['tbl_huijiao_recommend.type'] == 4 ||
+            $arr['tbl_huijiao_recommend.type'] == 5 ||
+            $arr['tbl_huijiao_recommend.type'] == 6) { // recommended contents
 //            $this->db->select('concat( tbl_huijiao_content_type.title, \' - \', tbl_huijiao_contents.title) as content');
             $this->db->select('tbl_huijiao_contents.title as content');
             $this->db->select('tbl_huijiao_subject.title as subject, tbl_huijiao_subject.id as subject_id');
@@ -78,7 +83,12 @@ class Recommend_m extends MY_Model
     {
         if ($keyword != '') $this->db->where($keyword);
 
-        if ($arr['tbl_huijiao_recommend.type'] == 0) { // recommended contents
+        if ($arr['tbl_huijiao_recommend.type'] == 0 ||
+            $arr['tbl_huijiao_recommend.type'] == 2 ||
+            $arr['tbl_huijiao_recommend.type'] == 3 ||
+            $arr['tbl_huijiao_recommend.type'] == 4 ||
+            $arr['tbl_huijiao_recommend.type'] == 5 ||
+            $arr['tbl_huijiao_recommend.type'] == 6) { // recommended contents
             $this->db->select('tbl_huijiao_contents.title as content');
             $this->db->like($arr);
             $this->db->from($this->_table_name)
@@ -95,7 +105,7 @@ class Recommend_m extends MY_Model
                 ->order_by($this->_order_by)
                 ->order_by('tbl_huijiao_course_type.coursetype_no', 'asc');
             $query = $this->db->get();
-        }else if($arr['tbl_huijiao_recommend.type'] == 1){
+        } else if ($arr['tbl_huijiao_recommend.type'] == 1) {
             $this->db->select('tbl_huijiao_lessons.title as lesson');
             $this->db->like($arr);
             if ($keyword != '') $this->db->where($keyword);
@@ -117,6 +127,8 @@ class Recommend_m extends MY_Model
     public function getItems()
     {
         $this->db->select($this->_table_name . '.*');
+        $this->db->select('tbl_huijiao_contents.title as title');
+        $this->db->select($this->_table_name . '.content_id as id');
         $this->db->select('tbl_huijiao_content_type.title as content_type, tbl_huijiao_contents.title as content');
         $this->db->select('tbl_huijiao_recommend.image_icon as icon_path');
         $this->db->select('tbl_huijiao_subject.title as subject, tbl_huijiao_subject.id as subject_id');
@@ -136,6 +148,7 @@ class Recommend_m extends MY_Model
             ->where('tbl_huijiao_course_type.status', 1)
             ->where('tbl_huijiao_contents.status', 1)
             ->where('tbl_huijiao_content_type.status', 1)
+            ->order_by('tbl_huijiao_recommend.type')
             ->order_by($this->_order_by);
         $query = $this->db->get();
         return $query->result();

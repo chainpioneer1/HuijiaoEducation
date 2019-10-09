@@ -16,6 +16,7 @@ class Usage extends Admin_Controller
         $this->load->model("contenttype_m");
         $this->load->model("contents_m");
         $this->load->model("usage_m");
+        $this->load->model("users_m");
         $this->lang->load('courses', $language);
         $this->load->library("pagination");
         $this->load->library("session");
@@ -76,6 +77,9 @@ class Usage extends Admin_Controller
         $this->data['courseTypeList'] = $this->coursetype_m->getItems();
         $this->data['contentTypeList'] = $this->contenttype_m->getItems();
 
+        $this->data['pageType'] = 6;
+        // default value:
+        // 6-user statistics, 4-subject, 5-courseType, 1-contents, 2-subject circle, 3- terms circle
         $filter = array();
         $filterStr = '';
         $this->data['search_date1'] = '';
@@ -83,6 +87,7 @@ class Usage extends Admin_Controller
         if ($this->uri->segment(SEGMENT) == '') $this->session->unset_userdata('filter');
 
         if ($_POST) {
+            if($_POST['pageType']) $this->data['pageType'] = $_POST['pageType'];
             $this->session->unset_userdata('filter');
             $_POST['search_subject'] != '' && $filter['tbl_huijiao_terms.subject_id'] = $_POST['search_subject'];
             $_POST['search_term'] != '' && $filter['tbl_huijiao_terms.id'] = $_POST['search_term'];
@@ -112,6 +117,8 @@ class Usage extends Admin_Controller
         $this->data["subjects_lesson_info"] = $this->mainModel->getUsageInfo($filter, 'subjects_lessons');
         $this->data["terms_content_info"] = $this->mainModel->getUsageInfo($filter, 'terms_contents');
         $this->data["terms_lesson_info"] = $this->mainModel->getUsageInfo($filter, 'terms_lessons');
+
+        $this->data["users_info"] = $this->users_m->getInfo();
 
         $this->data["subview"] = "admin/usage/usage";
 

@@ -36,7 +36,7 @@ class Student extends CI_Controller
     {
         $user_id = 0;
         $user_class = '1-1';
-        $banners = $this->banner_m->getItems();
+        $banners = $this->banner_m->get_where(array('type'=>1));
         $this->data['banners'] = $banners;
 
         $recommandsArr = [];
@@ -177,7 +177,7 @@ class Student extends CI_Controller
             $userInfo->user_class = '1-1';
         }
 
-        $banners = $this->banner_m->getItems();
+        $banners = $this->banner_m->get_where(array('type'=>1));
         $this->data['banners'] = $banners;
 
         $recommandsArr = [];
@@ -304,7 +304,7 @@ class Student extends CI_Controller
 
     public function contentplayer($id = 0)
     {
-        $this->signin_m->loggedin() == TRUE || redirect(base_url('student/login'));
+//        $this->signin_m->loggedin() == TRUE || redirect(base_url('student/login'));
 
 //        if (!$this->adminsignin_m->loggedin())
 //            $this->signin_m->loggedin() == TRUE || redirect(base_url('home/index'));
@@ -313,7 +313,8 @@ class Student extends CI_Controller
         $this->data["content"] = $content[0];
 
         // get usage
-        $user_id = $this->session->userdata('loginuserID');
+//        $user_id = $this->session->userdata('loginuserID');
+        $user_id = 0;
         $usages = $this->usage_m->get_where(array(
             'user_id' => $user_id,
             'content_id' => $this->data["content"]->id

@@ -22,7 +22,8 @@ $ctrlRoot = 'admin/usage';
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
 
                 <div class="portlet light bordered">
-                    <div class="usage-tab-item" data-id="4" data-sel="1">按科目统计</div>
+                    <div class="usage-tab-item" data-id="6">按用户统计</div>
+                    <div class="usage-tab-item" data-id="4">按科目统计</div>
                     <div class="usage-tab-item" data-id="5">按类型统计</div>
                     <div class="usage-tab-item" data-id="1">使用量统计</div>
                     <div class="usage-tab-item" data-id="2">科目比例统计</div>
@@ -68,9 +69,37 @@ $ctrlRoot = 'admin/usage';
                                 </div>
                             </div>
                         </div>
+                        <div class="main-frame" data-id="6">
+                            <div class="row">
+                                <div class="total-info">
+                                    <div style="float: right;">
+                                        <img src="<?= base_url('assets/images/backend/u55.png') ?>"
+                                             style="height: 40px;margin-right: 15px;"/>
+                                    </div>
+                                    <div>今日登陆用户数</div>
+                                    <div class="today_login"></div>
+                                </div>
+                                <div class="total-info">
+                                    <div style="float: right;">
+                                        <img src="<?= base_url('assets/images/backend/u60.png') ?>"
+                                             style="height: 40px;margin-right: 15px;"/>
+                                    </div>
+                                    <div>今日新增用户数</div>
+                                    <div class="today_new"></div>
+                                </div>
+                                <div class="total-info">
+                                    <div style="float: right;">
+                                        <img src="<?= base_url('assets/images/backend/u65.png') ?>"
+                                             style="height: 40px;margin-right: 15px;"/>
+                                    </div>
+                                    <div>总用户数</div>
+                                    <div class="total_users"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="portlet light bordered">
+                <div class="portlet light bordered" data-id="1">
                     <div class="portlet-body">
                         <div class="table-toolbar" data-id="1">
                             <!------Tool bar parts (add button and search function------>
@@ -78,6 +107,8 @@ $ctrlRoot = 'admin/usage';
                                 <form class="form-horizontal col-md-10" action="<?= base_url($ctrlRoot . '/usage') ?>"
                                       id="searchForm" role="form" method="post" enctype="multipart/form-data"
                                       accept-charset="utf-8">
+                                    <input value="<?= $pageType; ?>" name="pageType" style="display: none;" hidden/>
+
                                     <div class="row" data-id="1">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -176,6 +207,12 @@ $ctrlRoot = 'admin/usage';
                                 </div>
                             </div>
                         </div>
+                        <div class="main-frame body" data-id="6">
+                            <div class="frame-title">趋势图</div>
+                            <div class="canvas-container">
+                                <canvas id="chart-area-users"></canvas>
+                            </div>
+                        </div>
                         <div class="main-frame body" data-id="5">
                             <div class="frame-title">资源使用柱状图</div>
                             <div class="canvas-container"></div>
@@ -240,6 +277,7 @@ $ctrlRoot = 'admin/usage';
     <input hidden class="termContentDetail" value='<?= json_encode($term_content_detail) ?>'>
     <input hidden class="termLessonDetail" value='<?= json_encode($term_lesson_detail) ?>'>
     <input hidden class="contentTypeContentDetail" value='<?= json_encode($contentType_content_detail) ?>'>
+    <input hidden class="usersInfo" value='<?= json_encode($users_info) ?>'>
     <input hidden class="filterInfo"
            value='<?= json_encode($this->session->userdata('filter') ? $this->session->userdata('filter') : array()) ?>'>
     <script>
@@ -260,6 +298,8 @@ $ctrlRoot = 'admin/usage';
         var subjectsContentInfo = JSON.parse($('.subjectsContentInfo').val());
         var termsLessonInfo = JSON.parse($('.termsLessonInfo').val());
         var termsContentInfo = JSON.parse($('.termsContentInfo').val());
+        var usersInfo = JSON.parse($('.usersInfo').val());
+        var pageType = '<?= $pageType; ?>';
 
         var termContentDetail = JSON.parse($('.termContentDetail').val());
         var termLessonDetail = JSON.parse($('.termLessonDetail').val());
@@ -271,14 +311,17 @@ $ctrlRoot = 'admin/usage';
             $('.usage-tab-item').on('click', function (object) {
                 $('.usage-tab-item').removeAttr('data-sel');
                 var menu_id = $(this).attr('data-id');
+                $('input[name="pageType"]').val(menu_id);
                 $(this).attr('data-sel', '1');
                 $('#searchForm .row[data-id]').hide();
                 $('#searchForm .row[data-id="' + menu_id + '"]').show();
                 $('#searchForm .row[data-id] input').attr('disabled', 'disabled');
                 $('#searchForm .row[data-id="' + menu_id + '"] input').removeAttr('disabled');
                 $('.portlet[data-id="4"').hide();
+                $('.portlet[data-id="1"').hide();
                 switch (menu_id) {
                     case '1':
+                        $('.portlet[data-id="1"').show();
                         drawContentsInfo();
                         break;
                     case '2':
@@ -289,6 +332,7 @@ $ctrlRoot = 'admin/usage';
                         break;
                     case '4':
                         $('.portlet[data-id="4"').show();
+                        $('.portlet[data-id="1"').show();
                         $('.main-frame[data-id="' + menu_id + '"] .total_read').html(
                             contentsInfo[0].total_read * 1 + lessonsInfo[0].total_read * 1);
                         $('.main-frame[data-id="' + menu_id + '"] .total_favorite').html(
@@ -300,11 +344,65 @@ $ctrlRoot = 'admin/usage';
                         drawTermsDetail();
                         break;
                     case '5':
-                        drawContentTypeDetail();
+                        $('.portlet[data-id="1"').show();
+                        var tabID = 5;
+                        $('.main-frame').hide();
+                        $('.table-toolbar[data-id="' + tabID + '"]').fadeIn('fast');
+                        $('.main-frame[data-id="' + tabID + '"]').fadeIn('fast');
+
+                        var content_html = '';
+                        for (var s = 0; s < subjectList.length; s++) {
+                            var sItem = subjectList[s];
+                            content_html += '<div class="frame-title">' + sItem.title
+                            var termTmp = termList.filter(function (a) {
+                                return a.subject_id == sItem.id;
+                            });
+                            content_html += '<select class="frame-term" data-id="' + sItem.id + '" style="float: right;font-size: 14px;">' +
+                                '<option value="">全部</option>';
+                            for (var t = 0; t < termTmp.length; t++) {
+                                var tItem = termTmp[t];
+                                content_html += '<option value="' + tItem.id + '">' + tItem.title + '</option>';
+                            }
+                            content_html += '</select>';
+                            content_html += '</div>';
+                            content_html += '<div class="canvas-container">' +
+                                '<canvas id="chart-area-contenttype' + s + '"></canvas>' +
+                                '</div>';
+                        }
+                        $('.main-frame.body[data-id="' + tabID + '"]').html(content_html);
+                        $('.frame-term').off('change');
+                        $('.frame-term').on('change', function () {
+                            var sId = $(this).attr('data-id');
+                            drawContentTypeDetail(sId);
+                        });
+                        drawContentTypeDetail(0);
+                        break;
+                    case '6':
+                        $('.portlet[data-id="4"').show();
+                        $('.portlet[data-id="1"').show();
+                        var total_users = usersInfo.total_users.length;
+                        var today = new Date();
+                        today = makeDateString(today);
+
+                        var today_login_sum = 0;
+                        var today_new_sum = 0;
+                        var today_login = usersInfo.total_actions.filter(function (a) {
+                            return a.action_date.substr(0, 10) == today;
+                        });
+                        for (var k = 0; k < today_login.length; k++) {
+                            today_login_sum += parseInt(today_login[k].login_count);
+                            today_new_sum += parseInt(today_login[k].register_count);
+                        }
+
+                        $('.main-frame[data-id="' + menu_id + '"] .today_login').html(today_login_sum);
+                        $('.main-frame[data-id="' + menu_id + '"] .today_new').html(today_new_sum);
+                        $('.main-frame[data-id="' + menu_id + '"] .total_users').html(total_users);
+                        drawUsersDetail();
                         break;
                 }
-            })
-            $('.usage-tab-item:first-child').trigger('click');
+            });
+
+            $('.usage-tab-item[data-id="' + pageType + '"]').click();
         }
 
         function drawTermsDetail() {
@@ -479,32 +577,99 @@ $ctrlRoot = 'admin/usage';
             $('.main-frame[data-id="' + tabID + '"] .frame-title[data-type="line"] div[data-id]')[0].click();
         }
 
-        function drawContentTypeDetail() {
+        function drawUsersDetail() {
             $('.main-frame').hide();
-            var tabID = 5;
+            $('#searchForm .row[data-id="' + 4 + '"]').show();
+            $('#searchForm .row[data-id="' + 4 + '"] input').removeAttr('disabled');
+            var tabID = 6;
             $('.table-toolbar[data-id="' + tabID + '"]').fadeIn('fast');
             $('.main-frame[data-id="' + tabID + '"]').fadeIn('fast');
 
+            var toDateElem = $('input[name="search_date2"]');
+            var fromDateElem = $('input[name="search_date1"');
+            var now = new Date();
+            var end = makeDateString(now);
+            var start = makeDateString(new Date(now.setDate(now.getDate() - 9)));
+
+            if (fromDateElem.val() == '') fromDateElem.val(start);
+            if (toDateElem.val() == '') toDateElem.val(end);
+
+            start = (new Date(fromDateElem.val() + ' 00:00:00')).getTime();
+            end = (new Date(toDateElem.val() + ' 23:59:59')).getTime();
+            var diff = parseInt((end - start) / 3600 / 24 / 1000);
+            var colorInfo = ['#1890ff', '#2fc25b'];
+            var xLabels = [];
+            var yLabels = ['当日登陆', '当日新增'];
+            var y1Data = [];
+            var y2Data = [];
+            start = new Date(fromDateElem.val());
+            for (var i = 0; i <= diff; i++) {
+                var dateStr = makeDateString(start);
+                xLabels.push(dateStr);
+
+                var today_action = usersInfo.total_actions.filter(function (a) {
+                    return a.action_date.substr(0, 10) == dateStr;
+                });
+                if (today_action.length > 0) {
+                    y2Data.push(today_action[0].register_count);
+                    y1Data.push(today_action[0].login_count);
+                } else {
+                    y2Data.push(0);
+                    y1Data.push(0);
+                }
+                start = new Date(start.setDate(start.getDate() + 1));
+            }
+            var config = {
+                type: 'line',
+                data: {
+                    datasets: [
+                        {
+                            data: y1Data,
+                            borderColor: colorInfo[0],
+                            backgroundColor: colorInfo[0],
+                            fill: false,
+                            label: yLabels[0],
+                            lineTension: 0,
+                        },
+                        {
+                            data: y2Data,
+                            borderColor: colorInfo[1],
+                            backgroundColor: colorInfo[1],
+                            fill: false,
+                            label: yLabels[1],
+                            lineTension: 0,
+                        }
+                    ],
+                    labels: xLabels
+                },
+                options: {
+                    responsive: true,
+                    tooltips: {mode: 'index', intersect: false},
+                    scales: {xAxes: [{stacked: true}], yAxes: [{stacked: false}]},
+                    barThickness: 'flex',
+                    legend: {position: 'bottom'}
+                }
+            };
+
+            var ctx = document.getElementById('chart-area-users').getContext('2d');
+            window.myBar1 = new Chart(ctx, config);
+        }
+
+        function drawContentTypeDetail(sId) {
             var colorInfo = [];
             for (var i = 0; i < 10; i++) colorInfo.push('#' + generateRandomStr());
-            var content_html = '';
-            for (var s = 0; s < subjectList.length; s++) {
-                var sItem = subjectList[s];
-                content_html += '<div class="frame-title">' + sItem.title + '</div>' +
-                    '<div class="canvas-container">' +
-                    '<canvas id="chart-area-contenttype' + s + '"></canvas>' +
-                    '</div>';
-            }
-            $('.main-frame.body[data-id="' + tabID + '"]').html(content_html);
 
             var chartTitles = ['浏览', '收藏', '下载', '点赞'];
             var keys = ['total_read', 'total_favorite', 'total_download', 'total_like'];
 
             for (var i = 0; i < subjectList.length; i++) {
                 var sItem = subjectList[i];
+                var tId = $('.frame-term[data-id="' + sItem.id + '"]').val();
                 var contentTypeData = contentTypeContentDetail.filter(function (a) {
-                    return a.subject_id == sItem.id;
+                    var cond = (tId == '' || tId == a.term_id);
+                    return a.subject_id == sItem.id && cond;
                 });
+                console.log('------- contentTypeData: ',contentTypeData.length)
                 var contentTypeLabels = [];
                 var contentTypeIds = [];
                 for (var c = 0; c < contentTypeData.length; c++) {
@@ -548,9 +713,11 @@ $ctrlRoot = 'admin/usage';
                         legend: {position: 'bottom'}
                     }
                 };
-
-                var ctx = document.getElementById('chart-area-contenttype' + i).getContext('2d');
-                window.myBar1 = new Chart(ctx, config);
+                if(sId==0 || sId ==sItem.id) {
+                    $('#chart-area-contenttype' + i).parent().html('<canvas id="chart-area-contenttype' + i + '"></canvas>');
+                    var ctx = document.getElementById('chart-area-contenttype' + i).getContext('2d');
+                    window.myBar1 = new Chart(ctx, config);
+                }
 
             }
         }
@@ -599,13 +766,13 @@ $ctrlRoot = 'admin/usage';
                 },
                 options: {
                     responsive: true,
+                    tooltips: {mode: 'index', intersect: false},
                     barThickness: 'flex',
                     legend: {position: 'bottom'}
                 }
             };
             var ctx = document.getElementById('chart-area-contents').getContext('2d');
             window.myBar1 = new Chart(ctx, config);
-
 
             colorInfo = {
                 total_download: '#2ecdad',
@@ -644,16 +811,13 @@ $ctrlRoot = 'admin/usage';
                 },
                 options: {
                     responsive: true,
-                    scales: {
-                        xAxes: [{stacked: true}],
-                        yAxes: [{stacked: true}]
-                    },
+                    tooltips: {mode: 'index', intersect: false},
+                    barThickness: 'flex',
                     legend: {position: 'bottom'}
                 }
             };
             var ctx = document.getElementById('chart-area-lessons').getContext('2d');
             window.myBar2 = new Chart(ctx, config);
-
         }
 
         function drawSubjectsInfo() {
@@ -871,6 +1035,22 @@ $ctrlRoot = 'admin/usage';
                 }
             }
             return newarr;
+        }
+
+        function makeDateString(date) {
+            return date.getFullYear() + '-' +
+                makeNDigit(date.getMonth() + 1, 2) + '-' +
+                makeNDigit(date.getDate(), 2);
+        }
+
+        function makeNDigit(num, len) {
+            num = num.toString();
+            if (!len) len = 2;
+            var ret = '';
+            for (var i = 0; i < len; i++) ret += '0';
+            ret += num;
+            ret = ret.substr(-len);
+            return ret;
         }
 
         $('.scripts').remove();

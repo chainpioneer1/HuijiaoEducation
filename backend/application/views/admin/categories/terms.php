@@ -108,7 +108,7 @@ $category = '册次';
                             <script>
                                 appendPagination('<?= $curPage; ?>', '<?= $perPage; ?>', '<?= $cntPage; ?>', '<?= $ctrlRoot; ?>');
                             </script>
-                        </div>
+                        </span>
                     </div>
                 </div>
                 <!-- END EXAMPLE TABLE PORTLET-->

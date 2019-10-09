@@ -198,6 +198,8 @@ class Contents_m extends MY_Model
             $this->db->where($this->_table_name . '.status', 1);
         $this->db->select($this->_table_name . '.*');
         $this->db->select("concat( '', '', $this->_table_name.title) as title");
+        $this->db->select('tbl_huijiao_subject.title as subject, tbl_huijiao_subject.id as subject_id');
+        $this->db->select('tbl_huijiao_terms.title as term, tbl_huijiao_terms.id as term_id');
         $this->db->select("tbl_huijiao_course_type.title as course_type, ifnull(tbl_huijiao_contents.icon_path,$this->_table_name.icon_path) as icon_path");
 //        $this->db->select("tbl_huijiao_contents.icon_path_m as icon_path_m, tbl_huijiao_content_type.icon_path_m as icon_corner_m");
 //        $this->db->select("tbl_huijiao_content_type.title as content_type, ifnull(tbl_huijiao_content_type.icon_path, $this->_table_name.icon_path) as icon_corner")
@@ -206,6 +208,10 @@ class Contents_m extends MY_Model
             ->from($this->_table_name)
             ->join('tbl_huijiao_course_type', $this->_table_name . '.course_type_id = tbl_huijiao_course_type.id', 'left')
             ->join('tbl_huijiao_content_type', $this->_table_name . '.content_type_no = tbl_huijiao_content_type.id', 'left')
+            ->join('tbl_huijiao_terms', 'tbl_huijiao_course_type.term_id = tbl_huijiao_terms.id', 'left')
+            ->join('tbl_huijiao_subject', 'tbl_huijiao_terms.subject_id = tbl_huijiao_subject.id', 'left')
+            ->where('tbl_huijiao_subject.status', 1)
+            ->where('tbl_huijiao_terms.status', 1)
             ->where_in($this->_table_name . '.' . $key, $ids)
             ->order_by('tbl_huijiao_content_type.contenttype_no asc')
             ->order_by($this->_order_by);

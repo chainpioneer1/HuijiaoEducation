@@ -15,9 +15,10 @@ class Users_m extends MY_Model
         //$this->db->delete($this->_table_name);
     }
 
-    public function update_usage_time(){
+    public function update_usage_time()
+    {
         $loginUserId = $this->session->userdata('loginuserID');
-        $userInfo = array('update_time'=>date('Y-m-d H:i:s'));
+        $userInfo = array('update_time' => date('Y-m-d H:i:s'));
         $this->edit($userInfo, $loginUserId);
     }
 
@@ -107,6 +108,21 @@ class Users_m extends MY_Model
     public function get_single($arr = array())
     {
         return parent::get_single($arr);
+    }
+
+    public function getInfo()
+    {
+        $this->db->select('register_count, create_time, register_time, update_time');
+        $this->db->from($this->_table_name);
+        $this->db->where('tbl_user.status', 1);
+        $query = $this->db->get();
+        $total_users = $query->result();
+
+        $this->db->from('tbl_user_action');
+        $query = $this->db->get();
+        $total_actions = $query->result();
+
+        return array('total_users' => $total_users, 'total_actions' => $total_actions);
     }
 
     public function get_where($array = array(), $subCondition = NULL)

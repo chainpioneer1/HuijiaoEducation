@@ -352,6 +352,8 @@ function makeContentList(coursetype_id, type) {
 }
 
 function addContentToLesson(contentId, type) {
+    contentList = $('iframe')[0].contentWindow.getContentList();
+    console.log('contentList : ', contentList);
     if (!contentId) contentId = contentList[0].id;
     if (!type) type = 'lesson';
 
@@ -375,7 +377,7 @@ function addContentToLesson(contentId, type) {
         'data-src="' + contentItem.content_path + '" ' +
         'data-type="lesson">' +
         '<img class="item-icon" src="' + baseURL + contentItem.icon_path + '">' +
-        '<img class="item-icon" src="' + baseURL + contentItem.icon_corner + '" style="position:absolute;width:100%;height:150px;">' +
+        '<img class="item-icon" src="' + baseURL + contentItem.icon_corner + '" style="position:absolute;width:100%;height:150px;top:0;">' +
         '<div class="item-desc"><div>' + contentItem.title + '</div></div>' +
         '<div class="edit-btn" data-type="moveLeft" onclick="operate(this);"><i class="fa fa-arrow-left"></i></div>' +
         '<div class="edit-btn" data-type="moveRight"  onclick="operate(this);"><i class="fa fa-arrow-right"></i></div>' +
@@ -462,6 +464,11 @@ function preparePreview() {
     console.log(previewContentList);
     localStorage.setItem('preview-content', JSON.stringify(previewContentList));
     localStorage.setItem('__id', $('input.item-select').val());
+}
+
+function selectContent(content_id){
+    console.log('added content: ',content_id);
+    addContentToLesson(content_id);
 }
 
 function controlConfig() {

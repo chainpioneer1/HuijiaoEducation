@@ -35,6 +35,7 @@ class Banner extends Admin_Controller
         }
         $this->session->userdata('filter')!='' && $filter = $this->session->userdata('filter');
         if(!isset($filter['tbl_huijiao_banner.banner_no'])) $this->session->unset_userdata('filter');
+        $filter['banner.type']=0;
         $this->data['perPage'] = $perPage = PERPAGE;
         $this->data['cntPage'] = $cntPage = $this->mainModel->get_count($filter);
         $ret = $this->paginationCompress('admin/banners/index', $cntPage, $perPage, 4);
@@ -44,6 +45,42 @@ class Banner extends Admin_Controller
         $this->data["tbl_content"] = $this->output_content($this->data['list']);
 
         $this->data["subview"] = "admin/banner/banners";
+
+        if (!$this->checkRole()) {
+            $this->load->view('admin/_layout_error', $this->data);
+        } else {
+            $this->load->view('admin/_layout_main', $this->data);
+        }
+    }
+
+    public function mobile()
+    {
+        $this->data['title'] = 'Banner管理';
+        $this->data["subscript"] = "admin/settings/script";
+        $this->data["subcss"] = "admin/settings/css";
+        $filter = array();
+        if ($_POST) {
+            $this->session->unset_userdata('filter');
+            $_POST['search_no'] != '' && $filter['banner.banner_no'] = $_POST['search_no'];
+//            $_POST['search_title'] != '' && $filter['tbl_huijiao_course_type.title'] = $_POST['search_title'];
+//            $_POST['search_term'] != '' && $filter['tbl_huijiao_terms.title'] = $_POST['search_term'];
+//            $_POST['search_subject'] != '' && $filter['tbl_huijiao_terms.subject_id'] = $_POST['search_subject'];
+//            $filter = array();
+            $this->session->set_userdata('filter', $filter);
+        }
+        $this->session->userdata('filter')!='' && $filter = $this->session->userdata('filter');
+        if(!isset($filter['tbl_huijiao_banner.banner_no'])) $this->session->unset_userdata('filter');
+        $filter['banner.type']=1;
+
+        $this->data['perPage'] = $perPage = PERPAGE;
+        $this->data['cntPage'] = $cntPage = $this->mainModel->get_count($filter);
+        $ret = $this->paginationCompress('admin/banners/index', $cntPage, $perPage, 4);
+        $this->data['curPage'] = $curPage = $ret['pageId'];
+        $this->data["list"] = $this->mainModel->getItemsByPage($filter, $ret['pageId'], $ret['cntPerPage']);
+
+        $this->data["tbl_content"] = $this->output_content($this->data['list']);
+
+        $this->data["subview"] = "admin/banner/mobile";
 
         if (!$this->checkRole()) {
             $this->load->view('admin/_layout_error', $this->data);
@@ -109,6 +146,8 @@ class Banner extends Admin_Controller
             $id = $_POST['id'];
             $no = $_POST['no'];
             $sort_order = $_POST['sort_order'];
+            $type = 0;
+            if($_POST['type']) $type = $_POST['type'];
 
             $icon_format = $this->input->post('icon_format');
             $icon_format_m = $this->input->post('icon_format_m');
@@ -177,6 +216,7 @@ class Banner extends Admin_Controller
 
             $arr = array(
                 'banner_no' => $no,
+                'type'=>$type,
                 'sort_order' => $sort_order,
                 'update_time' => date('Y-m-d H:i:s')
             );

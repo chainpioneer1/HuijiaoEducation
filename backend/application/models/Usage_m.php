@@ -236,8 +236,10 @@ class Usage_m extends MY_Model
         return $query->result();
     }
 
-    public function getItems()
+    public function getItems($arr = array())
     {
+        if($arr)
+            $this->db->where($arr);
         $this->db->select('*')
             ->from($this->_table_name);
         $query = $this->db->get();
@@ -299,6 +301,7 @@ class Usage_m extends MY_Model
                 break;
             case 'contentType_content':
                 $this->db->select('tbl_huijiao_subject.id as subject_id');
+                $this->db->select('tbl_huijiao_terms.id as term_id');
                 $this->db->select('tbl_huijiao_contents.content_type_no as contenttype_id');
                 $this->db->where($this->_table_name . '.content_id is not null');
                 $this->db->where('tbl_huijiao_contents.user_id', 0);
@@ -345,7 +348,7 @@ class Usage_m extends MY_Model
     {
         $this->db->where($this->_primary_key, $item_id);
         $this->db->delete($this->_table_name);
-        return $this->getItems();
+        return array();
     }
 
     public function publish($item_id, $publish_st, $site_id = 1)
@@ -353,13 +356,13 @@ class Usage_m extends MY_Model
         $this->db->set('status', $publish_st);
         $this->db->where($this->_primary_key, $item_id);
         $this->db->update($this->_table_name);
-        return $this->getItems();
+        return array();
     }
 
     public function edit($arr, $item_id)
     {
         $this->db->where($this->_primary_key, $item_id);
         $this->db->update($this->_table_name, $arr);
-        return $this->getItems();
+        return array();
     }
 }

@@ -48,6 +48,7 @@ function appendPagination(curPage, perPage, cntRecord, urlRoot) {
     content_html += '<li><div>页</div></li>';
     content_html += '<li><a href="javascript:showPage(' + perPage + ',' + totalPages + ',\''+urlRoot+'\');">确定</a></li>';
     $('.pagination').append(content_html);
+    $('.pagination').prepend('<li><div style="margin-right: 20px;">共'+cntRecord+'条</div></li>')
 }
 
 function showPage(perPage, totalPages, urlRoot) {
