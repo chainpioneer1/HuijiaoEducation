@@ -50,7 +50,7 @@ $mainModel = 'tbl_huijiao_contents';
                     </div>
                 </div>
                 <div class="src-filter-wrap src-search-form">
-                    <input placeholder="请输入搜索内容" value="" name="search_title">
+                    <input placeholder="请输入搜索内容" value="<?= $queryStr; ?>" name="search_title">
                     <span onclick="searchItems(this)"></span>
                 </div>
             </div>

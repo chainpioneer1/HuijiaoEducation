@@ -165,7 +165,7 @@ $mainModel = 'admins';
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10" style="text-align:left" data-type="mainMenuCheck">
                             <label class="mt-checkbox mt-checkbox-outline" style="font-weight:bold">
-                                <input type="checkbox" data-id="1" data-type="mainmenu">后台内容管理
+                                <input type="checkbox" data-id="1" data-type="mainmenu">标准内容管理
                                 <span></span>
                             </label>
                         </div>
@@ -178,20 +178,8 @@ $mainModel = 'admins';
                                 <input type="checkbox" data-id="1" data-subid="11" data-type="submenu">课件管理
                                 <span></span>
                             </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-10" style="text-align:left" data-type="mainMenuCheck">
-                            <label class="mt-checkbox mt-checkbox-outline" style="font-weight:bold">
-                                <input type="checkbox" data-id="2" data-type="mainmenu">前端内容管理
-                                <span></span>
-                            </label>
-                        </div>
-                        <div class="col-md-offset-2 col-md-9" style="text-align:left">
                             <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
-                                <input type="checkbox" data-id="2" data-subid="20" data-type="submenu">备课管理
+                                <input type="checkbox" data-id="1" data-subid="12" data-type="submenu">题目管理
                                 <span></span>
                             </label>
                         </div>
@@ -201,13 +189,77 @@ $mainModel = 'admins';
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10" style="text-align:left" data-type="mainMenuCheck">
                             <label class="mt-checkbox mt-checkbox-outline" style="font-weight:bold">
-                                <input type="checkbox" data-id="3" data-type="mainmenu">用户管理
+                                <input type="checkbox" data-id="2" data-type="mainmenu">首页管理
                                 <span></span>
                             </label>
                         </div>
                         <div class="col-md-offset-2 col-md-9" style="text-align:left">
                             <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
-                                <input type="checkbox" data-id="3" data-subid="30" data-type="submenu">用户信息管理
+                                <input type="checkbox" data-id="2" data-subid="20" data-type="submenu">Banner管理
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="2" data-subid="21" data-type="submenu">资源精选管理
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="2" data-subid="22" data-type="submenu">课件精选管理
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10" style="text-align:left" data-type="mainMenuCheck">
+                            <label class="mt-checkbox mt-checkbox-outline" style="font-weight:bold">
+                                <input type="checkbox" data-id="3" data-type="mainmenu">移动端管理
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="col-md-offset-2 col-md-9" style="text-align:left">
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="3" data-subid="30" data-type="submenu">Banner管理
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="3" data-subid="31" data-type="submenu">资源精选管理
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="3" data-subid="32" data-type="submenu">小学语文
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="3" data-subid="33" data-type="submenu">小学数学
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="3" data-subid="34" data-type="submenu">初中数学
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="3" data-subid="35" data-type="submenu">初中物理
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10" style="text-align:left" data-type="mainMenuCheck">
+                            <label class="mt-checkbox mt-checkbox-outline" style="font-weight:bold">
+                                <input type="checkbox" data-id="5" data-type="mainmenu">用户内容管理
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="col-md-offset-2 col-md-9" style="text-align:left">
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="5" data-subid="50" data-type="submenu">备课管理
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="5" data-subid="51" data-type="submenu">作业管理
                                 <span></span>
                             </label>
                         </div>
@@ -233,25 +285,37 @@ $mainModel = 'admins';
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10" style="text-align:left" data-type="mainMenuCheck">
                             <label class="mt-checkbox mt-checkbox-outline" style="font-weight:bold">
-                                <input type="checkbox" data-id="5" data-type="mainmenu">统计管理
+                                <input type="checkbox" data-id="6" data-type="mainmenu">数据统计
                                 <span></span>
                             </label>
                         </div>
                         <div class="col-md-offset-2 col-md-9" style="text-align:left">
                             <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
-                                <input type="checkbox" data-id="5" data-subid="50" data-type="submenu">登录统计
+                                <input type="checkbox" data-id="6" data-subid="60" data-type="submenu">用户信息管理
                                 <span></span>
                             </label>
                             <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
-                                <input type="checkbox" data-id="5" data-subid="51" data-type="submenu">资源使用
+                                <input type="checkbox" data-id="6" data-subid="61" data-type="submenu">登录信息统计
                                 <span></span>
                             </label>
                             <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
-                                <input type="checkbox" data-id="5" data-subid="52" data-type="submenu">课件使用
+                                <input type="checkbox" data-id="6" data-subid="62" data-type="submenu">资源使用详情
                                 <span></span>
                             </label>
                             <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
-                                <input type="checkbox" data-id="5" data-subid="53" data-type="submenu">使用情况
+                                <input type="checkbox" data-id="6" data-subid="63" data-type="submenu">课件使用详情
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="6" data-subid="64" data-type="submenu">题目使用详情
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="6" data-subid="65" data-type="submenu">学校信息统计
+                                <span></span>
+                            </label>
+                            <label class="mt-checkbox mt-checkbox-outline col-md-3" style="font-weight:bold">
+                                <input type="checkbox" data-id="6" data-subid="66" data-type="submenu">使用情况统计
                                 <span></span>
                             </label>
                         </div>

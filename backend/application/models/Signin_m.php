@@ -76,6 +76,11 @@ class Signin_m extends MY_Model
             $user->information = $this->get_client_ip();
             $user_id = $this->users_m->add((array)$user);
             $user->id = $user_id;
+            $this->setLoginAction('register');
+        }else{
+            $userItem = $userData[0];
+			if(substr($userItem->register_time,0,10)!=date('Y-m-d'))
+				$this->setLoginAction('login');
         }
 
         $this->signout();
@@ -106,7 +111,6 @@ class Signin_m extends MY_Model
 
         $this->users_m->update_user($arr, $user_id);
         $this->users_m->update_user_login_num($user_id);
-        $this->setLoginAction('login');
 
         return TRUE;
     }

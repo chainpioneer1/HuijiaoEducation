@@ -652,13 +652,13 @@ class Courses extends Admin_Controller
         }
     }
 
-    function checkRole()
+    function checkRole($id = 40)
     {
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permisData = json_decode($permission);
-            $communityInfo = $permisData->menu_30;
-            if ($communityInfo == '1') return true;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
+            if ($accessInfo == '1') return true;
             else return false;
         }
         return false;

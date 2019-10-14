@@ -110,17 +110,17 @@ $mainModel = 'tbl_huijiao_contents';
     <!--    </div>-->
 </div>
 <div id="preview-modal" class="preview-modal" tabindex="-1" data-width="850">
-    <div class="modal-bg">
+    <div class="modal-bg" style="top:50px; width: 900px;height: 500px;">
         <div class="modal-header">
             <button type="button" class="close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="height: 400px;">
             <div class="preview-player">
                 <div class="preview-player pdf_container"></div>
-                <iframe class="preview-player" width="500" height="275" frameborder="no"></iframe>
+                <iframe class="preview-player" width="850" height="478" frameborder="no"></iframe>
             </div>
         </div>
-        <div class="btn-add-content" onclick="selectHelperContent(this);" data-id=""></div>
+        <div class="btn-add-content" onclick="selectHelperContent(this);" data-id="" style="top: 430px;"></div>
     </div>
     <script>
         $('.close').on('click', function () {
@@ -345,6 +345,9 @@ $mainModel = 'tbl_huijiao_contents';
         function selectHelperContent(elem) {
             var that = $(elem);
             id = that.attr('data-id') * 1;
+            $('.list-item[data-id="'+id+'"]').attr('data-sel',1);
+            $('.list-item[data-id="'+id+'"] .item-favor-value').attr('onclick','');
+            $('.list-item[data-id="'+id+'"] .item-favor-value').css({'pointer-events':'none'});
             parent.selectContent(id);
         }
 

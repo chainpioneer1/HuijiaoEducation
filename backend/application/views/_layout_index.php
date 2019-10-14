@@ -134,7 +134,7 @@
 
     <?php include "components/page_footer.php"; ?>
     <script>
-        if(isMobile) location.href=baseURL+'student';
+        if(false && isMobile) location.href=baseURL+'student';
         else $('body').show();
 
         $('.tab-search').remove();

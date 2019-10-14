@@ -142,12 +142,12 @@ class Teacherwork extends Admin_Controller
         echo json_encode($ret);
     }
 
-    function checkRole()
+    function checkRole($id = 51)
     {
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permissionData = json_decode($permission);
-            $accessInfo = $permissionData->menu_20;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
             if ($accessInfo == '1') return true;
             else return false;
         }

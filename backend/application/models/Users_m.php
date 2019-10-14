@@ -105,6 +105,20 @@ class Users_m extends MY_Model
         return $query->result();
     }
 
+    public function addUserAction($dateStr, $arr){
+
+        $this->db->from('tbl_user_action');
+        $this->db->where('action_date', $dateStr);
+        $query = $this->db->get();
+        $temp = $query->result();
+        if ($temp == null)
+            $this->db->insert('tbl_user_action', $arr);
+        else {
+            $this->db->where('id', $temp[0]->id);
+            $this->db->update('tbl_user_action', $arr);
+        }
+    }
+
     public function get_single($arr = array())
     {
         return parent::get_single($arr);

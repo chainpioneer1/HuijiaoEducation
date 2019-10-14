@@ -46,7 +46,7 @@ class Banner extends Admin_Controller
 
         $this->data["subview"] = "admin/banner/banners";
 
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(20)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -82,7 +82,7 @@ class Banner extends Admin_Controller
 
         $this->data["subview"] = "admin/banner/mobile";
 
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(30)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -274,13 +274,12 @@ class Banner extends Admin_Controller
         echo json_encode($ret);
     }
 
-    function checkRole()
+    function checkRole($id = 20)
     {
-        return true;
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permissionData = json_decode($permission);
-            $accessInfo = $permissionData->menu_13;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
             if ($accessInfo == '1') return true;
             else return false;
         }

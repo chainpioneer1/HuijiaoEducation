@@ -115,7 +115,7 @@ class Recommend extends Admin_Controller
 
         $this->data["subview"] = "admin/contents/recommend_lesson";
 
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(22)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -171,7 +171,7 @@ class Recommend extends Admin_Controller
 
         $this->data["subview"] = "admin/contents/recommend_mobile";
 
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(29+$type)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -417,12 +417,12 @@ class Recommend extends Admin_Controller
         echo json_encode($ret);
     }
 
-    function checkRole()
+    function checkRole($id = 21)
     {
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permissionData = json_decode($permission);
-            $accessInfo = $permissionData->menu_11;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
             if ($accessInfo == '1') return true;
             else return false;
         }

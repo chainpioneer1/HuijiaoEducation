@@ -28,6 +28,8 @@ class Usage_m extends MY_Model
             $this->db->select('tbl_huijiao_contents.id');
             $this->db->select('tbl_huijiao_contents.title, tbl_huijiao_contents.content_no');
             $this->db->select('tbl_huijiao_course_type.title as course_type');
+            $this->db->select('tbl_huijiao_content_type.title as content_type');
+            $this->db->select('tbl_huijiao_content_type.id as content_type_id');
         } else if ($type == 'lessons') {
             $this->db->select('tbl_huijiao_lessons.id');
             $this->db->select('tbl_huijiao_lessons.title, tbl_huijiao_lessons.lesson_no');
@@ -48,6 +50,7 @@ class Usage_m extends MY_Model
 
 //            $this->db->join($this->_table_name, $this->_table_name . '.content_id = tbl_huijiao_contents.id', 'left');
             $this->db->join('tbl_huijiao_course_type', 'tbl_huijiao_contents.course_type_id = tbl_huijiao_course_type.id', 'left')
+                ->join('tbl_huijiao_content_type', 'tbl_huijiao_contents.content_type_no = tbl_huijiao_content_type.id', 'left')
                 ->join('tbl_huijiao_terms', 'tbl_huijiao_course_type.term_id = tbl_huijiao_terms.id', 'left')
                 ->join('tbl_huijiao_subject', 'tbl_huijiao_terms.subject_id = tbl_huijiao_subject.id', 'left')
                 ->where('tbl_huijiao_contents.user_id', '0')

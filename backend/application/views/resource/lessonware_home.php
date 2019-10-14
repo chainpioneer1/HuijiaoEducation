@@ -16,7 +16,7 @@
                 <i class="fa fa-close"></i>
             </div>
             <iframe src="<?= base_url('helper/selectContent'); ?>" width="1280" height="720"
-                    style="width: 70%;height:100%;border:none;outline:none;"></iframe>
+                    style="width: 100%;height:100%;border:none;outline:none;"></iframe>
             <!--<div>
                 <div class="header-item item-title">
                     <div class="title-label">科目</div>

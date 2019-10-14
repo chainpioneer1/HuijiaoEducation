@@ -145,7 +145,7 @@ class Api extends CI_Controller
         );
         if ($_POST) {
             $id = $this->input->post('user_id');
-            $user_media_info = $this->input->post('user_storage');
+            $user_media_info = $_POST['user_storage'];
             $this->users_m->edit(array('user_media_info' => $user_media_info), $id);
             $ret['data'] = $user_media_info;
             $ret['status'] = 'success';

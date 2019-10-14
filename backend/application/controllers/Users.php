@@ -820,9 +820,9 @@ class Users extends CI_Controller
                 . base_url('resource/previewPlayer') . '/' . $favorite_lesson['lesson']->id . '\'">'
                 . $title . '</div>';
             $output .= '<div class="item-subject">';
-            $output .= '<span>科目：</span>';
-            $output .= '<span>' . $favorite_lesson['subject']->title . '</span>';
-            $output .= '<span style="padding-left:15px;">册次：</span>';
+//            $output .= '<span>科目：</span>';
+            $output .= '<span>' . $favorite_lesson['subject']->title . '</span>  &nbsp;';
+//            $output .= '<span style="padding-left:15px;">册次：</span>';
             $output .= '<span>' . $favorite_lesson['term']->title . '</span>';
             $output .= '</div>';
             $output .= '<div class="item-date">收藏时间：' . $favorite_lesson['usage']->update_time;

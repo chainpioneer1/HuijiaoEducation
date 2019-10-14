@@ -28,7 +28,7 @@ class Admins extends Admin_Controller
         $this->data["tbl_content"] = $this->output_content($this->data['admins']);
 
         $this->data["subview"] = "admin/accounts/admins";
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(40)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -281,12 +281,12 @@ class Admins extends Admin_Controller
         return $output;
     }
 
-    function checkRole()
+    function checkRole($id = 40)
     {
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permissionData = json_decode($permission);
-            $accessInfo = $permissionData->menu_40;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
             if ($accessInfo == '1') return true;
             else return false;
         }

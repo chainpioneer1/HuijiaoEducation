@@ -310,12 +310,12 @@ class Usermanage extends Admin_Controller
         return $randomString;
     }
 
-    function checkRole()
+    function checkRole($id = 40)
     {
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permissionData = json_decode($permission);
-            $accessInfo = $permissionData->menu_20;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
             if ($accessInfo == '1') return true;
             else return false;
         }

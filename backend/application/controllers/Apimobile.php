@@ -40,39 +40,31 @@ class Apimobile extends CI_Controller
 
     public function update_user_actions()
     {
-        $this->db->from('tbl_user');
-        $query = $this->db->get();
-        $result = $query->result();
+        $result = $this->users_m->getItems();
         $action_date = array();
         foreach ($result as $item) {
             array_push($action_date, substr($item->create_time, 0, 10));
             array_push($action_date, substr($item->register_time, 0, 10));
         }
         $action_date = array_unique($action_date);
+        echo 'total count of users: ' . count($result) . '<br>';
         foreach ($action_date as $item) {
             $registers = array_filter($result, function ($_item) use ($item) {
-                return  substr($_item->create_time, 0, 10) == $item;
+                return substr($_item->create_time, 0, 10) == $item;
             }, ARRAY_FILTER_USE_BOTH);
             $logins = array_filter($result, function ($_item) use ($item) {
-                return  substr($_item->register_time, 0, 10) == $item;
+                return substr($_item->register_time, 0, 10) == $item;
             }, ARRAY_FILTER_USE_BOTH);
 
             $arr = array(
                 'action_date' => $item,
-                'register_count' => count($registers) + count($logins),
-                'login_count' => count($logins)
+                'register_count' => count($registers),
+                'login_count' => count($logins) + count($registers)
             );
-            $this->db->from('tbl_user_action');
-            $this->db->where('action_date',$item);
-            $query = $this->db->get();
-            $temp = $query->result();
-            if($temp == null)
-                $this->db->insert('tbl_user_action', $arr);
-            else{
-                $this->db->where($this->_primary_key, $temp[0]->id);
-                $this->db->update('tbl_user_action', $arr);
-            }
+
+            $this->users_m->addUserAction($item, $arr);
         }
+        echo 'successfully recovered';
     }
 
     public function getHomeInfo()
@@ -321,7 +313,7 @@ class Apimobile extends CI_Controller
         if ($contentData == null) $contentData = array();
 
         $userData = $this->users_m->get_where(array('user_account' => $user_id));
-        if ($userData == null){
+        if ($userData == null) {
             $ret['data'] = '用户不存在';
             echo json_encode($ret);
             return;
@@ -649,7 +641,7 @@ class Apimobile extends CI_Controller
         $user_id = $userItem->id;
 
         $ret['data'] = array(
-            'userInfo'=> $userItem
+            'userInfo' => $userItem
         );
         $ret['status'] = true;
         echo json_encode($ret);
@@ -688,9 +680,9 @@ class Apimobile extends CI_Controller
             array_push($favoriteData, $item->content_id);
         }
         $favoriteData = $this->contents_m->get_where_in('id', $favoriteData);
-        $j=0;
+        $j = 0;
         foreach ($favoriteData as $item) {
-            $item->action_time = substr($result[$j]->update_time, 0,16);
+            $item->action_time = substr($result[$j]->update_time, 0, 16);
             $j++;
         }
         $ret['data'] = array(
@@ -733,9 +725,9 @@ class Apimobile extends CI_Controller
             array_push($likeData, $item->content_id);
         }
         $likeData = $this->contents_m->get_where_in('id', $likeData);
-        $j=0;
+        $j = 0;
         foreach ($likeData as $item) {
-            $item->action_time = substr($result[$j]->update_time, 0,16);
+            $item->action_time = substr($result[$j]->update_time, 0, 16);
             $j++;
         }
 
@@ -779,9 +771,9 @@ class Apimobile extends CI_Controller
             array_push($readData, $item->content_id);
         }
         $readData = $this->contents_m->get_where_in('id', $readData);
-        $j=0;
+        $j = 0;
         foreach ($readData as $item) {
-            $item->action_time = substr($result[$j]->update_time, 0,16);
+            $item->action_time = substr($result[$j]->update_time, 0, 16);
             $j++;
         }
 
@@ -791,9 +783,9 @@ class Apimobile extends CI_Controller
             array_push($likeData, $item->content_id);
         }
         $likeData = $this->contents_m->get_where_in('id', $likeData);
-        $j=0;
+        $j = 0;
         foreach ($likeData as $item) {
-            $item->action_time = substr($result[$j]->update_time, 0,16);
+            $item->action_time = substr($result[$j]->update_time, 0, 16);
             $j++;
         }
 
@@ -829,7 +821,7 @@ class Apimobile extends CI_Controller
                 'password' => $user_account,
                 'user_name' => $user_account,
                 'user_nickname' => $user_account,
-                'information'=> $this->get_client_ip(),
+                'information' => $this->get_client_ip(),
                 'user_school' => 'APP用户',
                 'user_class' => '1-1',
                 'term_id' => 0,
@@ -842,13 +834,15 @@ class Apimobile extends CI_Controller
             $this->signin_m->setLoginAction('register');
         } else {
             $userItem = $userData[0];
+			if(substr($userItem->register_time,0,10)!=date('Y-m-d'))
+				$this->signin_m->setLoginAction('login');
+			
             $this->users_m->edit(array(
-                'information'=>$this->get_client_ip(),
+                'information' => $this->get_client_ip(),
                 'register_count' => $userItem->register_count + 1,
                 'register_time' => date('Y-m-d H:i:s'),
                 'update_time' => date('Y-m-d H:i:s')
             ), $userItem->id);
-            $this->signin_m->setLoginAction('login');
         }
 
         $ret['data'] = 'Login Success';

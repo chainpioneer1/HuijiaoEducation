@@ -61,11 +61,11 @@ class Helper extends CI_Controller
 
         if ($this->uri->segment(SEGMENT) == '') $this->session->unset_userdata('filter');
 
-        $queryStr = '';
+        $queryStr = $this->session->userdata('queryStr');
         if ($_POST) {
             $this->session->unset_userdata('filter');
 //            $_POST['search_no'] != '' && $filter['tbl_huijiao_contents.content_no'] = $_POST['search_no'];
-            $_POST['search_title'] != '' && $queryStr = $_POST['search_title'];
+            $queryStr = $_POST['search_title'];
             $_POST['search_content_type'] != '' && $filter['tbl_huijiao_contents.content_type_no'] = $_POST['search_content_type'];
 //            $_POST['search_subject'] != '' && $filter['tbl_huijiao_terms.subject_id'] = $_POST['search_subject'];
             $_POST['search_term'] != '' && $filter['tbl_huijiao_terms.id'] = $_POST['search_term'];
@@ -74,6 +74,8 @@ class Helper extends CI_Controller
         }
         $this->session->userdata('filter') != '' && $filter = $this->session->userdata('filter');
         $filter['tbl_huijiao_contents.status'] = 1;
+
+        $this->session->set_userdata('queryStr', $queryStr);
 
         $this->data['perPage'] = $perPage = $this->perpage;
         $this->data['cntPage'] = $cntPage = $this->mainModel->get_count($filter, $queryStr);
@@ -104,11 +106,11 @@ class Helper extends CI_Controller
 
         if ($this->uri->segment(SEGMENT) == '') $this->session->unset_userdata('filter');
 
-        $queryStr = '';
+        $queryStr = $this->session->userdata('queryStr');
         if ($_POST) {
             $this->session->unset_userdata('filter');
 //            $_POST['search_no'] != '' && $filter['tbl_huijiao_contents.content_no'] = $_POST['search_no'];
-            $_POST['search_title'] != '' && $queryStr = $_POST['search_title'];
+            $queryStr = $_POST['search_title'];
             $_POST['search_content_type'] != '' && $filter['tbl_huijiao_contents.content_type_no'] = $_POST['search_content_type'];
             $_POST['search_subject'] != '' && $filter['tbl_huijiao_terms.subject_id'] = $_POST['search_subject'];
             $_POST['search_term'] != '' && $filter['tbl_huijiao_terms.id'] = $_POST['search_term'];
@@ -118,13 +120,15 @@ class Helper extends CI_Controller
         $this->session->userdata('filter') != '' && $filter = $this->session->userdata('filter');
         $filter['tbl_huijiao_contents.status'] = 1;
 
+        $this->session->set_userdata('queryStr', $queryStr);
+
         $this->data['perPage'] = $perPage = $this->perpage;
         $this->data['cntPage'] = $cntPage = $this->mainModel->get_count($filter, $queryStr);
         $ret = $this->paginationCompress('helper/index', $cntPage, $perPage, 3);
         $this->data['curPage'] = $curPage = $ret['pageId'];
         $this->data["contents"] = $this->mainModel->getItemsByPage($filter, $ret['pageId'], $ret['cntPerPage'], $queryStr);
 
-        $this->data["tbl_content"] = $this->get_contents_html($this->data['contents']);
+        $this->data["tbl_content"] = $this->get_contents_html_selector($this->data['contents']);
         $this->data["queryStr"] = $queryStr;
 
         $this->data["subview"] = "helper/select_content";
@@ -155,6 +159,40 @@ class Helper extends CI_Controller
 //            if (strlen($contentTitle) > 12) $contentTitle = substr($contentTitle, 0, 12);
             $usages_read_mine = $this->usage_m->get_where(['user_id' => $this->session->userdata('loginuserID'), 'content_id' => $content->id]);
             $output .= '<div class="list-item"><div>';
+            $output .= '<div class="item-main-info" style="padding: 0; border-radius: 5px">';
+            $output .= '<div class="item-preview-wrapper" style="padding: 0; border-radius: 5px">';
+            $output .= '<div class="item-preview" style="background:' . $bgStr . ';"></div>';
+            $output .= '</div>';
+            $output .= '<div class="item-coursename">' . $contentTitle . '</div>';
+            $output .= '</div>';
+            $output .= '<div class="item-infobar">';
+            $output .= '<div class="item-read-value" onclick="showHelperContentPlayer(\'' . $content->id . '\')">预览</div>';
+            $output .= '<div class="item-favor-value" onclick="selectHelperContent(this)" data-id="' . $content->id . '">添加</div>';
+            $output .= '</div>';
+            $output .= '</div></div>';
+        }
+
+        return $output;
+    }
+    public function get_contents_html_selector($contents)
+    {
+        $output = '';
+        foreach ($contents as $content) {
+            $iconPath = '';
+            $iconCorner = '';
+            if ($content->icon_path != null && $content->icon_path != '') $iconPath = base_url() . $content->icon_path;
+            if ($content->icon_corner != null && $content->icon_corner != '') $iconCorner = base_url() . $content->icon_corner;
+            $bgStr = '';
+            if ($iconCorner != '') $bgStr = 'url(' . $iconCorner . ')';
+
+            if ($iconPath != '') {
+                if ($bgStr != '') $bgStr .= ',';
+                $bgStr .= 'url(' . $iconPath . ')';
+            }
+            $contentTitle = $content->fulltitle;
+//            if (strlen($contentTitle) > 12) $contentTitle = substr($contentTitle, 0, 12);
+            $usages_read_mine = $this->usage_m->get_where(['user_id' => $this->session->userdata('loginuserID'), 'content_id' => $content->id]);
+            $output .= '<div class="list-item" data-id="'. $content->id .'"><div>';
             $output .= '<div class="item-main-info" style="padding: 0; border-radius: 5px">';
             $output .= '<div class="item-preview-wrapper" style="padding: 0; border-radius: 5px">';
             $output .= '<div class="item-preview" style="background:' . $bgStr . ';"></div>';

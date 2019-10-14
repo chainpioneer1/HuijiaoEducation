@@ -166,7 +166,7 @@ class Questions extends Admin_Controller
         $this->data["type_str"] = ['选择', '判断', '填空'];
         $this->data["diff_str"] = ['简单', '较难', '困难'];
 
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(64)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -300,12 +300,12 @@ class Questions extends Admin_Controller
         echo json_encode($ret);
     }
 
-    function checkRole()
+    function checkRole($id = 12)
     {
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permissionData = json_decode($permission);
-            $accessInfo = $permissionData->menu_11;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
             if ($accessInfo == '1') return true;
             else return false;
         }

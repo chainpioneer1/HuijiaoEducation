@@ -33,6 +33,7 @@ class Usage extends Admin_Controller
         $this->data['subjectList'] = $this->subject_m->getItems();
         $this->data['termList'] = $this->terms_m->getItems();
         $this->data['courseTypeList'] = $this->coursetype_m->getItems();
+        $this->data['contentTypeList'] = $this->contenttype_m->getItems();
 
         $filter = array();
         if ($this->uri->segment(SEGMENT) == '') $this->session->unset_userdata('filter');
@@ -44,6 +45,7 @@ class Usage extends Admin_Controller
             $_POST['search_subject'] != '' && $filter['tbl_huijiao_terms.subject_id'] = $_POST['search_subject'];
             $_POST['search_term'] != '' && $filter['tbl_huijiao_terms.id'] = $_POST['search_term'];
             $_POST['search_course_type'] != '' && $filter['tbl_huijiao_contents.course_type_id'] = $_POST['search_course_type'];
+            $_POST['search_content_type'] != '' && $filter['tbl_huijiao_contents.content_type_no'] = $_POST['search_content_type'];
             $this->session->set_userdata('filter', $filter);
         }
         $this->session->userdata('filter') != '' && $filter = $this->session->userdata('filter');
@@ -122,7 +124,7 @@ class Usage extends Admin_Controller
 
         $this->data["subview"] = "admin/usage/usage";
 
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(66)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -152,6 +154,7 @@ class Usage extends Admin_Controller
             $output .= '<td>' . $unit->course_type . '</td>';
             $output .= '<td>' . $unit->subject . '</td>';
             $output .= '<td>' . $unit->term . '</td>';
+            $output .= '<td>' . $unit->content_type . '</td>';
             $output .= '<td>' . ($usage['total_read'] == null ? 0 : $usage['total_read']) . '</td>';
             $output .= '<td>' . ($usage['total_favorite'] == null ? 0 : $usage['total_favorite']) . '</td>';
             $output .= '<td>' . ($usage['total_like'] == null ? 0 : $usage['total_like']) . '</td>';
@@ -194,7 +197,7 @@ class Usage extends Admin_Controller
 
         $this->data["subview"] = "admin/usage/lessons";
 
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(63)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -483,12 +486,12 @@ class Usage extends Admin_Controller
         echo json_encode($ret);
     }
 
-    function checkRole()
+    function checkRole($id = 62)
     {
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permissionData = json_decode($permission);
-            $accessInfo = $permissionData->menu_10;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
             if ($accessInfo == '1') return true;
             else return false;
         }

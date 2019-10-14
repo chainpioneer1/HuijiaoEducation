@@ -162,7 +162,7 @@ class Users extends Admin_Controller
 
         $this->data["subview"] = "admin/usage/schools";
 
-        if (!$this->checkRole()) {
+        if (!$this->checkRole(65)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -242,7 +242,7 @@ class Users extends Admin_Controller
 
         $this->data["subview"] = "admin/users/register_info";
 
-        if (!$this->checkRole(50)) {
+        if (!$this->checkRole(61)) {
             $this->load->view('admin/_layout_error', $this->data);
         } else {
             $this->load->view('admin/_layout_main', $this->data);
@@ -526,13 +526,12 @@ class Users extends Admin_Controller
         echo json_encode($ret);
     }
 
-    function checkRole($menuid = 0)
+    function checkRole($id = 60)
     {
         $permission = $this->session->userdata('admin_user_type');
         if ($permission != NULL) {
-            $permissionData = json_decode($permission);
-            $accessInfo = $permissionData->menu_30;
-            if ($menuid == 50) $accessInfo = $permissionData->menu_50;
+            $permissionData = (array)(json_decode($permission));
+            $accessInfo = $permissionData['menu_' . $id];
             if ($accessInfo == '1') return true;
             else return false;
         }

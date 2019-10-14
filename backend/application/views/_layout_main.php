@@ -15,7 +15,7 @@
     <script>
         var imageDir = baseURL + "";
         var loginUserType = '<?=$userType?>';
-        if(isMobile) location.href=baseURL+'student';
+        if(false && isMobile) location.href=baseURL+'student';
         else $('body').show();
     </script>
 

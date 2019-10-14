@@ -29,7 +29,7 @@ $mainModel = 'tbl_huijiao_contents';
                                   id="searchForm" role="form" method="post" enctype="multipart/form-data"
                                   accept-charset="utf-8">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="col-md-5 control-label"><?= $category ?>编码:</label>
                                             <div class="col-md-7">
@@ -37,11 +37,20 @@ $mainModel = 'tbl_huijiao_contents';
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="col-md-5 control-label"><?= $category ?>名称:</label>
                                             <div class="col-md-7">
                                                 <input type="text" class="form-control" name="search_title">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-md-5 control-label"><?= $category ?>类型:</label>
+                                            <div class="col-md-7">
+                                                <select type="text" class="form-control"
+                                                        name="search_content_type"></select>
                                             </div>
                                         </div>
                                     </div>
@@ -93,6 +102,7 @@ $mainModel = 'tbl_huijiao_contents';
                                 <th>所属课程</th>
                                 <th>所属科目</th>
                                 <th>所属册次</th>
+                                <th>资源类型</th>
                                 <th>浏览量</th>
                                 <th>收藏量</th>
                                 <th>点赞量</th>
@@ -285,6 +295,7 @@ $mainModel = 'tbl_huijiao_contents';
     <input hidden class="subjectList" value='<?= json_encode($subjectList) ?>'>
     <input hidden class="termList" value='<?= json_encode($termList) ?>'>
     <input hidden class="courseTypeList" value='<?= json_encode($courseTypeList) ?>'>
+    <input hidden class="contentTypeList" value='<?= json_encode($contentTypeList) ?>'>
     <input hidden class="filterInfo"
            value='<?= json_encode($this->session->userdata('filter') ? $this->session->userdata('filter') : array()) ?>'>
     <script>
@@ -296,6 +307,7 @@ $mainModel = 'tbl_huijiao_contents';
         var subjectList = JSON.parse($('.subjectList').val());
         var termList = JSON.parse($('.termList').val());
         var courseTypeList = JSON.parse($('.courseTypeList').val());
+        var contentTypeList = JSON.parse($('.contentTypeList').val());
         var filterInfo = JSON.parse($('.filterInfo').val());
         var _mainObj = '<?=$mainModel?>';
 
@@ -303,6 +315,7 @@ $mainModel = 'tbl_huijiao_contents';
             var content_html = '<option value="">全部</option>';
             $('select[name="search_term"]').html(content_html);
             $('select[name="search_course_type"]').html(content_html);
+            $('select[name="search_content_type"]').html(content_html);
 
             // make subject List
             for (var i = 0; i < subjectList.length; i++) {
@@ -311,6 +324,16 @@ $mainModel = 'tbl_huijiao_contents';
                 content_html += '<option value="' + item.id + '">' + item.title + '</option>';
             }
             $('select[name="search_subject"]').html(content_html);
+
+            // make Content Type List
+            var content_html = '<option value="">全部</option>';
+            for (var i = 0; i < contentTypeList.length; i++) {
+                var item = contentTypeList[i];
+                // if (item.status == '0') continue;
+                content_html += '<option value="' + item.id + '">' + item.title + '</option>';
+            }
+            $('select[name="search_content_type"]').html(content_html);
+
             $('select[name="search_subject"]').off('change input')
             $('select[name="search_subject"]').on('change input', function (e) {
 
@@ -356,6 +379,9 @@ $mainModel = 'tbl_huijiao_contents';
 
             if (filterInfo[_mainObj + '.course_type_id'])
                 $('select[name="search_course_type"]').val(filterInfo[_mainObj + '.course_type_id']);
+
+            if (filterInfo[_mainObj + '.content_type_no'])
+                $('select[name="search_content_type"]').val(filterInfo[_mainObj + '.content_type_no']);
 
         }
 
