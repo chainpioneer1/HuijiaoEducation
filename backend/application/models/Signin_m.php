@@ -136,11 +136,10 @@ class Signin_m extends MY_Model
             $this->db->where('id',$result[0]->id);
             $arr = array();
             switch($type){
-                case 'login':
-                    $arr['login_count'] = $result[0]->login_count+1;
-                    break;
                 case'register':
                     $arr['register_count'] = $result[0]->register_count+1;
+                case 'login':
+                    $arr['login_count'] = $result[0]->login_count+1;
                     break;
             }
             $this->db->update('tbl_user_action', $arr);
