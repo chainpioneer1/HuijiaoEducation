@@ -14,6 +14,7 @@ if ($this->session->userdata("loggedin") != FALSE) {
 <style>
     body {
         background-color: #f5f5f5 !important;
+        overflow: hidden;
     }
     #wx-sharing-qr-wrap {
         position: absolute;
@@ -99,7 +100,23 @@ if ($this->session->userdata("loggedin") != FALSE) {
             }
             read_content();
         }, 100);
+
     })
+    function clickedContent(){
+        console.log('------------- iframe clicked');
+        try{
+            if(isMobile && user_id !='' ){
+                if ('ReactNativeWebView' in window) {
+                    window.ReactNativeWebView.postMessage(JSON.stringify({
+                        type:'header_show'
+                    }));
+                }
+            }
+        }catch(e){
+
+        }
+
+    }
     var isProcessing = false;
 
     function read_content() {

@@ -28,7 +28,7 @@ class Recommend_m extends MY_Model
             $this->db->select('tbl_huijiao_terms.title as term, tbl_huijiao_terms.id as term_id');
             $this->db->select('tbl_huijiao_terms.term_no, tbl_huijiao_course_type.id as course_type_id');
             $this->db->select('tbl_huijiao_course_type.coursetype_no, tbl_huijiao_course_type.title as course_type');
-            $this->db->select('tbl_huijiao_course_type.title as course_type, tbl_huijiao_recommend.image_icon as icon_path');
+            $this->db->select('tbl_huijiao_course_type.title as course_type, tbl_huijiao_contents.icon_path as icon_path');
 //            $this->db->select('tbl_huijiao_content_type.title as content_type, tbl_huijiao_content_type.icon_path as icon_corner');
 //            $this->db->select('tbl_huijiao_contents.icon_path_m as icon_path_m, tbl_huijiao_content_type.icon_path_m as icon_corner_m');
             $this->db->select('tbl_huijiao_content_type.title as content_type, "assets/images/none.png" as icon_corner');
@@ -55,7 +55,7 @@ class Recommend_m extends MY_Model
         } else if ($arr['tbl_huijiao_recommend.type'] == 1) { // recommended lessons
             $this->db->select($this->_table_name . '.*');
             $this->db->select('tbl_huijiao_lessons.id as lesson_id');
-            $this->db->select('tbl_huijiao_lessons.title as lesson, tbl_huijiao_recommend.image_icon as icon_path');
+            $this->db->select('tbl_huijiao_lessons.title as lesson, tbl_huijiao_lessons.image_icon as icon_path');
             $this->db->select('tbl_huijiao_subject.title as subject, tbl_huijiao_subject.id as subject_id');
             $this->db->select('tbl_huijiao_terms.title as term, tbl_huijiao_terms.id as term_id');
             $this->db->select('tbl_huijiao_terms.term_no, tbl_huijiao_course_type.id as course_type_id');
@@ -130,7 +130,8 @@ class Recommend_m extends MY_Model
         $this->db->select('tbl_huijiao_contents.title as title');
         $this->db->select($this->_table_name . '.content_id as id');
         $this->db->select('tbl_huijiao_content_type.title as content_type, tbl_huijiao_contents.title as content');
-        $this->db->select('tbl_huijiao_recommend.image_icon as icon_path');
+        $this->db->select('tbl_huijiao_contents.icon_path as image_icon');
+        $this->db->select('tbl_huijiao_contents.icon_path as icon_path');
         $this->db->select('tbl_huijiao_subject.title as subject, tbl_huijiao_subject.id as subject_id');
         $this->db->select('tbl_huijiao_terms.title as term, tbl_huijiao_terms.id as term_id');
         $this->db->select('tbl_huijiao_terms.term_no, tbl_huijiao_course_type.id as course_type_id');

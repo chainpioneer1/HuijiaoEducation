@@ -158,9 +158,9 @@ function courseItemPlay(itemid, courseList, isAdditional) {
         $('.pdf_container').fadeOut("fast");
         $('.pdf_container').attr("src", "");
         // history.replaceState(null,null,url);
-        $('#download_btn').attr('href', download_url);
+        $('a#download_btn').attr('href', download_url);
         var fileType = getFiletypeFromURL(download_url);
-        $('#download_btn').attr('download', item.title + '.' + fileType);
+        $('a#download_btn').attr('download', item.title + '.' + fileType);
     }
     console.log(history.length);
 }

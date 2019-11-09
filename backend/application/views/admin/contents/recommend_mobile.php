@@ -270,7 +270,7 @@ $mainModel = 'tbl_huijiao_recommend';
            value='<?= json_encode($this->session->userdata('filter') ? $this->session->userdata('filter') : array()) ?>'>
     <script>
         $(function () {
-            $('a.nav-link[menu_id="<?= $recommendType; ?>"]').addClass('menu-selected');
+            $('a.nav-link[menu_id="11<?= $recommendType; ?>"]').addClass('menu-selected');
             searchConfig();
             controlConfig();
         });
@@ -341,7 +341,7 @@ $mainModel = 'tbl_huijiao_recommend';
                 setTimeout(function () {
                     $('select[name="search_term"]').val(filterInfo['tbl_huijiao_terms.id']);
                     $('select[name="search_term"]').trigger('change');
-                },5);
+                }, 5);
             }
 
             if (filterInfo[_mainObj + '.course_type_id']) $('select[name="search_course_type"]').val(filterInfo[_mainObj + '.course_type_id']);
@@ -434,17 +434,21 @@ $mainModel = 'tbl_huijiao_recommend';
 
             $('#edit-modal .modal-title').html('新增精选资源');
 
-            $('select[name="course_type_id"]').off('change input');
-            $('select[name="course_type_id"]').on('change input', function (object) {
+            var _tmr = 0;
+            $('select[name="course_type_id"]').off('change');
+            $('select[name="course_type_id"]').on('change', function (object) {
                 var courseTypeId = $(this).val();
-                makeContentList(courseTypeId, 'contents');
+                clearTimeout(_tmr);
+                _tmr = setTimeout(function () {
+                    makeContentList(courseTypeId, 'contents');
+                }, 10);
             });
-            $('select[name="content_id"]').off('change input');
-            $('select[name="content_id"]').on('change input', function () {
+            $('select[name="content_id"]').off('change');
+            $('select[name="content_id"]').on('change', function () {
                 var that = $(this);
                 var id = that.val();
                 var contentItem = contentList.filter(function (a) {
-                    return a.id = id;
+                    return a.id == id;
                 });
                 var image_icon = '';
                 var image_corner = '';
@@ -477,8 +481,8 @@ $mainModel = 'tbl_huijiao_recommend';
             });
 
 
-            $('select[name="term_id"]').off('change input');
-            $('select[name="term_id"]').on('change input', function (object) {
+            $('select[name="term_id"]').off('change');
+            $('select[name="term_id"]').on('change', function (object) {
                 var termId = $(this).val();
                 var content_html = '';
                 for (var i = 0; i < courseTypeList.length; i++) {
@@ -491,8 +495,8 @@ $mainModel = 'tbl_huijiao_recommend';
                 $('select[name="course_type_id"]').trigger('change');
             });
 
-            $('select[name="subject_id"]').off('change input');
-            $('select[name="subject_id"]').on('change input', function (object) {
+            $('select[name="subject_id"]').off('change');
+            $('select[name="subject_id"]').on('change', function (object) {
                 var subjectId = $(this).val();
                 var content_html = '';
                 for (var i = 0; i < termList.length; i++) {
@@ -551,23 +555,27 @@ $mainModel = 'tbl_huijiao_recommend';
             var lessonInfo = self.getAttribute('data-lessons');
 
             $('#edit-modal .modal-title').html('编辑精选资源');
-
-            $('select[name="course_type_id"]').off('change input');
-            $('select[name="course_type_id"]').on('change input', function (object) {
+            var _tmr = 0;
+            $('select[name="course_type_id"]').off('change');
+            $('select[name="course_type_id"]').on('change', function (object) {
                 var courseTypeId = $(this).val();
-                makeContentList(courseTypeId, 'contents', value7);
+                clearTimeout(_tmr);
+                _tmr = setTimeout(function () {
+                    makeContentList(courseTypeId, 'contents', value7);
+                    value7 = null;
+                }, 10);
             });
-            $('select[name="content_id"]').off('change input');
-            $('select[name="content_id"]').on('change input', function () {
+            $('select[name="content_id"]').off('change');
+            $('select[name="content_id"]').on('change', function () {
                 var that = $(this);
                 var id = that.val();
                 var contentItem = contentList.filter(function (a) {
-                    return a.id = id;
+                    return a.id == id;
                 });
-                // var image_icon = '';
+                var image_icon = '';
                 var image_corner = '';
                 if (contentItem.length != 0) {
-                    // image_icon = contentItem[0].icon_path;
+                    image_icon = contentItem[0].icon_path;
                     image_corner = contentItem[0].icon_corner;
                 }
                 var bgStr = '';
@@ -595,8 +603,8 @@ $mainModel = 'tbl_huijiao_recommend';
 
             });
 
-            $('select[name="term_id"]').off('change input');
-            $('select[name="term_id"]').on('change input', function (object) {
+            $('select[name="term_id"]').off('change');
+            $('select[name="term_id"]').on('change', function (object) {
                 var termId = $(this).val();
                 var content_html = '';
                 for (var i = 0; i < courseTypeList.length; i++) {
@@ -609,8 +617,8 @@ $mainModel = 'tbl_huijiao_recommend';
                 $('select[name="course_type_id"]').trigger('change');
             });
 
-            $('select[name="subject_id"]').off('change input');
-            $('select[name="subject_id"]').on('change input', function (object) {
+            $('select[name="subject_id"]').off('change');
+            $('select[name="subject_id"]').on('change', function (object) {
                 var subjectId = $(this).val();
                 var content_html = '';
                 for (var i = 0; i < termList.length; i++) {
@@ -630,11 +638,11 @@ $mainModel = 'tbl_huijiao_recommend';
             setTimeout(function () {
                 $('select[name="term_id"]').val(value2);
                 $('select[name="term_id"]').trigger('change');
-            },5);
+            }, 5);
             setTimeout(function () {
                 $('select[name="course_type_id"]').val(value5);
                 $('select[name="course_type_id"]').trigger('change');
-            },10);
+            }, 10);
 
             $('input[type="file"]').val('');
             //

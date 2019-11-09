@@ -4,6 +4,24 @@ var videoWrapper = $('.sf-video-wrapper');
 
 var video_isplaying = true;
 
+function getMobileOperatingSystem() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+    }
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+    return "unknown";
+}
+
+var osStatus = getMobileOperatingSystem();
+var _cTmr = 0;
 $(document).ready(function () {
 
     var options = {};
@@ -38,30 +56,53 @@ $(document).ready(function () {
         autoplay: true
     }, function () {
         vplayer.on('play', function () {
-
+            video_isplaying = true;
+            hideControls();
+			// $('.play_pause_button').show();
             $('.loading-img-wrapper').hide();
             // video_isplaying=true;
+            if (osStatus == 'Android' || osStatus == 'iOS')
+                $('button.vjs-fullscreen-control').hide()
         });
         vplayer.on("pause", function () {
-
+            video_isplaying = false;
+            showControls();
         });
         vplayer.on("ended", function () {
             video_isplaying = false;
+            showControls();
         });
+        vplayer.on('timeupdate', function () {
+            hideControls();
+        })
     });
     // resizeWindow();
 
-    if(start_play_status!=''){
+    if (start_play_status != '') {
         $('.loading-img-wrapper').hide();
-        video_isplaying=true;
+        video_isplaying = true;
         play_pause();
     }
-
+    showControls();
+    vplayer.on('useractive', function () {
+        console.log('user activated');
+        showControls();
+    })
     $('.loading-img-wrapper').hide();
     resizeWindow();
 
 });
 
+function showControls(){
+    clearInterval(_cTmr);
+    if(parent.clickedContent) parent.clickedContent();
+    _cTmr = setInterval(function () {
+        if(parent.clickedContent) parent.clickedContent();
+    },1800);
+}
+function hideControls(){
+    clearInterval(_cTmr);
+}
 function switchVideo(st) {
 
     if (st) {//True then show video and hide content page area
@@ -88,6 +129,7 @@ function showVideo(videoFile) {
 }
 
 function play_pause() {
+    return;
     if (video_isplaying) {
         video_isplaying = false;
         vplayer.pause();
@@ -219,6 +261,8 @@ function resizeWindow(rate) {
         top: top,
         left: left
     });
+    $('.video-js .vjs-control-bar').css({'font-size': '12px'});
+
     $('.sf-video-wrapper .video-js .custom-video-contain').css({
         width: width,
         height: height,
@@ -232,13 +276,13 @@ function resizeWindow(rate) {
         left: 0
     });
     var fileType = getFiletypeFromURL($('#video-player source').attr('src'));
-    if(fileType == 'mp3' || fileType=='wav'){
+    if (fileType == 'mp3' || fileType == 'wav') {
         $('a').hide();
         $('.video-js').css({
-            background:'url(./assets/images/audio.gif)',
-            'background-size':'40% 30%',
-            'background-position':'center',
-            'background-repeat':'no-repeat'
+            background: 'url(./assets/images/audio.gif)',
+            'background-size': '40% 30%',
+            'background-position': 'center',
+            'background-repeat': 'no-repeat'
         });
     }
 }

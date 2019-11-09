@@ -79,7 +79,7 @@ class Usage extends Admin_Controller
         $this->data['courseTypeList'] = $this->coursetype_m->getItems();
         $this->data['contentTypeList'] = $this->contenttype_m->getItems();
 
-        $this->data['pageType'] = 6;
+        $this->data['pageType'] = 7;
         // default value:
         // 6-user statistics, 4-subject, 5-courseType, 1-contents, 2-subject circle, 3- terms circle
         $filter = array();
@@ -113,8 +113,8 @@ class Usage extends Admin_Controller
         $this->data['term_content_detail'] = $this->mainModel->getFilteredUsageInfo($filterStr, 'term_content');
         $this->data['term_lesson_detail'] = $this->mainModel->getFilteredUsageInfo($filterStr, 'term_lesson');
         $this->data['contentType_content_detail'] = $this->mainModel->getFilteredUsageInfo($filterStr, 'contentType_content');
-        $this->data["contents_info"] = $this->mainModel->getUsageInfo($filter, 'contents');
-        $this->data["lessons_info"] = $this->mainModel->getUsageInfo($filter, 'lessons');
+        $this->data["contents_info"] = $this->mainModel->getUsageInfo(array(), 'contents');
+        $this->data["lessons_info"] = $this->mainModel->getUsageInfo(array(), 'lessons');
         $this->data["subjects_content_info"] = $this->mainModel->getUsageInfo($filter, 'subjects_contents');
         $this->data["subjects_lesson_info"] = $this->mainModel->getUsageInfo($filter, 'subjects_lessons');
         $this->data["terms_content_info"] = $this->mainModel->getUsageInfo($filter, 'terms_contents');

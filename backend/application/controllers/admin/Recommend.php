@@ -130,7 +130,7 @@ class Recommend extends Admin_Controller
         if (!$type) $type = 2;
         $titleArr = ['资源精选管理', '小学语文', '小学数学', '初中数学', '初中物理'];
         $this->data['title'] = $titleArr[$type - 2];
-        $this->data['recommendType'] = '11'.($type+2);
+        $this->data['recommendType'] = ($type+2);
 
 
         $this->data['subjectList'] = $this->subject_m->getItems();

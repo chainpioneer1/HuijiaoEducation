@@ -1,3 +1,7 @@
+<?php
+$loginUserId = $this->session->userdata('loginuserID');
+$loginUserName = $this->session->userdata('user_account');
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -52,8 +56,8 @@
                             }
                         }
                     }
-					$contentStr = $item->content;
-					//if(mb_strlen($contentStr, 'UTF-8')>14) $contentStr = mb_substr($contentStr, 0,14, 'UTF-8').'...';
+                    $contentStr = $item->content;
+                    //if(mb_strlen($contentStr, 'UTF-8')>14) $contentStr = mb_substr($contentStr, 0,14, 'UTF-8').'...';
                     echo '<div class="content-item">'
                         . '<div class="content-image" onclick="window.open(\'' . $baseURL . 'resource/warePreviewPlayer/' . $item->content_id . '\',\'_blank\')" '
                         . ' style="background-image: '
@@ -105,9 +109,9 @@
                             }
                         }
                     }
-					
-					$contentStr = $item->lesson;
-					//if(mb_strlen($contentStr, 'UTF-8')>14) $contentStr = mb_substr($contentStr, 0,14, 'UTF-8').'...';
+
+                    $contentStr = $item->lesson;
+                    //if(mb_strlen($contentStr, 'UTF-8')>14) $contentStr = mb_substr($contentStr, 0,14, 'UTF-8').'...';
                     echo '<div class="content-item">'
                         . '<div class="content-image" onclick="window.open(\'' . $baseURL . 'resource/previewPlayer/' . $item->content_id . '\',\'_blank\')" '
                         . ' style="background-image: url(' . $baseURL . $item->icon_path . '); cursor: pointer;"></div>'
@@ -134,8 +138,7 @@
 
     <?php include "components/page_footer.php"; ?>
     <script>
-        if(false && isMobile) location.href=baseURL+'student';
-        else $('body').show();
+
 
         $('.tab-search').remove();
         $('.tab-item[data-id="0"]').attr('data-sel', 1);
@@ -153,6 +156,22 @@
 
         var isProcessing = false;
         var user_id = '<?= $this->session->userdata('loginuserID') ?>';
+
+        try {
+            if (isMobile && user_id != '') {
+                if ('ReactNativeWebView' in window) {
+                    window.ReactNativeWebView.postMessage(JSON.stringify({
+                        type: 'start',
+                        uid: '<?= $loginUserId; ?>',
+                        uac: '<?= $loginUserName; ?>'
+                    }));
+                }
+            }
+        } catch (e) {
+
+        }
+
+        $('body').show();
 
         function refreshEvent() {
             $('.item-favor-icon').off('click')

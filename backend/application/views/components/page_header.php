@@ -60,7 +60,6 @@ $CONF = [
         loginUserId: "<?= '' . $this->session->userdata('loginuserID')?>",
         loginUserSchoolId: "<?= '' . $this->session->userdata('user_school_id')?>"
     };
-    localStorage.setItem('session_info_id',"<?= '' . $this->session->userdata('loginuserID')?>");
     function sendCommand2APP(cmmd, param) {
 //            alert(cmmd);
         try {
@@ -116,6 +115,20 @@ $CONF = [
     osStatus = getMobileOperatingSystem();
     if (osStatus === 'Android' || osStatus === 'iOS') isMobile = true;
 
+    if(!localStorage.getItem('session_info_id') && "<?= $this->session->userdata('loginuserID');?>"!=""){
+        $.ajax({
+            type: 'post',
+            url: baseURL + 'apimobile/setLogin',
+            dataType: 'json',
+            data: JSON.stringify({type: (isMobile)?"mweb":"pcweb"}),
+            success: function(result){
+                console.log(result);
+            },error: function(err){
+                console.log(err);
+            }
+        })
+    }
+    localStorage.setItem('session_info_id',"<?= '' . $this->session->userdata('loginuserID')?>");
     function closeApp() {
         if (osStatus == 'Android') {
 

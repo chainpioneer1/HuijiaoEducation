@@ -41,17 +41,19 @@
 </div>
 
 <div class="sf-video-wrapper" id="contentWrap">
-    <video id="video-player" class="video-js vjs-big-play-centered" preload="auto">
+    <video id="video-player" class="video-js vjs-big-play-centered" preload="auto" playsinline="true" webkit-playsinline="true">
         <source src="<?= $_GET['ncw_file']; ?>" type="video/mp4">
         <p class="vjs-no-js"></p>
     </video>
 </div>
-<a href="#" onclick="play_pause();"></a>
-<script>
-    var start_play_status = '<?=$status?>';
-</script>
-<script type="text/javascript" src="assets/js/jqueryMobile.js"></script>
-<script type="text/javascript" src="assets/js/scene_control.js"></script>
-
+<a href="javascript:;" onclick="play_pause();" class="play_pause_button"></a>
+<div class="scripts" style="display:none;">
+	<script>
+		var start_play_status = '<?=$status?>';
+	</script>
+	<script type="text/javascript" src="assets/js/jqueryMobile.js"></script>
+	<script type="text/javascript" src="assets/js/scene_control.js"></script>
+	<script> $('.scripts').remove(); </script>
+</div>
 </body>
 </html>

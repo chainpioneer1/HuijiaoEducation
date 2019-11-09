@@ -434,14 +434,41 @@ $mainModel = 'tbl_huijiao_recommend';
 
             $('#edit-modal .modal-title').html('新增精选课件');
 
-            $('select[name="course_type_id"]').off('change input');
-            $('select[name="course_type_id"]').on('change input', function (object) {
+            var _tmr = 0;
+            $('select[name="course_type_id"]').off('change');
+            $('select[name="course_type_id"]').on('change', function (object) {
                 var courseTypeId = $(this).val();
-                makeLessonList(courseTypeId, 'contents');
+                clearTimeout(_tmr);
+                _tmr = setTimeout(function () {
+                    makeLessonList(courseTypeId, 'contents');
+                }, 10);
             });
 
-            $('select[name="term_id"]').off('change input');
-            $('select[name="term_id"]').on('change input', function (object) {
+            $('select[name="content_id"]').off('change');
+            $('select[name="content_id"]').on('change', function (e) {
+                var lesson_id = $(this).val();
+                var lessonItem = lessonList.filter(function(a){
+                    return a.id == lesson_id;
+                })
+
+                var image_icon = '';
+                var image_corner = '';
+                if (lessonItem.length != 0) {
+                    image_icon = lessonItem[0].image_icon;
+                    image_corner = lessonItem[0].icon_corner;
+                }
+                var bgStr = '';
+                if (image_corner) bgStr = 'url(' + baseURL + image_corner + ')';
+                if (image_icon) {
+                    if (bgStr != '') bgStr += ',';
+                    bgStr += 'url(' + baseURL + image_icon + ')';
+                }
+                if (bgStr != '') $('div .img_preview[item_type=4]').css({background: bgStr});
+
+            });
+
+            $('select[name="term_id"]').off('change');
+            $('select[name="term_id"]').on('change', function (object) {
                 var termId = $(this).val();
                 var content_html = '';
                 for (var i = 0; i < courseTypeList.length; i++) {
@@ -454,8 +481,8 @@ $mainModel = 'tbl_huijiao_recommend';
                 $('select[name="course_type_id"]').trigger('change');
             });
 
-            $('select[name="subject_id"]').off('change input');
-            $('select[name="subject_id"]').on('change input', function (object) {
+            $('select[name="subject_id"]').off('change');
+            $('select[name="subject_id"]').on('change', function (object) {
                 var subjectId = $(this).val();
                 var content_html = '';
                 for (var i = 0; i < termList.length; i++) {
@@ -514,14 +541,42 @@ $mainModel = 'tbl_huijiao_recommend';
 
             $('#edit-modal .modal-title').html('编辑课件精选');
 
-            $('select[name="course_type_id"]').off('change input');
-            $('select[name="course_type_id"]').on('change input', function (object) {
+            var _tmr = 0;
+            $('select[name="course_type_id"]').off('change');
+            $('select[name="course_type_id"]').on('change', function (object) {
                 var courseTypeId = $(this).val();
-                makeLessonList(courseTypeId, 'contents', value7);
+                clearTimeout(_tmr);
+                _tmr = setTimeout(function () {
+                    makeLessonList(courseTypeId, 'contents', value7);
+                    value7 = null;
+                }, 10);
             });
 
-            $('select[name="term_id"]').off('change input');
-            $('select[name="term_id"]').on('change input', function (object) {
+            $('select[name="content_id"]').off('change');
+            $('select[name="content_id"]').on('change', function (e) {
+                var lesson_id = $(this).val();
+                var lessonItem = lessonList.filter(function(a){
+                    return a.id == lesson_id;
+                })
+
+                var image_icon = '';
+                var image_corner = '';
+                if (lessonItem.length != 0) {
+                    image_icon = lessonItem[0].image_icon;
+                    image_corner = lessonItem[0].icon_corner;
+                }
+                var bgStr = '';
+                if (image_corner) bgStr = 'url(' + baseURL + image_corner + ')';
+                if (image_icon) {
+                    if (bgStr != '') bgStr += ',';
+                    bgStr += 'url(' + baseURL + image_icon + ')';
+                }
+                if (bgStr != '') $('div .img_preview[item_type=4]').css({background: bgStr});
+
+            });
+
+            $('select[name="term_id"]').off('change');
+            $('select[name="term_id"]').on('change', function (object) {
                 var termId = $(this).val();
                 var content_html = '';
                 for (var i = 0; i < courseTypeList.length; i++) {
@@ -534,8 +589,8 @@ $mainModel = 'tbl_huijiao_recommend';
                 $('select[name="course_type_id"]').trigger('change');
             });
 
-            $('select[name="subject_id"]').off('change input');
-            $('select[name="subject_id"]').on('change input', function (object) {
+            $('select[name="subject_id"]').off('change');
+            $('select[name="subject_id"]').on('change', function (object) {
                 var subjectId = $(this).val();
                 var content_html = '';
                 for (var i = 0; i < termList.length; i++) {
@@ -545,6 +600,11 @@ $mainModel = 'tbl_huijiao_recommend';
                     content_html += '<option value="' + item.id + '">' + item.title + '</option>';
                 }
                 $('select[name="term_id"]').html(content_html);
+                var value2 = '';
+                if ($('#edit-modal select[name="term_id"]').find('option')[0])
+                    value2 = $('#edit-modal select[name="term_id"]').find('option')[0].getAttribute('value');
+                $('select[name="term_id"]').val(value2);
+                $('select[name="term_id"]').trigger('change');
             });
 
             $('#edit-modal input[name="recommend_no"]').val(value6);
@@ -751,6 +811,7 @@ $mainModel = 'tbl_huijiao_recommend';
                     if (res.status == true) {
                         var results = res.data;
                         contentList = results;
+                        lessonList = results;
                         var content_html = '';
                         for (var i = 0; i < results.length; i++) {
                             var item = results[i];
@@ -761,6 +822,7 @@ $mainModel = 'tbl_huijiao_recommend';
                         var tag = $('.content-items[data-type="' + type + '"]');
                         tag.html(content_html);
                         if (lesson_id) tag.val(lesson_id);
+                        tag.trigger('change');
                     }
                     else//failed
                     {
@@ -979,6 +1041,7 @@ $mainModel = 'tbl_huijiao_recommend';
         });
 
         $('div .img_preview[item_type="4"]').on('click', function () {
+            return;
             var item_type = $(this).attr('item_type');
             $('input[name="item_icon_file' + item_type + '"]').val('');
             $('input[name="item_icon_file' + item_type + '"]').trigger('click');

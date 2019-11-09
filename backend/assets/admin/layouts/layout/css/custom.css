@@ -390,6 +390,27 @@ div.main-frame {
     margin: 0 0;
 }
 
+div.main-frame .frame-half-container{
+    display: inline-block;
+    margin: 20px 5px 0;
+    width: 47%;
+}
+div.main-frame .frame-responsive-container{
+    display: inline-block;
+    margin: 20px 5px 0;
+    width: 47%;
+}
+div.main-frame .frame-third-container{
+    display: inline-block;
+    margin: 20px 5px 0;
+    width: 31%;
+}
+@media screen and (max-width: 1400px) {
+    div.main-frame .frame-responsive-container{
+        width: 75%;
+    }
+}
+
 div.main-frame .frame-title {
     font-size: 18px;
 
@@ -429,7 +450,7 @@ div.main-frame .frame-title div[data-sel="1"] {
     margin-bottom: 40px;
 }
 
-div.main-frame[data-id="4"] .total-info,
+div.main-frame[data-id="7"] .total-info,
 div.main-frame[data-id="6"] .total-info {
     display: inline-block;
     font-size: 16px;

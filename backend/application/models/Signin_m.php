@@ -33,7 +33,7 @@ class Signin_m extends MY_Model
     public function loggedin()
     {
         $isLoggedIn = (bool)$this->session->userdata("loggedin");
-        if($isLoggedIn) $this->users_m->update_usage_time();
+        if ($isLoggedIn) $this->users_m->update_usage_time();
         return $isLoggedIn;
     }
 
@@ -48,12 +48,12 @@ class Signin_m extends MY_Model
             $username = $this->input->post('username');
             $user_type = $this->input->post('user_type');
             $user_pass = $this->input->post('password');//$this->hash($this->input->post('password'));
-			// teacher
+            // teacher
 //            $username = '8295050';
 //            $user_pass = '1553063041122';
 //            $user_type = '1';
 
-			// student
+            // student
             //$username = '230103200209101915';
             //$user_pass = '1553211880187';
             //$user_type = '2';
@@ -77,10 +77,10 @@ class Signin_m extends MY_Model
             $user_id = $this->users_m->add((array)$user);
             $user->id = $user_id;
             $this->setLoginAction('register');
-        }else{
+        } else {
             $userItem = $userData[0];
-			if(substr($userItem->register_time,0,10)!=date('Y-m-d'))
-				$this->setLoginAction('login');
+            if (substr($userItem->register_time, 0, 10) != date('Y-m-d'))
+                $this->setLoginAction('login');
         }
 
         $this->signout();
@@ -121,30 +121,46 @@ class Signin_m extends MY_Model
         return $ret;
     }
 
-    public function setLoginAction($type = 'login'){
+    public function setLoginAction($type = 'login')
+    {
         $this->db->from('tbl_user_action');
         $this->db->where('action_date', date('Y-m-d'));
         $query = $this->db->get();
         $result = $query->result();
-        if($result== null){
+        if ($result == null) {
+            $register = 0;
+            if ($type == 'register') $register = 1;
             $this->db->insert('tbl_user_action', array(
-                'action_date'=>date('Y-m-d'),
-                'register_count'=>1,
-                'login_count'=>1
+                'action_date' => date('Y-m-d'),
+                'register_count' => $register,
+                'login_count' => 1
             ));
-        }else {
-            $this->db->where('id',$result[0]->id);
+        } else {
+            $this->db->where('id', $result[0]->id);
             $arr = array();
-            switch($type){
-                case'register':
-                    $arr['register_count'] = $result[0]->register_count+1;
+            switch ($type) {
+                case 'register':
+                    $arr['register_count'] = $result[0]->register_count + 1;
                 case 'login':
-                    $arr['login_count'] = $result[0]->login_count+1;
+                    $arr['login_count'] = $result[0]->login_count + 1;
                     break;
             }
             $this->db->update('tbl_user_action', $arr);
         }
     }
+
+    public function setPlatformLogin($platform = 'pcweb')
+    {
+        if ($platform != 'pcweb' && $platform != 'mweb' &&
+            $platform != 'android' && $platform != 'ios') {
+            return false;
+        }
+        $sql = "update tbl_user_action set login_{$platform} = login_{$platform} + 1 " .
+            "where action_date = '" . date('Y-m-d') . "'";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
     public function curl_login($account, $passwd)
     {
         $ret = (object)array(

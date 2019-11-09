@@ -45,7 +45,8 @@ a {
     left: 0;
     top: 0;
     width: calc(100vw);
-    height: calc(90vh);
+    height: calc(80vh);
+    display: none;
 }
 
 .custom-video-contain {

@@ -44,7 +44,7 @@
                 <a class="button-elem" id="share_btn" data-share="<?= $usage->share_count ?>" style="display: none">
                     <img src="<?= base_url('assets/images/previewPlayer/fenxiang.png') ?>">
                 </a>
-                <?php if ($contentItem->is_download != 1 || $this->session->userdata('user_type') != '1') { ?>
+                <?php if ($contentItem->is_download != 1 || (false && $this->session->userdata('user_type') != '1')) { ?>
                     <div class="button-elem" id="download_btn" style="pointer-events: none;">
                         <img src="<?= base_url('assets/images/previewPlayer/xiazai_disabled.png') ?>">
                     </div>
@@ -54,7 +54,7 @@
                        target="_blank">
                         <img src="<?= base_url('assets/images/previewPlayer/xiazai.png') ?>">
                     </a>
-                    <span class="download_span">下载</span>
+                    <span class="download_span" style="cursor: pointer;" onclick="$('a#download_btn')[0].click();">下载</span>
                 <?php } ?>
             </div>
         </div>

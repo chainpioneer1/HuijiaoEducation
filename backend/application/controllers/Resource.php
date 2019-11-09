@@ -49,8 +49,8 @@ class Resource extends CI_Controller
         $this->data['pageType'] = 0;
 
         if ($id == 0) {
-            redirect(base_url('home/index'));
-            return;
+//            redirect(base_url('home/index'));
+//            return;
             $this->data['parentView'] = 'back';
             $this->data["lessonItem"] = array();
             $this->data["courseList"] = array();
@@ -64,14 +64,19 @@ class Resource extends CI_Controller
             );;
             $this->data["like_num"] = 0;
         } else {
+            $user_id = $this->session->userdata('loginuserID');
             $lessonItems = $this->lessons_m->get_where(array('id' => $id, 'status' => 1));
+            if ($lessonItems == null) {
+                redirect(base_url('home/index'));
+                return;
+            }
             $this->data["lessonItem"] = $lessonItems[0];
 
             // get usage
-            $user_id = $this->session->userdata('loginuserID');
-            $usages = $this->usage_m->get_where(array(
-                'lesson_id' => $this->data["lessonItem"]->id
-            ));
+            if ($lessonItems)
+                $usages = $this->usage_m->get_where(array(
+                    'lesson_id' => $this->data["lessonItem"]->id
+                ));
             $usage = (object)array(
                 'usage_id' => null,
                 'is_favorite' => 0,
@@ -493,7 +498,7 @@ class Resource extends CI_Controller
             $lessonItem = array();
             $lessonItem['title'] = '';
             if (isset($_POST['title']))
-                $lessonItem['title'] = str_replace('script>','div>', $this->db->escape_str($_POST['title']));
+                $lessonItem['title'] = str_replace('script>', 'div>', $this->db->escape_str($_POST['title']));
             if ($lessonItem['title'] == '') {
                 $ret['data'] = '请输入课件名称';
                 echo json_encode($ret);

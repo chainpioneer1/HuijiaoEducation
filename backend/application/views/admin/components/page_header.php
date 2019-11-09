@@ -2,6 +2,8 @@
     <meta charset="utf-8" />
     <title><?= $this->lang->line('global_title')?></title>
     <link rel="shortcut icon" href="<?= base_url('assets/images/logo-icon.png') ?>" type="image/x-icon"/>
+    <meta name="description" content="呼啦啦教育出版社">
+    <meta name="keywords" content="慧教乐学,呼啦啦,教育,小学,中学,高中,宫菲,ExIdeaTech,huijiaolexue"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Preview page of Metronic Admin Theme #1 for classic page head option" name="description" />

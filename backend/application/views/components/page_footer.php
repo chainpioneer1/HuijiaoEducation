@@ -239,24 +239,35 @@
             '-ms-transform': 'translateX(-50%) scale(' + scale.toFixed(3) + ')',
             '-o-transform': 'translateX(-50%) scale(' + scale.toFixed(3) + ')',
             'height': bgH * 1 + 130 + 'px',
-            overflow:'unset'
+            overflow: 'unset'
         });
 
         <?php
         $isHelpShowed = 0;
-        if(isset($showHelp)) $isHelpShowed = 1;
+        $isDownloading = 0;
+        if (isset($showHelp)) $isHelpShowed = 1;
+        if (isset($showDownload)) $isDownloading = 1;
         ?>
-        if('<?= $isHelpShowed ?>'=='1') {
+        if ('<?= $isHelpShowed ?>' == '1') {
             var content_html = '<a class="helpBtn" href="<?= base_url()?>resource/guide" target="_blank" ' +
-                'style="right:' + w * 0.02 + 'px;bottom:' + h * 0.05 + 'px;">' +
+                'style="right:' + parseInt(w * 0.02) + 'px;bottom:' + parseInt(h * 0.05) + 'px;">' +
                 '<img src="<?= base_url()?>assets/images/huijiao/help.png" style="width: 70%;display:inline-block;"><br>' +
                 // '<span>使用帮助</span>' +
                 '</a>';
-            // content_html += '<div class="siteNotifyAlert" style="position:fixed;bottom:0;left:0;background:rgba(255,0,0,0.7);'
-            //     + 'color:white;width:100%;height:' + (w * 0.03) + 'px;line-height:' + (w * 0.03) + 'px;text-align:center;pointer-events:none;'
-            //     + 'font-size:' + w * 0.015 + 'px;'
-            //     + '">本平台正在更新资源缩略图，但所有资源均可正常打开，敬请见谅。</div>';
-            // $('.siteNotifyAlert').remove();
+            if ('<?= $isDownloading ?>' == '1') {
+                content_html += '<a class="appBtn" href="<?= base_url()?>mobile/download.php" target="_blank" ' +
+                    'style="right:' + parseInt(w * 0.018) + 'px;bottom:' + parseInt(h * 0.15) + 'px;">' +
+                    '<img src="<?= base_url()?>assets/images/huijiao/app_qr.png" style="width: 100%;"><br>' +
+                    '<span>扫码下载 安卓版APP</span>' +
+                    '</a>';
+                // content_html += '<div class="siteNotifyAlert" style="position:fixed;bottom:0;left:0;background:rgba(255,0,0,0.7);'
+                //     + 'color:white;width:100%;height:' + (w * 0.03) + 'px;line-height:' + (w * 0.03) + 'px;' +
+                //     'text-align:center;pointer-events:none;'
+                //     + 'font-size:' + w * 0.015 + 'px;'
+                //     + '">本平台正在更新资源缩略图，但所有资源均可正常打开，敬请见谅。</div>';
+                // $('.siteNotifyAlert').remove();
+                $('.appBtn').remove();
+            }
             $('.helpBtn').remove();
             $('body').append(content_html);
         }

@@ -179,7 +179,7 @@ class Apimobile extends CI_Controller
             $subject_id = $subjectData[0]->id;
 //            if ($_POST['id']) $subject_id = $_POST['id'];
             if ($id) $subject_id = $id;
-            $termFilter = array('tbl_huijiao_subject.id' => $subject_id);
+            $termFilter = array('tbl_huijiao_subject.id' => $subject_id, 'tbl_huijiao_terms.status' => 1);
         }
 
         $term_id = 0;
@@ -187,7 +187,7 @@ class Apimobile extends CI_Controller
         if ($termData == null) $termData = array();
         else $term_id = $termData[0]->id;
 
-        $courseTypeData = $this->coursetype_m->get_where(array('term_id' => $term_id));
+        $courseTypeData = $this->coursetype_m->get_where(array('term_id' => $term_id, 'status' => 1));
         if ($courseTypeData == null) $courseTypeData = array();
         else {
             foreach ($courseTypeData as $item) {
@@ -196,7 +196,8 @@ class Apimobile extends CI_Controller
         }
 
         $contentData = $this->contents_m->getItemsByPage(array(
-            'tbl_huijiao_terms.id' => $term_id
+            'tbl_huijiao_terms.id' => $term_id,
+            'tbl_huijiao_contents.status' => 1
         ), 0, 10000, '', 'teacher');
         if ($contentData == null) $contentData = array();
 
@@ -227,10 +228,10 @@ class Apimobile extends CI_Controller
         $term_id = 0;
         if ($id) $term_id = $id;
 
-        $termData = $this->terms_m->get_where(array('id' => $term_id));
+        $termData = $this->terms_m->get_where(array('id' => $term_id, 'status' => 1));
         if ($termData == null) $termData = array();
 
-        $courseTypeData = $this->coursetype_m->get_where(array('term_id' => $term_id));
+        $courseTypeData = $this->coursetype_m->get_where(array('term_id' => $term_id, 'status' => 1));
         if ($courseTypeData == null) $courseTypeData = array();
         else {
             foreach ($courseTypeData as $item) {
@@ -239,7 +240,8 @@ class Apimobile extends CI_Controller
         }
 
         $contentData = $this->contents_m->getItemsByPage(array(
-            'tbl_huijiao_terms.id' => $term_id
+            'tbl_huijiao_terms.id' => $term_id,
+            'tbl_huijiao_contents.status' => 1
         ), 0, 10000, '', 'teacher');
         if ($contentData == null) $contentData = array();
 
@@ -270,13 +272,14 @@ class Apimobile extends CI_Controller
         $coursetype_id = 0;
         if ($id) $coursetype_id = $id;
 
-        $courseTypeData = $this->coursetype_m->get_where(array('id' => $coursetype_id));
+        $courseTypeData = $this->coursetype_m->get_where(array('id' => $coursetype_id, 'status' => 1));
         if ($courseTypeData == null) $courseTypeData = array();
         else {
             $coursetype_id = $courseTypeData[0]->id;
         }
         $contentData = $this->contents_m->getItemsByPage(array(
-            'tbl_huijiao_course_type.id' => $coursetype_id
+            'tbl_huijiao_course_type.id' => $coursetype_id,
+            'tbl_huijiao_contents.status' => 1
         ), 0, 10000, '', 'teacher');
         if ($contentData == null) $contentData = array();
 
@@ -308,7 +311,8 @@ class Apimobile extends CI_Controller
         if ($id) $content_id = $id;
 
         $contentData = $this->contents_m->getItemsByPage(array(
-            'tbl_huijiao_contents.id' => $content_id
+            'tbl_huijiao_contents.id' => $content_id,
+            'tbl_huijiao_contents.status' => 1
         ), 0, 10000, '', 'teacher');
         if ($contentData == null) $contentData = array();
 
@@ -662,6 +666,10 @@ class Apimobile extends CI_Controller
 
         $request = json_decode(file_get_contents("php://input"));
         $id = $request->{'id'};
+        $pageId = $request->{'pid'};
+        $cntPerPage = $request->{'pcnt'};
+        if (!$pageId) $pageId = 0;
+        if (!$cntPerPage) $cntPerPage = 100;
 
         $user_account = $id;
 
@@ -674,19 +682,12 @@ class Apimobile extends CI_Controller
         $userItem = $userData[0];
         $user_id = $userItem->id;
 
-        $result = $this->usage_m->get_where("user_id = '$user_id' and is_favorite > 0");
-        $favoriteData = array();
-        foreach ($result as $item) {
-            array_push($favoriteData, $item->content_id);
-        }
-        $favoriteData = $this->contents_m->get_where_in('id', $favoriteData);
-        $j = 0;
-        foreach ($favoriteData as $item) {
-            $item->action_time = substr($result[$j]->update_time, 0, 16);
-            $j++;
-        }
+        $result = $this->contents_m->get_where_usage_limit(
+            "tbl_usage.user_id = $user_id and tbl_usage.content_id is not null and tbl_usage.is_favorite > 0",
+            $cntPerPage, $pageId * $cntPerPage
+        );
         $ret['data'] = array(
-            'favoriteData' => $favoriteData
+            'favoriteData' => $result
         );
         $ret['status'] = true;
         echo json_encode($ret);
@@ -694,7 +695,6 @@ class Apimobile extends CI_Controller
 
     public function getLike()
     {
-
         $ret = array(
             'data' => 'Invalid Request, please use POST.',
             'status' => false
@@ -707,6 +707,10 @@ class Apimobile extends CI_Controller
 
         $request = json_decode(file_get_contents("php://input"));
         $id = $request->{'id'};
+        $pageId = $request->{'pid'};
+        $cntPerPage = $request->{'pcnt'};
+        if (!$pageId) $pageId = 0;
+        if (!$cntPerPage) $cntPerPage = 100;
 
         $user_account = $id;
 
@@ -719,20 +723,12 @@ class Apimobile extends CI_Controller
         $userItem = $userData[0];
         $user_id = $userItem->id;
 
-        $result = $this->usage_m->get_where("user_id = '$user_id' and is_like > 0");
-        $likeData = array();
-        foreach ($result as $item) {
-            array_push($likeData, $item->content_id);
-        }
-        $likeData = $this->contents_m->get_where_in('id', $likeData);
-        $j = 0;
-        foreach ($likeData as $item) {
-            $item->action_time = substr($result[$j]->update_time, 0, 16);
-            $j++;
-        }
-
+        $result = $this->contents_m->get_where_usage_limit(
+            "tbl_usage.user_id = $user_id and tbl_usage.content_id is not null and tbl_usage.is_like > 0",
+            $cntPerPage, $pageId * $cntPerPage
+        );
         $ret['data'] = array(
-            'likeData' => $likeData
+            'likeData' => $result
         );
         $ret['status'] = true;
         echo json_encode($ret);
@@ -797,7 +793,7 @@ class Apimobile extends CI_Controller
         echo json_encode($ret);
     }
 
-    public function setLogin()
+    public function getRead()
     {
         $ret = array(
             'data' => 'Invalid Request, please use POST.',
@@ -811,6 +807,54 @@ class Apimobile extends CI_Controller
 
         $request = json_decode(file_get_contents("php://input"));
         $id = $request->{'id'};
+        $pageId = $request->{'pid'};
+        $cntPerPage = $request->{'pcnt'};
+        if (!$pageId) $pageId = 0;
+        if (!$cntPerPage) $cntPerPage = 100;
+
+        $user_account = $id;
+
+        $userData = $this->users_m->get_where(array('user_account' => $user_account));
+        if ($userData == null) {
+            $ret['data'] = '用户没有存在';
+            echo json_encode($ret);
+            return;
+        }
+        $userItem = $userData[0];
+        $user_id = $userItem->id;
+
+        $result = $this->contents_m->get_where_usage_limit(
+            "tbl_usage.user_id = $user_id and tbl_usage.content_id is not null and tbl_usage.read_count > 0",
+            $cntPerPage, $pageId * $cntPerPage
+        );
+        $ret['data'] = array(
+            'readData' => $result
+        );
+        $ret['status'] = true;
+        echo json_encode($ret);
+    }
+
+    public function setLogin()
+    {
+        $ret = array(
+            'data' => 'Invalid Request, please use POST.',
+            'status' => false
+        );
+
+        if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+            echo json_encode($ret);
+            return;
+        }
+        $request = json_decode(file_get_contents("php://input"));
+        $id = $request->{'id'};
+        $type = $request->{'type'};
+
+        $this->signin_m->setPlatformLogin($type);
+
+        $ret['data'] = 'Login Success';
+        $ret['status'] = true;
+        echo json_encode($ret);
+        return;
 
         $user_account = $id;
 
@@ -834,9 +878,9 @@ class Apimobile extends CI_Controller
             $this->signin_m->setLoginAction('register');
         } else {
             $userItem = $userData[0];
-			if(substr($userItem->register_time,0,10)!=date('Y-m-d'))
-				$this->signin_m->setLoginAction('login');
-			
+            if (substr($userItem->register_time, 0, 10) != date('Y-m-d'))
+                $this->signin_m->setLoginAction('login');
+
             $this->users_m->edit(array(
                 'information' => $this->get_client_ip(),
                 'register_count' => $userItem->register_count + 1,
@@ -879,7 +923,7 @@ class Apimobile extends CI_Controller
         $userItem->user_name = $username;
         $userItem->update_time = date('Y-m-d H:i:s');
         $this->users_m->edit(array(
-            'user_name' => $userItem->user_name,
+            'user_nickname' => $userItem->user_name,
             'update_time' => $userItem->update_time
         ), $userItem->id);
 

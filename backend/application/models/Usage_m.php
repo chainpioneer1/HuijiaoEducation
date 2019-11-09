@@ -138,6 +138,7 @@ class Usage_m extends MY_Model
                     ->join('tbl_huijiao_course_type', 'tbl_huijiao_contents.course_type_id = tbl_huijiao_course_type.id', 'left')
                     ->join('tbl_huijiao_terms', 'tbl_huijiao_course_type.term_id = tbl_huijiao_terms.id', 'left')
                     ->join('tbl_huijiao_subject', 'tbl_huijiao_terms.subject_id = tbl_huijiao_subject.id', 'left')
+                    ->where('tbl_huijiao_subject.title is not null')
                     ->order_by('tbl_huijiao_contents.content_no asc');
 
                 break;
@@ -156,6 +157,7 @@ class Usage_m extends MY_Model
                     ->join('tbl_huijiao_course_type', 'tbl_huijiao_lessons.course_type_id = tbl_huijiao_course_type.id', 'left')
                     ->join('tbl_huijiao_terms', 'tbl_huijiao_course_type.term_id = tbl_huijiao_terms.id', 'left')
                     ->join('tbl_huijiao_subject', 'tbl_huijiao_terms.subject_id = tbl_huijiao_subject.id', 'left')
+                    ->where('tbl_huijiao_subject.title is not null')
                     ->order_by('tbl_huijiao_terms.term_no asc');
                 break;
             case 'subjects_contents':
