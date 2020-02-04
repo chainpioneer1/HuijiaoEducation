@@ -39,4 +39,4 @@ iOS Package : Huijiao.ipa
 >
 > Full Usage Guide : http://www.hjle.qdedu.net/assets/UserGuide.pdf
 >
-> Contact Developer Email : gong.fei@outlook.com
+> Contact Developer Email : pandaworld1985@outlook.com
